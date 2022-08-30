@@ -1,0 +1,37 @@
+.dashboardView .mlbox {
+    width: 25%;
+    height: 20%;
+}
+
+.dashboardView .mlbox .first {
+    font-size: 12px;
+}
+
+.dashboardView .topBoxes {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+    margin: 10% 0px;
+}
+
+.dashboardView .mlBox1 {
+    background-color: red;
+}
+
+.dashboardView .mlBox2 {
+    background-color: blue;
+}
+
+.dashboardView .mlBox3 {
+    background-color: green;
+}
+
+.dashboardView .trackingBox {
+    width: 14vw;
+    overflow: hidden;
+    height: 40vh;
+}
+
+.dashboardView .changeAnalyticsRange {
+    margin-bottom: 10%;
+}

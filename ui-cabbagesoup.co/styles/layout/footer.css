@@ -1,0 +1,15 @@
+
+.footer {
+    display: none;
+    width: 100%;
+    background: #f0f0f0;
+    color: #353535;
+    text-align: center;
+    font-size: 1rem;
+    z-index: 100000;
+}
+
+.footer .copyright {
+    font-size: .8rem;
+    color:#07617d;
+}

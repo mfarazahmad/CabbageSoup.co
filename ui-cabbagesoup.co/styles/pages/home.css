@@ -1,0 +1,92 @@
+#home {
+    padding: 30px;
+}
+
+#home section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #f3f3f3;
+}
+
+#home section .content {
+    font-size: 1.1em;
+    padding: 0px 10%;
+}
+
+
+#home section.intro {
+    background: #07617d;
+    color: #f3f3f3;
+    height: 100vh;
+}
+
+#home section.intro .content {
+    font-size: 1.2em;
+}
+
+#home section.digital {
+    background-image: linear-gradient(#da0900, #9700d6);
+    /*background-image: url("/img/digital.jpg");*/
+    /*background-color:#f0f0f0;*/
+    background-size: cover; 
+    background-blend-mode: overlay;
+    color: #f3f3f3;
+    overflow: hidden;
+}
+
+#home section.original {
+    background: #da0900;
+    background-color: rgba(255, 0, 0, 0.45);
+    background-image: url('/img/collab.jpg');
+    background-blend-mode: soft-light;
+    background-size: cover;
+    color: #f3f3f3;
+}
+
+
+
+#home section.dedication {
+    background: #ffc168;
+    justify-content: center;
+    align-items: flex-start;
+    overflow: hidden;
+
+    color: #2e383f;
+}
+
+#home section.dedication  .infoContainer {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+
+#home section.dedication .left, #home section.dedication .right {
+    width: 35%;
+    padding: 20px;
+    margin: 0px 10px;
+    background: #f0f0f0;
+    border-radius: 20%;
+    opacity: .8;
+    text-align: left;
+    vertical-align: middle;
+}
+
+#home section.dedication .dot {
+    color: #da0900;
+}
+
+#home .centerMe {
+    margin-top: 3%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+

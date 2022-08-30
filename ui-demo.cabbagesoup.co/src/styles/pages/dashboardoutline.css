@@ -1,0 +1,231 @@
+#dashboardoutline .mainDisplay {
+    height: 30vh;
+    background-color: #FFFFFF;
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+#dashboardoutline .dashboardlogo {
+    height: 65%;
+    width: 10%;
+    margin-left: 10%;
+}
+
+#dashboardoutline .dashboardheadingemptydiv {
+    padding-right: 70%;
+}
+
+#dashboardoutline .profilepic {
+    border-radius: 50%;
+    height: 45%;
+    width: 5%;
+    margin-left: 60%;
+}
+
+#dashboardoutline .mainDisplay .dashboardheadingtitle {
+    font-size: 2rem;
+    color: #2B2B2B;
+    font-weight: 900;
+    padding-top: 20%;
+}
+
+#dashboardoutline .mainDisplay .dashboardheadingsubheading {
+    color: #BAB1B1;
+    font-weight: 900;
+    font-size: 1.2rem;
+}
+
+#dashboardoutline .emptydivpannel {
+    padding-top: 30%;
+}
+
+#dashboardoutline .dashboardlayout {
+    height: 100vh;
+    background-color: #FFFFFF;
+    width: 100vw;
+    padding-bottom: 30%;
+    padding-top: 20%;
+
+}
+
+#dashboardoutline .pannels {
+    margin-top: 5%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    border-style: solid;
+    border-width: 5px;
+    border-radius: 16px 16px 16px 16px;
+    border-color: #cecbcb;
+
+}
+#dashboardoutline .leftpannel {
+    background-color: #EAD2C4;
+    height: 100vh;
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    border-radius: 16px 16px 16px 16px;
+    margin: .5% .5%;
+
+}
+
+#dashboardoutline .leftpannel .pannelicons {
+    width: 13%;
+    margin: 12% 40%;
+}
+
+#dashboardoutline .leftpannel .exit {
+    width: 13%;
+    padding-top: 90%;
+    
+}
+
+#dashboardoutline .rightpannel {
+    background-color: #E9E9E9;
+    width: 80%;
+    border-radius: 16px 16px 16px 16px;
+    margin: .5% .5%;
+    max-height: 98%;
+
+}
+
+#dashboardoutline .charts {
+    width: 53vw;
+    height: 32vh;
+    padding-left: 3%;
+}
+
+#dashboardoutline .customerTable {
+    background-color: transparent;
+    height: 70%;
+    padding: 2%, 30% ;
+}
+
+#dashboardoutline .paginationdashboard {
+    margin-top: 12%;
+}
+
+#dashboardoutline .searchbarDashboardTable {
+    padding: 5% 0%;
+}
+
+#dashboardoutline .ant-input-search > .ant-input-group > .ant-input-group-addon .ant-input-search-button  {
+    border-radius: 0 7px 7px 0;
+    background: #E33D79;
+    border-color: #E33D79;
+}
+
+#dashboardoutline .ant-input-group {
+    border-radius: 17px 7px 7px 17px;
+
+
+}
+
+#dashboardoutline .viewCustomeTable {
+    width: 80%;
+    padding-left: 1%;
+    background-color: #E9E9E9;
+}
+#dashboardoutline .ant-table-thead > tr > th {
+    background-color: #E9E9E9;
+}
+#dashboardoutline .ant-table {
+    background-color: #E9E9E9;
+    font-size: .8rem;
+    max-width: 100%;
+    max-height: 10%;
+
+}
+
+#inventoryChart .ant-table-wrapper {
+    clear: both;
+    max-width: 80%;
+}
+
+#dashboardoutline .ant-table-pagination.ant-pagination {
+    padding-right: 20%;
+
+}
+
+#dashboardoutline .pannelicondescription {
+    font-size: .9rem;
+    color: #2B2B2B;
+}
+
+
+@media(max-width: 1200px) {
+    #dashboardoutline .leftpannel .pannelicons {
+        width: 20%;
+        margin: 22% 40%;
+    }
+
+    #dashboardoutline .profilepic {
+        border-radius: 50%;
+        height: 40%;
+        width: 8%;
+        margin-left: 60%;
+       
+    }
+    #dashboardoutline .mainDisplay .dashboardheadingtitle {
+        font-size: 1.5rem;
+    }
+    #dashboardoutline .mainDisplay .dashboardheadingsubheading {
+        font-size: .9rem;
+    }
+    #dashboardoutline .dashboardlogo {
+        height: 60%;
+        width: 10%;
+        margin-left: 6%;
+    }
+
+}
+
+@media(max-width: 800px) {
+    #dashboardoutline .leftpannel .pannelicons {
+        width: 25%;
+        margin: 22% 40%;
+    }
+    #dashboardoutline .ant-table-pagination.ant-pagination {
+        padding-left: 100%;
+    
+    }
+
+    #dashboardoutline .mainDisplay .dashboardheadingtitle {
+        font-size: 1.2rem;
+    }
+
+    #dashboardoutline .dashboardlogo {
+        height: 60%;
+        width: 15%;
+        margin-left: 6%;
+    }
+
+    #dashboardoutline .profilepic {
+        border-radius: 50%;
+        height: 35%;
+        width: 12%;
+        margin-left: 60%;
+       
+    }
+
+}
+
+
+@media(max-width: 600px) {
+    #dashboardoutline .leftpannel .pannelicons {
+        width: 28%;
+        margin: 33% 40%;
+    }
+    #dashboardoutline .ant-table-pagination.ant-pagination {
+        padding-left: 100%;
+    
+    }
+
+    .charts .ant-input-search .ant-input-group .ant-input-affix-wrapper:not(:last-child) {
+        width: 100%;
+    }
+
+}

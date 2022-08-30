@@ -1,0 +1,374 @@
+
+/* CSS for Manufacturing Page */
+
+
+
+
+#projectPages section.projectIntroManufacturing {
+    background: linear-gradient(#FDB913, #F0F0F0);
+    height: 70vh;
+}
+.manufacturingTitle{
+    font-size: 110px;
+    color: #2E383F;
+    font-weight: 900;
+    padding-left: 25%;
+}
+
+.manufacturingSubtitle{
+    color: #2E383F;
+    padding-left: 20%;
+    padding-right: 15%;
+    font-size: 31px;
+    margin-top: 5%;
+    font-weight: 100;
+}
+
+.manufacturingDetail{
+    background-image:  url('/img/manufacturing.png');
+    height: 80vh;
+ }
+
+ #projectPages section.howItsBuiltManufacturing {
+    background:  #FDB913;
+    height: 50vh;
+}
+
+.howItsBuiltManufacturing {
+    display: flex;
+    justify-content: space-evenly;
+    color: #2E383F
+}
+
+.SkillsProvidedManufacturing{
+    margin-top: 80px;
+    width: 24%;
+}
+
+.SkillsProvidedTitleManfacturing{
+    font-size: 35px;
+    margin-bottom: 7%;
+}
+
+
+li {
+    line-height: 40px;
+    font-size: 25px;
+}
+
+.vertical-lineManufacturing {
+    border-left: 1px solid #2E383F;
+    height: 220px;
+    margin-top: 6%;
+}
+
+
+#projectPages section.manufacturingHomepage {
+    background:  #FFFFFF;
+    height: 120vh;
+}
+
+.manufacturingHomepageTitle {
+    font-size: 110px;
+    font-weight: 900;
+    padding-left: 7%;
+    color: #FDB913;
+}
+
+.manfacturingHomepageSubtitle{
+    padding-left: 7%;
+    padding-right: 15%;
+    font-size: 31px;
+    font-weight: 100;
+    color:  #2E383F;
+    width: 83%;
+    margin-bottom: 50px;
+    line-height: 55px;
+}
+
+.manufacturingHomePageScreenshot{
+    background: #F0F0F0;
+    height: 90%;
+    margin-left: 7%;
+    margin-right: 7%;
+}
+
+#projectPages section.manufacturingServices {
+    background:  #FFFFFF;
+    height: 130vh;
+}
+
+.manufacturingpageSubTitle{
+    font-size: 110px;
+    font-weight: 900;
+    padding-left: 7%;
+    color:  #2E383F;
+}
+
+.manufacturingdetailPageTitle{
+    font-size: 110px;
+    font-weight: 900;
+    padding-left: 7%;
+    color: #FDB913;
+    padding-top: 1%;
+}
+
+
+.categoryBreak{
+    margin-bottom: 100px;
+}
+.manufacturingYellowBorder{
+    background: linear-gradient(#FDB913, #F0F0F0);;
+    height: 80.4vh;
+    margin-bottom: 300%;
+    margin-left: 12%;
+    margin-right: 10%;
+}
+
+#projectPages section.manufacturingWorkProcess{
+    background:  #FFFFFF;
+    height: 150vh;
+}
+
+.putInRow{
+    display: flex;
+    
+}
+
+.manufacturingWorkProcessDescription {
+    padding-left: 7%;
+    padding-right: 15%;
+    font-size: 31px;
+    font-weight: 100;
+    color:  #000000;
+    line-height: 55px;
+    width: 60%;
+}
+
+.eccomerceDailyOfferDescription{
+    margin-left: 100px;
+    margin-right: 200px;
+}
+
+.manufacturingWorkProcessTitles{
+    font-size: 110px;
+    font-weight: 900;
+    color: #FDB913;
+}
+
+#manufacturingWorkProcessTitle{
+    font-size: 110px;
+    font-weight: 900;
+    color:  #000000;
+    width: 200%;
+}
+
+.manufacturingWorkProcessSection{
+    padding-top: 5%;
+    margin-left: 7%;
+}
+
+.manufacturingWorkProcessYellowBorder{
+    margin-top: 5%;
+    background: linear-gradient(#FDB913, #F0F0F0);;
+    height: 80.4vh;
+    margin-bottom: 300%;
+    margin-left: 12%;
+    margin-right: 10%;
+    width: 70%;
+}
+
+.workProcessPhoto{
+    width: 100%;
+    height: 100%;
+    
+}
+
+.manufacturingHomePagePhoto{
+    margin-left: 13%;
+    margin-top: 4%;
+    width: 75%;
+    height: 68%;
+}
+
+.manufacturingServicesPicture{
+    height: 90%;
+    width: 100%;
+    margin-top: 3%;
+    margin-left: 5%;
+
+}
+
+
+
+.FeaturedCategoryPageScreenshot {
+    background: #d8d8d8;
+    height: 46%;
+    width: 40%;
+
+}
+
+.FeaturedWhatTheySayPageScreenshot {
+    background: #EE2852;
+    height: 46%;
+    width: 40%;
+
+
+}
+
+.rowScreenshot {
+   display: flex;
+   flex-direction: row;
+   
+}
+
+.ManufacturingMobileView{
+    background:   #FFFFFF;
+    height: 130vh;
+
+}
+
+.manufacturingeMobileTitle{
+    font-size: 90px;
+    color: #FDB913;
+    margin-left: 6%;
+    font-weight: bolder;
+    margin-top: 5%;
+}
+
+.manufacturingMobileSubtitle{
+    font-size: 90px;
+    color:  #000000;
+    margin-left: 6%;
+    font-weight: 900;
+}
+
+.manufacturingMobileDetail {
+    color:  #000000;
+    width: 25%;
+    margin-left: 6%;
+    font-size: 28px;
+}
+.manufacturingMobileViews {
+    background: linear-gradient(#FDB913, #F0F0F0);
+    margin-top: 3%;
+    height: 100vh;
+}
+.mobileView1Ecommerce{
+    position: absolute;
+    margin-left: 20%;
+    margin-top: 10%;
+}
+
+.manufacturingMobileViewsDisplay {
+    margin-right: 1%;
+    margin-top: 4%;
+    padding-bottom: 7%;
+    margin-left: 13%;
+}
+
+.firstDisplay {
+    margin-left: 10%;
+}
+
+.blackpenis {
+    margin-left: 300px;
+}
+
+.eccomercePageArrow{
+    color:  #000000;
+    padding-top: 7%;
+
+}
+
+.contactEccomercePage{
+    background:#FFFFFF;
+    height: 50vh;
+    
+}
+
+.contactProjectPagesTitle{
+    color:  #000000;
+    font-size: 300%;
+    margin-left: 35%;
+    padding-top: 3%;
+    font-weight: bolder;
+}
+
+.contactProjectPagesSubTitle{
+    color:  #000000;
+    font-size: 300%;
+    margin-left: 32%;
+    font-weight: bolder;
+}
+
+.ProjectPagesContactButton {
+    background: #fc5185;
+    height: 60px;
+    width: 240px;
+    border: none;
+    border-radius: 10px;
+    margin-left: 38%;
+    margin-top: 3%;
+  
+    font-size: 2rem;
+    font-family: "Special Elite", sans-serif;
+    position: relative;
+    transition: 1s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding: 10px;
+    
+}
+
+.manufacturingOurTeam {
+    height: 120vh;
+}
+
+.FinanceLatestWorkTitle {
+    font-size: 90px;
+    color: #1491FF;
+    margin-left: 6%;
+    font-weight: bolder;
+    margin-top: 2%;
+
+}
+
+.FinanceLatestWorkTitleSubTitle {
+    font-size: 90px;
+    color:  #000000;
+    margin-left: 6%;
+    font-weight: bolder;
+}
+
+
+
+.TeamBoxWhite {
+
+    background: #F0F0F0;
+    padding-top: 3%;
+    height: 83%;
+    width: 91%;
+    margin-left: 4%;
+
+}
+
+.alllatestWorkPhotos {
+    display: flex;
+    margin-left: 15%;
+}
+
+.latestworkphoto {
+    margin-top: 5%;
+    height: 130%;
+
+}
+
+.manufacturingTeamDetail{
+    color:  #000000;
+    margin-left: 6%;
+    font-size: 28px;
+    margin-top: 10%;
+}

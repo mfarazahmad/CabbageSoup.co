@@ -1,0 +1,196 @@
+#projectPages section.projectIntro {
+    background:  #EE2852;
+    font-size: 4vw;
+    padding-top: 20%;
+}
+
+#projectPages .projectTitle {
+    font-size: 8vw;
+    line-height: 50%;
+    margin-bottom: 5%;
+    margin-left: 5%;
+}
+
+#projectPages .projectSubtitle{
+    font-size: 3vw;
+    font-weight: 900;
+    color: #f0f0f0;
+    padding: 0px 5%;
+}
+
+.ePic {
+    background-image:  url('/img/Eccomerce.png');
+}
+
+#projectPages #howItsBuilt {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 10% 0px;
+    color: #f0f0f0;
+    background:  #EE2852;
+    height: 100%;
+    font-size: 3vw;
+}
+
+.leftSkillProvided {text-align: right;}
+
+.SkillsProvided{
+    width: 40%;
+}
+
+.SkillsProvidedTitle{
+    margin-bottom: 3%;
+    font-style: oblique;
+}
+
+#projectPages li {
+    line-height: 3;
+    font-size: 2vw;
+}
+
+.vertical-line {
+    background: white;
+    height: 100%;
+    padding: 15vw 1px;
+    margin: 0px 10%;
+}
+
+#projectPages section.eHome {
+    background:  #FFFFFF;
+    height: 100%;
+    padding: 10%;
+}
+
+.eHomeTitle {
+    font-weight: 900;
+    color: #EE2852;
+    font-size: 9vw;
+    text-align: center;
+}
+
+.eHomeSubtitle{
+    font-size: 4vw;
+    font-weight: 100;
+    color:  #000000;
+    margin-bottom: 4%;
+    line-height: 1.2;
+    padding: 10px;
+}
+
+.eHomeScreenshot{
+    background: #F0F0F0;
+    height: 100%;
+    width: 100%;
+}
+
+.eHomePhoto{
+    padding: 10px;
+    width: 100%;
+}
+
+#projectPages section.eccomerceCategory {
+    background:  #FFFFFF;
+}
+
+.eCategoryTitle{
+    font-weight: 900;
+    font-size: 9vw;
+    text-align: left;
+    color: #EE2852;
+    padding-top: 1%;
+    width: 100%;
+    margin-left: 10px;
+}
+
+.eCatSub{
+    margin-left: 10px;
+    font-size: 4vw;
+    font-weight: 100;
+    color:  #000000;
+    margin-bottom: 4%;
+    line-height: 1.2;
+    text-align: left;
+}
+
+.eHomeCategoryShot{
+    background: #F0F0F0;
+    padding-top: 10px;
+    padding-left: 10px;
+    height: 100%;
+    width: 100%;
+
+}
+
+.eccomercePinkBorder{
+    background: #F68FA5;
+    padding: 20px 0px 0px 20px;
+}
+
+#projectPages section.eDailyOffers{
+    background:  #FFFFFF;
+    color: black;
+}
+
+.dailyAlign{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.eDailyDesc {
+    font-size: .7em;
+    font-weight: 100;
+    color:  #000000;
+    line-height: 1.2;
+    width: 70%;
+    margin: 0px 10px;
+}
+
+.eccomerceFeaturedProduct{
+    background:  #F0F0F0;
+}
+
+.DailyOffersPhoto{
+    width: 90%;
+    height: 100%;
+}
+
+.eMobile{
+    background:   #FFFFFF;
+}
+
+.mvE1{
+    margin-right: 5%;
+    margin-bottom: 10px;
+    max-width: 100px;
+}
+
+.eccomerceMobileViews {
+    background: #fecdd7;
+    margin-top: 3%;
+    height: 100%;
+}
+
+.ecommerceMobileViewsDisplay {
+    margin-right: 1%;
+    margin-top: 4%;
+    padding-bottom: 7%;
+    max-width: 175px;
+}
+
+.firstDisplay {
+    margin-left: 10%;
+}
+
+.eccomercePageArrow{
+    color:  #000000;
+    padding-top: 7%;
+
+}
+
+.contactContainer {
+    display: flex;
+    justify-content: center;
+}

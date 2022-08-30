@@ -1,0 +1,216 @@
+.header > .navbar-brand {
+    float: left;
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+    margin-right: 1rem;
+    font-size: 1.25rem;
+  
+    display: inline-block;
+    position: absolute;
+    padding: 0px;
+    height: 40px;
+    line-height: 40px;
+    left: 40px;
+    margin: 0px;
+    color: inherit;
+    white-space: nowrap;
+  }
+
+  .header .iconLogo:hover {
+    opacity: .7;
+    cursor: pointer;
+  }
+  
+  .header > #toggleNav {
+      position: fixed;
+      right: 28px;
+      margin-left: -10px;
+      text-align: center;
+      font-size: 0px;
+      color: inherit !important;
+      cursor: pointer;
+      z-index: 1000;
+      transition: transform 500ms cubic-bezier(0.7, 0, 0.3, 1) 0ms;
+  }
+  
+  .header > #toggleNav .icon {
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    transform: translate(50%, -50%);
+    transition: transform 500ms cubic-bezier(0.7, 0, 0.3, 1) 0ms;
+  }
+  
+  .header > #toggleNav .line {
+    float: right;
+    clear: right;
+    height: 2px;
+    background: #1c1b20;
+    transition: all 400ms cubic-bezier(0.7, 0, 0.3, 1) 0ms;
+    margin-top: 2px;
+  }
+  
+  .header > #toggleNav .line:nth-child(1) {
+    width: 16px;
+  }
+  
+  #toggleNav .line:nth-child(2) {
+    width: 20px;
+  }
+  
+  #toggleNav .line:nth-child(3) {
+    width: 12px;
+  }
+  
+  .header > #toggleNav .txt {
+    position: absolute;
+    width: 100%;
+    top: 15px;
+    right: -25px;
+    text-align: center;
+    display: none;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 900;
+    letter-spacing: 0.2em;
+    transform: rotate(-90deg);
+    transition: transform 400ms cubic-bezier(0.7, 0, 0.3, 1) 0ms, opacity 150ms linear 0ms, color 150ms linear 0ms;
+  }
+  
+  .header > #toggleNav .txt {
+    display: inline-block;
+    transition: transform 400ms cubic-bezier(0.7, 0, 0.3, 1) 0ms;
+  }
+  
+  .header > .scrolldown, scrolltop {
+    position: fixed;
+    z-index: 9;
+    line-height: 1;
+    z-index: 101 !important;
+    transform: matrix(0, -1, 1, 0, 0, 0); opacity: 1;
+    transition: bottom 400ms cubic-bezier(0.7, 0, 0.3, 1) 0ms;
+  }
+  
+  .header > .scrolldown > * , .header > .scrolltop > * {
+    display: inline-block;
+    vertical-align: middle;
+  }
+  
+  .header > .scrolldown > .txt, .header > .scrolltop > .txt {
+    font-weight: 700;
+    font-size: 0.8rem;
+    margin-left: 10px;
+  }
+  
+  .header > .scrolldown > span, .header > .scrolltop > span {
+    transform: translateX(5px);
+    transition: transform 400ms cubic-bezier(0.7, 0, 0.3, 1) 0ms;
+  }
+
+.header > .liveDemo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    z-index: 1000;
+    top: 20px;
+    right: 40px;
+    transform: translateY(-50%);
+    transition: transform 500ms cubic-bezier(0.7, 0, 0.3, 1) 0ms;
+    padding: 0px;
+    height: 30px;
+    line-height: 40px;
+  }
+  
+
+.liveDemoBtn{
+    background: red;
+    font-size: .8rem;
+    font-weight: 1000;
+    font-family: "Playfair Display", sans-serif;
+    border: none;
+    color: #eee;
+    height: 30px;
+  
+    transition: 1s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.liveDemoBtn:hover {
+    opacity: .7;
+}
+
+.header > .switch-color-mode{
+    position: fixed;
+    z-index: 1000;
+    top: 20px;
+    right: 40px;
+    transform: translateY(-50%);
+    display: none;
+    transition: transform 500ms cubic-bezier(0.7, 0, 0.3, 1) 0ms;
+}
+
+.switch-color-mode {
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+    font-size: 1rem;
+    font-family: "Playfair Display", sans-serif;
+}
+
+.switch-color-mode li {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 5px;
+}
+
+.switch-color-mode a {
+  display: block;
+  text-transform: uppercase;
+  color: #bcbcbc;
+  font-weight: 900;
+  text-decoration: none;
+  letter-spacing: 0.2em;
+}
+
+.textLogo {
+  background-image: linear-gradient(#2e383f,#07617d);
+  background-size: 100%;
+  background-clip: content-box;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; 
+  font-size: 1rem;
+  font-weight: 1000;
+  font-family: "Playfair Display", sans-serif;
+  display: flex;
+}
+
+.textLogo div:nth-child(1) {
+  margin-right: 10px;
+}
+
+.switch-color-mode .active a {color: #1c1b20;}
+
+@media (min-width: 100px) {
+    .header > .navbar-brand {position: fixed; top: 0; z-index: 1000;}
+    .header > #toggleNav {  top: 50%; left: 40px; right: inherit; margin-top: -20px; height: 40px; width: 40px; 
+                                background: transparent; border-top-left-radius: 0px; border-top-right-radius: 0px; 
+                                border-bottom-left-radius: 0px; border-bottom-right-radius: 0px;}
+    .header > #toggleNav .txt {display: block;}
+    .header > #toggleNav .line {margin-top: 3px;}
+    .header > #toggleNav .icon {right: 0; transform: translate(-20px, -50%);}
+    .header > .scrolldown, .scrolltop {left: 40px; bottom: 38px; z-index: 200;}
+    .header > .switch-color-mode a {font-size: .9rem;}
+  }
+  
+  @media (min-width: 1600px) {
+    .header > .navbar-brand {height: 55px;  line-height: 55px; left: 55px;}
+    .header > #toggleNav {left: 55px;}
+    .header > #toggleNav .txt {top: 12px; font-size: 1rem;}
+    .header > .switch-color-mode {top: 27.5px; right: 55px;}
+    .header > .switch-color-mode a {font-size: 1rem;}
+  }

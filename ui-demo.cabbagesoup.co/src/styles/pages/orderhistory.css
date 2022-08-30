@@ -1,0 +1,22 @@
+#orderhistory h2 {
+    margin-top: 12%;
+}
+
+#orderhistory #orderTable {
+    border: 1px solid black;
+    box-shadow: 2px 3px black;
+}
+
+#orderhistory #productList {
+    overflow: scroll;
+    height: 200px;
+}
+
+#orderhistory #totalPrice {
+    color:red;
+
+}
+
+#orderhistory .order_number {
+    width: 100px;
+}

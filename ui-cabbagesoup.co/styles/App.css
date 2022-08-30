@@ -1,0 +1,157 @@
+@import url("https://fonts.googleapis.com/css?family=Lato");
+@import url("https://fonts.googleapis.com/css?family=Playfair+Display");
+@import url("https://fonts.googleapis.com/css?family=Lobster+Two");
+@import url("https://fonts.googleapis.com/css?family=Kaushan+Script");
+@import url("https://fonts.googleapis.com/css?family=Merienda");
+@import url("https://fonts.googleapis.com/css?family=Special+Elite");
+
+body {
+  font-size: 1.3rem;
+  font-family: "Lato", sans-serif;
+  color: #ffc168;
+  line-height: 1.5;
+  background-color: #fc5185;
+  text-rendering: optimizeLegibility;
+  min-height: 100vh;
+}
+
+@import url("./layout/menu.css");
+@import url("./layout/header.css");
+@import url("./layout/borders.css");
+@import url("./layout/loader.css");
+@import url("./layout/footer.css");
+
+i {
+  font-style: italic;
+}
+.active a {
+  color: #1c1b20;
+}
+.dot {
+  color: #ffc168;
+}
+
+.app {
+  position: relative;
+  background: #ff5851 !important;
+  overflow: hidden;
+  z-index: 1;
+  transition: transform 500ms cubic-bezier(1, 0, 0, 1) 0ms;
+  pointer-events: none;
+  min-height: 100vh;
+}
+
+.pageContainer {
+  position: relative;
+  background: #f8f8f8;
+  overflow: hidden;
+  transition: transform 500ms cubic-bezier(1, 0, 0, 1) 0ms;
+  pointer-events: all;
+  min-height: 100vh;
+}
+
+.page {
+  position: relative;
+  min-height: 100vh;
+  z-index: 10;
+  overflow: hidden;
+  transition: transform 1000ms cubic-bezier(1, 0, 0, 1) 0ms,
+    padding 500ms cubic-bezier(1, 0, 0, 1) 0ms;
+}
+
+.page > * {
+  position: relative;
+  z-index: 10;
+}
+
+.padding {
+  width: 100%;
+  position: relative;
+  z-index: 10;
+  padding: 10% 10%;
+}
+
+.introTitle {
+  font-size: 12vw;
+  font-family: Playfair Display, Display;
+}
+
+.introTitle > * {
+  display: inline;
+}
+
+.sectionTitle {
+  font-size: 8vw;
+  font-family: "Lato", sans-serif;
+  line-height: 1.1;
+  margin-bottom: 20px;
+}
+
+.sectionSubTitle {
+  font-size: 4.5vw;
+  font-family: "Lobster Two", cursive;
+  line-height: 1.1;
+  margin-bottom: 20px;
+}
+
+.content {
+  margin: 20px 0px;
+  font-size: 1rem;
+}
+
+.btn {
+  margin-top: 20px;
+  background: #fc5185;
+  height: 40px;
+  min-width: 50px;
+  border: none;
+  border-radius: 10px;
+  color: #eee;
+
+  font-size: 2rem;
+  font-family: "Special Elite", sans-serif;
+  position: relative;
+  transition: 1s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.btn #circle {
+  width: 5px;
+  height: 5px;
+  background: transparent;
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  overflow: hidden;
+  transition: 500ms;
+}
+
+.btn:hover {
+  background: transparent;
+}
+
+.btn:hover #circle {
+  height: 50px;
+  width: 150px;
+  left: 0;
+  border-radius: 0;
+  border-bottom: 2px solid #eee;
+}
+
+@import url("./widgets/offerings.css");
+@import url("./widgets/contactDisplay.css");
+@import url("./widgets/contactForm.css");
+@import url("./widgets/status.css");
+
+@import url("./pages/home.css");
+@import url("./pages/about.css");
+@import url("./pages/process.css");
+@import url("./pages/project.css");
+@import url("./pages/blog.css");
+@import url("./pages/ecommerce.css");
+

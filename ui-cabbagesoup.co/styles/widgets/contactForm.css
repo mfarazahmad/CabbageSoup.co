@@ -1,0 +1,59 @@
+#contact {
+    padding: 30px;
+    cursor: pointer;
+}
+
+#contact .sectionTitle {
+    font-family: 'Lobster Two';
+    margin-bottom: 30px;
+}
+
+#contact .centerMe {
+    margin-top: 3%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#contact section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #f3f3f3;
+    background: linear-gradient(90deg, #07617d, #9700d6);
+}
+
+
+#contact section .formContainer{
+    border-radius: 10%;
+    padding: 10%;
+    background: #353535;
+    color: #f0f0f0;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    opacity: .85;
+    font-family: "Playfair Display", sans-serif;
+    cursor: pointer;
+}
+
+#contact section p{
+    text-align: left;
+    margin: 10px 0px 0px 0px;
+    font-size: .8em;
+}
+
+#contact input {
+    text-align: left;
+    padding: 0px 10px;
+}
+
+#contact ::placeholder {
+    color: black;
+  }
+
+#contact .ant-checkbox-wrapper span  {
+    color: #f0f0f0;
+}
+

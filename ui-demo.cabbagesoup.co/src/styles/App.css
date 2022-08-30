@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+
+body {
+  font-size: 1.3rem;
+  font-family: "Lato", sans-serif;
+  color: #ffc168;
+  line-height: 1.5;
+  background-color: white ;
+  text-rendering: optimizeLegibility;
+  min-height: 100vh;
+  cursor: pointer;
+}
+
+@import url('./layout/navbar.css');
+@import url('./layout/loader.css');
+@import url('./layout/footer.css');
+
+i {font-style: italic;}
+.active a {color: #1c1b20;}
+.dot {color: #ffc168;}
+
+.app {
+  position: relative;
+  background: #ff5851 !important;
+  overflow: hidden;
+  z-index: 1;
+  transition: transform 500ms cubic-bezier(1, 0, 0, 1) 0ms;
+  min-height: 100vh;
+}
+
+.pageContainer {
+  position: relative;
+  background: #f8f8f8;
+  overflow: hidden;
+  min-height: 100vh;
+}
+
+.page {
+  min-height: 100vh;
+  z-index: 10;
+  overflow: hidden;
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #f3f3f3;
+  padding: 2%;
+}
+
+.introTitle {
+  font-size: 6em;
+  font-family: Playfair Display, Display;
+}
+
+.introTitle > * {
+  display: inline;
+}
+
+.sectionTitle {
+  font-size: 5rem;
+  font-family: "Lato", sans-serif;
+  line-height: 1.1;
+  margin-bottom: 20px;
+}
+
+.sectionSubTitle {
+  font-size: 3rem;
+  font-family: "Lobster Two", cursive;
+  line-height: 1.1;
+  margin-bottom: 20px;
+}
+
+.content {
+  margin: 20px 0px;
+  font-size: 1rem;
+}
+
+@import url('./widgets/contactDisplay.css');
+@import url('./widgets/contactForm.css');
+@import url('./widgets/status.css');
+
+@import url('./pages/home.css');
+@import url('./pages/product.css');
+@import url('./pages/productdisplay.css');
+@import url('./pages/cart.css');
+@import url('./pages/checkout.css');
+@import url('./pages/settings.css');
+@import url('./pages/createaccount.css');
+@import url('./pages/orderhistory.css');
+@import url('./pages/ordertracking.css');
+@import url('./pages/dashboard.css');
+@import url('./pages/dashboardoutline.css');
+@import url('./pages/settingsoutline.css');
+
+
+@media(max-width: 599px) {
+  .page {margin-top: 0px;}
+}

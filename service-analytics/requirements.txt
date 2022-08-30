@@ -1,0 +1,12 @@
+flask
+flask_cors
+flask-session
+Faker 
+pytz
+pymongo
+python-dotenv
+requests
+dnspython
+sqlalchemy
+gunicorn
+Pillow

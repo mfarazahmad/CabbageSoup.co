@@ -1,0 +1,159 @@
+#blogs section.blogPostIntro {
+    background:  #FFFFFF;
+    padding-bottom: 6%;
+}
+
+.OverAllBlogTitle {
+    font-size: 110px;
+    font-weight: 900;
+    padding-left: 10%;
+    color: #000000;
+    padding-top: 5%;
+}
+
+.BlogPostTitle {
+    font-size: 80px;
+    font-weight: 900;
+    padding-left: 10%;
+    color: #000000;
+    padding-top: 2%;
+}
+
+.BlogContent {
+    background:  #FFFFFF;
+    height: 130vh;
+}
+
+.SectionTitle {
+    font-size: 80px;
+    font-weight: 900;
+    padding-left: 36%;
+    color: #000000;
+}
+
+.SectionDescription {
+    width: 80%;
+    margin-left: 8%;
+    font-size: 130%;
+    color: #000000;
+    margin-top: 4%;
+
+}
+
+.blogPostMainImagePlaceHolder {
+    background-color: #FFFFFF;
+}
+
+.blogPostMainImage {
+    width: 90%;
+    margin-left: 5%;
+    height: 800px;
+    margin-bottom: 4%;
+}
+
+.blogPostContentImage {
+    width: 30%;
+    height: 300px;
+}
+
+.dotBlog {
+    color: #FFC168;
+}
+
+#blogs section.blogHomepage {
+    background:  #FFFFFF;
+    height: 120vh;
+}
+
+.RecentBlogPostInformation {
+    border-style: solid;
+    border-color: #000000;
+    width: 63%;
+    margin-left: 20%;
+    border-radius: 9px;
+    box-shadow: 5px 10px #A4B0B3;
+
+}
+
+
+.recentBlogPostImage {
+    height:  50vh;
+    width: 63vw;
+    margin-left: 20%;
+    margin-top: 5%;
+    border-radius: 9px;
+
+}
+
+.RecentBlogPostDescription {
+    color: #000000;
+    font-size: 27px;
+    width: 80%;
+    margin-left: 6%;
+    padding-bottom: 3%;
+   
+}
+
+.RecentBlogPostTitle {
+    color: #000000;
+    font-size: 80px;
+    font-weight: bolder;
+    margin-left: 4%;
+    text-decoration: underline;
+
+
+}
+
+.blogPostsDisplay {
+    height: 100vh;
+    background:  #FFFFFF;
+}
+
+.otherBlogPostsImages {
+    margin-left: 0%;
+    width: 30%;
+}
+
+.otherBlogsTitles {
+    font-size: 25px;
+    margin-left: 3%;
+    color: #000000;
+    text-decoration: underline;
+    margin-bottom: 1%;
+    margin-top: 3%;
+
+}
+
+.allBlogPosts {
+    display: flex;
+    flex-direction: row;
+    margin-top: 3%;
+    border-style: solid ;
+    border-color: #000000;
+    width: 610px;
+    margin-left: 5%;
+    box-shadow: 5px 6px #A4B0B3;
+    border-radius: 9px;
+
+
+ 
+}
+
+.OtherBlogsDescription {
+    margin-left: 6%;
+    color: #000000;
+    width: 75%;
+    margin-bottom: 6%;
+}
+
+.otherBlogs {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-left: 7%;
+}
+
+.blogPostsDisplay{
+    padding-left: 5%;
+    
+}

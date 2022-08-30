@@ -1,0 +1,495 @@
+
+/*   Finance CSS */
+
+
+
+
+
+
+#projectPages section.projectIntroFinance {
+    background: linear-gradient(#1491FF,rgb(190, 211, 229));
+    height: 70vh;
+}
+.FinanceTitle{
+    font-size: 110px;
+    color: #FFFFFF;
+    font-weight: 900;
+    padding-left: 35%;
+}
+
+.financeSubtitle{
+    color: #FFFFFF;
+    padding-left: 20%;
+    padding-right: 15%;
+    font-size: 31px;
+    margin-top: 5%;
+    font-weight: 100;
+}
+
+.financeDetail{
+    background-image:  url('/img/Finance.png');
+    height: 80vh;
+ } 
+
+ #projectPages section.howItsBuiltFinance {
+    background:  #1491FF;
+    height: 50vh;
+}
+
+.howItsBuiltFinance {
+    display: flex;
+    justify-content: space-evenly;
+    color: #FFFFFF;
+    font-weight: bolder;
+}
+
+.SkillsProvidedFinance{
+    margin-top: 80px;
+    width: 24%;
+}
+
+.SkillsProvidedTitleFinance{
+    font-size: 35px;
+    margin-bottom: 7%;
+}
+
+
+li {
+    line-height: 40px;
+    font-size: 25px;
+}
+
+.vertical-lineFinance {
+    border-left: 1px solid #2E383F;
+    height: 220px;
+    margin-top: 6%;
+}
+
+#projectPages section.financeHomepage {
+    background:  #FFFFFF;
+    height: 120vh;
+}
+
+.financeHomepageTitle {
+    font-size: 110px;
+    font-weight: 900;
+    padding-left: 7%;
+    color: #1491FF;
+}
+
+.financeWhoWeHomepageSubtitle{
+    padding-left: 7%;
+    padding-right: 15%;
+    font-size: 31px;
+    font-weight: 100;
+    color:  #2E383F;
+    width: 83%;
+    margin-bottom: 50px;
+    line-height: 55px;
+}
+
+.financeHomePageScreenshot{
+    background: #F0F0F0;
+    height: 90%;
+    margin-left: 7%;
+    margin-right: 7%;
+}
+
+#projectPages section.financeWhoWeAre {
+    background:  #FFFFFF;
+    height: 140vh;
+}
+
+.financeWhoWeArepageSubTitle{
+    font-size: 110px;
+    font-weight: 900;
+    padding-left: 7%;
+    color:  #2E383F;
+}
+
+.financeWhoWeAredetailPageTitle{
+    font-size: 110px;
+    font-weight: 900;
+    padding-left: 7%;
+    color: #1491FF;
+    padding-top: 1%;
+}
+
+
+.categoryBreak{
+    margin-bottom: 100px;
+}
+.financeBlueBorder{
+    background: #8DCDFF;
+    height: 80.4vh;
+    margin-bottom: 300%;
+    margin-left: 12%;
+    margin-right: 10%;
+}
+
+#projectPages section.manufacturingWorkProcess{
+    background:  #FFFFFF;
+    height: 150vh;
+}
+
+.putInRow{
+    display: flex;
+    
+}
+
+.manufacturingWorkProcessDescription {
+    padding-left: 7%;
+    padding-right: 15%;
+    font-size: 31px;
+    font-weight: 100;
+    color:  #000000;
+    line-height: 55px;
+    width: 60%;
+}
+
+.eccomerceDailyOfferDescription{
+    margin-left: 100px;
+    margin-right: 200px;
+}
+
+.manufacturingWorkProcessTitle{
+    font-size: 110px;
+    font-weight: 900;
+    color: #FDB913;
+}
+
+#manufacturingWorkProcessTitle{
+    font-size: 110px;
+    font-weight: 900;
+    color:  #000000;
+    width: 200%;
+}
+
+.manufacturingWorkProcessSection{
+    padding-top: 5%;
+    margin-left: 7%;
+}
+
+.manufacturingWorkProcessYellowBorder{
+    margin-top: 5%;
+    background: linear-gradient(#FDB913, #F0F0F0);;
+    height: 80.4vh;
+    margin-bottom: 300%;
+    margin-left: 12%;
+    margin-right: 10%;
+    width: 70%;
+}
+
+.financeGoalsImage{
+    width: 90%;
+    height: 80%;
+    margin-top: 5%;
+    margin-left: 5%;
+    
+}
+
+.financeHomePagePhoto{
+    margin-left: 13%;
+    margin-top: 4%;
+    width: 75%;
+    height: 68%;
+}
+
+.financeWhoWeArePicture{
+    height: 90%;
+    width: 100%;
+    margin-top: 3%;
+    margin-left: 5%;
+
+}
+
+
+
+.FeaturedCategoryPageScreenshot {
+    background: #d8d8d8;
+    height: 46%;
+    width: 40%;
+
+}
+
+.FeaturedWhatTheySayPageScreenshot {
+    background: #EE2852;
+    height: 46%;
+    width: 40%;
+
+
+}
+
+.rowScreenshot {
+   display: flex;
+   flex-direction: row;
+   
+}
+
+.ManufacturingMobileView{
+    background:   #FFFFFF;
+    height: 130vh;
+
+}
+
+.manufacturingeMobileTitle{
+    font-size: 90px;
+    color: #FDB913;
+    margin-left: 6%;
+    font-weight: bolder;
+    margin-top: 5%;
+}
+
+.manufacturingMobileSubtitle{
+    font-size: 90px;
+    color:  #000000;
+    margin-left: 6%;
+    font-weight: 900;
+}
+
+.manufacturingMobileDetail {
+    color:  #000000;
+    width: 25%;
+    margin-left: 6%;
+    font-size: 28px;
+}
+.manufacturingMobileViews {
+    background: linear-gradient(#FDB913, #F0F0F0);
+    margin-top: 3%;
+    height: 100vh;
+}
+.mobileView1Ecommerce{
+    position: absolute;
+    margin-left: 20%;
+    margin-top: 10%;
+}
+
+.manufacturingMobileViewsDisplay {
+    margin-right: 1%;
+    margin-top: 4%;
+    padding-bottom: 7%;
+    margin-left: 13%;
+}
+
+.firstDisplay {
+    margin-left: 10%;
+}
+
+.blackpenis {
+    margin-left: 300px;
+}
+
+.eccomercePageArrow{
+    color:  #000000;
+    padding-top: 7%;
+
+}
+
+.contactEccomercePage{
+    background:#FFFFFF;
+    height: 50vh;
+    
+}
+
+.contactProjectPagesTitle{
+    color:  #000000;
+    font-size: 300%;
+    margin-left: 35%;
+    padding-top: 3%;
+    font-weight: bolder;
+}
+
+.contactProjectPagesSubTitle{
+    color:  #000000;
+    font-size: 300%;
+    margin-left: 32%;
+    font-weight: bolder;
+}
+
+.ProjectPagesContactButton {
+    background: #fc5185;
+    height: 60px;
+    width: 240px;
+    border: none;
+    border-radius: 10px;
+    margin-left: 38%;
+    margin-top: 3%;
+  
+    font-size: 2rem;
+    font-family: "Special Elite", sans-serif;
+    position: relative;
+    transition: 1s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding: 10px;
+    
+}
+
+.FinanceLatestWork {
+    height: 120vh;
+}
+
+
+.allTeamPhotos {
+    display: flex;
+}
+
+.manufacturingOurTeamTitle{
+    font-size: 90px;
+    color: #FDB913;
+    margin-left: 6%;
+    font-weight: bolder;
+    margin-top: 1%;
+
+}
+
+.manufacturingOurTeamSubTitle {
+    font-size: 90px;
+    color:  #000000;
+    margin-left: 6%;
+    font-weight: bolder;
+    
+}
+
+.TeamBoxYellow{
+    background: linear-gradient(#FDB913, #F0F0F0);
+    height: 46%;
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 2%;
+
+}
+
+.teamPhotos {
+    margin-left: 3%;
+    margin-top: 5%;
+}
+
+.manufacturingTeamDetail{
+    color:  #000000;
+    margin-left: 6%;
+    font-size: 28px;
+    margin-top: 10%;
+}
+
+
+.FinanceMobileView{
+    background:   #FFFFFF;
+    height: 130vh;
+
+}
+
+.financeMobileTitle{
+    font-size: 90px;
+    color: #1491FF;
+    margin-left: 6%;
+    font-weight: bolder;
+    margin-top: 5%;
+}
+
+.financeMobileSubtitle{
+    font-size: 90px;
+    color:  #000000;
+    margin-left: 6%;
+    font-weight: 900;
+}
+
+.financeMobileDetail {
+    color:  #000000;
+    width: 25%;
+    margin-left: 6%;
+    font-size: 28px;
+}
+.financeMobileViews {
+    background: #8DCDFF;
+    margin-top: 3%;
+    height: 100vh;
+}
+.mobileView1Ecommerce{
+    position: absolute;
+    margin-left: 20%;
+    margin-top: 10%;
+}
+
+.ecommerceMobileViewsDisplay {
+    margin-right: 1%;
+    margin-top: 4%;
+    padding-bottom: 7%;
+}
+
+.firstDisplay {
+    margin-left: 10%;
+}
+
+.blackpenis {
+    margin-left: 300px;
+}
+
+.financePageArrow{
+    color:  #000000;
+    padding-top: 7%;
+
+}
+
+
+#projectPages section.FinanceGoals{
+    background:  #FFFFFF;
+    height: 120vh;
+}
+
+.putInRow{
+    display: flex;
+    
+}
+
+.eccomerceDailyOfferDescription {
+    padding-left: 7%;
+    padding-right: 15%;
+    font-size: 31px;
+    font-weight: 100;
+    color:  #000000;
+    line-height: 55px;
+    width: 60%;
+}
+
+.eccomerceDailyOfferDescription{
+    margin-left: 100px;
+    margin-right: 200px;
+}
+
+.FinanceGoalsTitle{
+    font-size: 110px;
+    font-weight: 900;
+    color: #1491FF;
+}
+
+#FinanceGoalsTitle{
+    font-size: 110px;
+    font-weight: 900;
+    color:  #000000;
+    width: 200%;
+}
+
+.FinanceGoalsSection{
+    padding-top: 5%;
+    margin-left: 7%;
+}
+
+.financeGoalsBlue{
+    margin-top: 5%;
+    background: #8dcdff;
+    height: 60.4vh;
+    margin-bottom: 300%;
+    margin-left: 12%;
+    margin-right: 10%;
+    width: 70%;
+}
+
+.eccomerceDailyOffersPageScreenshot{
+    background: #F0F0F0;
+    height: 91%;
+    margin-right: 5%;
+    margin-top: 3%;
+}

@@ -1,0 +1,566 @@
+#home .mainDisplay {
+    background: black;
+    height: 100vh;
+    background-image: url('/img/homepage_banner.webp');
+    background-position: 10% 20%;
+    background-size: cover;
+    align-items: flex-start;
+}
+
+#home .mainDisplay .position {
+    width: 100%;
+    position: absolute;
+    margin: 3% 5%;
+    opacity: .9;
+    text-align: left;
+}
+
+#home .mainDisplay .position .bannersubheading {
+    font-size: 1em;
+    text-align: left;
+    line-height: 95%;
+    color: #2B2B2B;
+    font-family: Montserrat;
+}
+
+#home .mainDisplay .position h2 {
+    color: #2B2B2B;
+    font-weight: 600;
+    font-size: 6vw;
+    text-align: left;
+    line-height: 95%;
+    width: 100%;
+}
+
+#home .mainDisplay .position .bannerdescription {
+    font-size: .8em;
+    text-align: left;
+    color: #BAB1B1;
+    font-family: Montserrat;
+    letter-spacing: 0px;
+    width: 32%;
+}
+
+#home .mainDisplay .position #bannerbutton {
+    
+    width: 9vw;
+    min-width: 10vw;
+    height: 7.5vh;
+    top: 3vh;
+    background: var(--unnamed-color-2b2b2b) 0% 0% no-repeat padding-box;
+    background: #2B2B2B 0% 0% no-repeat padding-box;
+    border-radius: 36px;
+    opacity: 1;
+    color: #ffff;
+    font-size: 1rm;
+}
+
+#home .mainDisplay .position #bannerbutton:hover { 
+    background: #E33D79 0% 0% no-repeat padding-box;
+
+}
+
+#home .bannerProducts { 
+    display: flex;
+    flex-direction: row;
+    width: 10vw;
+    height: 25vh;
+    background: #FAD7C3 0% 0% no-repeat padding-box;
+    box-shadow: 6px 9px 12px #B8683A59;
+    border-radius: 80px 25px 25px 25px;
+    opacity: 1;
+}
+
+#home .bannerProducts:hover {
+    background: #E33D79 0% 0% no-repeat padding-box;
+
+}
+
+#home .bannerproductscontainer { 
+    margin-left: 70%;
+    margin-top: 28%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 30vw;
+}
+#home .bannertextcontainer {
+    width: 30%;
+    margin-top: 60%;
+    margin-left: 10%;
+}
+#home .bannerproductimage1 {
+    width: 10vw;
+    height: 25vh;
+    padding-right: 17%;
+}
+#home .bannerproductimage2 {
+    padding-top: 16%;
+    width: 8vw;
+    height: 23vh;
+   
+}
+
+#home .bannerproductname {
+    font-size: 1vw;
+    color: #BAB1B1;
+}
+
+#home .bannerproductprice {
+    font-size: 1vw;
+    color: #2B2B2B;
+}
+
+
+#home .shippingprocess { 
+    padding-top: 10%;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    height: 35vh;  
+}
+#home .shippingprocess .shippingprocesscontainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 100%;
+    padding: 0% 10%;
+}
+
+
+#home .shippingprocess .processbackground { 
+    height: 13vh;
+    width: 9vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;   
+}
+
+#home .shippingprocess .circleDiv { 
+
+    background: #EAD2C4 0% 0% no-repeat padding-box;
+    box-sizing:border-box;
+    height:8vw;
+    float:left;
+    width:8vw;
+    border-radius:50%;
+}
+
+
+#home .shippingprocess .emtpyLine { 
+    width: 10%;
+}
+
+#home .shippingprocess .shippingline {
+    width: 19%;
+}
+
+#home .shippingprocess .twentyfourhrshippinglogo {
+    width: 50%;
+    justify-content: center;
+    padding: 30% 0%;
+}
+
+#home .shippingprocess .truckshippinglogo {
+    width: 50%;
+    justify-content: center;
+    padding: 40% 0%;
+}
+
+#home .shippingprocess .boxshippinglogo {
+    width: 50%;
+    justify-content: center;
+    padding: 30% 0%;
+}
+
+#home .shippingprocess .shippingprocesstextcontainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly; 
+    color: #2B2B2B;
+    width: 100%;
+    padding-right: 10%;
+    padding-left: 10%;
+    padding-top: 2%;
+
+}
+
+#home .shippingprocess .shippingprocesstext {
+    width: 19%;
+}
+
+#home .shippingprocess .shippingprocessheading {
+    font-family: Montserrat;
+    font-size: 1rem;
+    font-weight: 900;
+    padding: 2%;
+}
+
+#home .shippingprocess .shippingprocessdescription {
+    font-family: Montserrat;
+    font-size: .8rem;
+    color: #BAB1B1;
+}
+
+
+#home .popularproducts {
+    height: 100vh;
+    background: linear-gradient(184deg, #ffff 15%, #F5F5F5 15%);
+    color: black;
+    font-family: Montserrat;
+
+}
+
+#home .popularproducts .popularproductstextcontainer {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 5vh;
+}
+
+#home .popularproducts .heading {
+    padding-top: 10vh;
+    padding-bottom: 1vh;
+    padding-right: 45vw;
+    font-size: 5vw;
+    font-weight: bolder;
+
+}
+
+#home .popularproducts .description {
+    font-size: 1rem;
+    color: #BAB1B1;
+    width: 38vw;
+}
+
+#home .popularproducts .catagories {
+    width: 60vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    color: #2B2B2B;
+    font-size: 1rem;
+    margin-bottom: 2vh;
+}
+
+#home .productShowcase {
+    width: 100%;
+    height: 100%;
+    padding: 0px 5%;
+    display: flex;
+    justify-content: center;
+
+}
+
+
+#home .shippingprocess .splash {
+    width: 100%;
+    height: 100%;
+}
+
+#home .catagories .textbackground {
+    width: 20vw;
+    height: 10vh;
+}
+
+#home .popularcatagories {
+    height: 120vh;
+    background: linear-gradient(-5deg, #ffff 15%, #F5F5F5 15%);
+    color: black;
+    font-family: Montserrat;
+}
+
+
+#home .popularcatagories .popularproductstextcontainer {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 5vh;
+}
+
+#home .popularcatagories .heading {
+    padding-top: 10vh;
+    padding-bottom: 1vh;
+    padding-right: 45vw;
+    font-size: 5vw;
+    font-weight: bolder;
+
+}
+
+#home .popularcatagories .description {
+    font-size: 1rem;
+    color: #BAB1B1;
+    width: 38vw;
+}
+
+#home .popularcatagories .catagories {
+    width: 60vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    color: #2B2B2B;
+    font-size: 1rem;
+}
+
+#home .catagories .textbackground {
+    width: 20vw;
+    height: 10vh;
+}
+
+#home .productShowcase {
+    width: 100%;
+    height: 100%;
+    padding: 0px 5%;
+    display: flex;
+    justify-content: center;
+
+}
+
+#home .popularproductstextcontainer .heading {
+    padding-right: 45vw;
+    font-size: 5vw;
+    font-weight: bolder;
+    color: #2B2B2B;
+
+}
+
+#home .splashImg {
+    position: absolute;
+    background-color: #FFFFFF;
+}
+
+#home .catagorytitle {
+    position: absolute;    
+}
+
+#home .websitestats {
+    margin-top: 10%;
+    height: 10vh;
+    width: 100vw;
+    background-color: #FFFFFF;
+
+
+
+}
+
+#home .reviewsectioncontainer {
+    height: 100vh;
+    width: 100vw;
+    background-color: #FFFFFF;
+    color: #0D0D0D;
+    font-family: Montserrat;
+
+}
+
+#home .reviewsection {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-bottom: 19%;
+}
+
+#home .ecommercestatsimg {
+    width: 25%;
+    background-color: #FFFFFF;
+    margin-top: 15%;
+
+
+}
+
+
+#home .customersnames {
+    display: flex;
+    flex-direction: column;
+    color: #0D0D0D;
+    padding-left: 3%;
+}
+
+#home .customerreviewtitle {
+    font-size: 3rem;
+    font-weight: bolder;
+    padding-bottom: 6%;
+}
+
+#home .reviewsubtitle {
+    color: #0D0D0D;
+}
+
+#home .reviewsubtitle {
+    font-size: 1.3rem;
+    font-weight: bolder;
+}
+#home .reviewrating {
+    padding: 3%;
+}
+#home .reviewdescription {
+    color: #0D0D0D;
+    font-size: 1rem;
+}
+
+#home .reviewblock {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 45%;
+    padding-right: 10%;
+    padding-bottom: ;
+
+}
+#home .menureviewers {
+    border: black;
+    border-style: solid;
+    border-radius: 6%;
+    background-color: #EAD2C4 ;
+    opacity: 1;
+    width: 60%;
+}
+
+@media(max-width: 1000px) {
+    #home .bannerproductscontainer { 
+        display: none;
+    }
+
+    #home .mainDisplay .position #bannerbutton {
+        width: 9vw;
+        min-width: 12vw;
+        height: 7.5vh;
+    }
+  }
+
+@media(max-width: 599px) {
+
+    #home .mainDisplay .position #bannerbutton {
+        width: 13vw;
+        min-width: 17vw;
+        height: 7.5vh;
+    }
+
+    #home .mainDisplay .position .bannersubheading {
+        font-size: 1em;
+    }
+
+    #home .mainDisplay .position h2 {
+        font-size: 9vw;
+    }
+
+    #home .mainDisplay .position .bannerdescription {
+        font-size: .7em;
+        width: 55%;
+        
+    }
+
+    #home .shippingprocess .shippingprocesscontainer {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        width: 100%;
+        padding: 0% 0%;
+    }
+
+    #home .shippingprocess .shippingline {
+        display: none;
+    }
+
+    #home .shippingprocess .shippingprocesstextcontainer {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly; 
+        color: #2B2B2B;
+        width: 100%;
+        padding-right: 15%;
+        padding-left: 15%;
+        padding-top: 2%;
+    }
+
+    #home .shippingprocess .shippingprocessdescription {
+        font-family: Montserrat;
+        font-size: .6rem;
+        color: #BAB1B1;
+    }
+
+    #home .popularproducts .description {
+        width: 60vw;
+    }
+
+    #home .popularcatagories .description {
+        width: 60vw;
+    }
+
+    
+    #home .ecommercestatsimg {
+        width: 50%;
+        background-color: #FFFFFF;
+        margin-top: 15%;
+    }
+
+    #home .customerreviewtitle {
+        font-size: 2rem;
+        font-weight: bolder;
+        padding-bottom: 6%;
+    }
+
+    #home .reviewsubtitle {
+        font-size: 1rem;
+        font-weight: bolder;
+        margin-left: 3%;
+    }
+
+    #home .reviewdescription {
+        color: #0D0D0D;
+        font-size: .8rem;
+    }
+    
+}
+
+@media (min-height: 1024px) {
+    
+    #home .bannerproductscontainer { 
+        display: none;
+    }
+
+    #home .mainDisplay .position .bannersubheading {
+        font-size: 1.7em;
+    }
+
+    #home .mainDisplay .position h2 {
+        font-size: 9vw;
+    }
+    #home .mainDisplay .position #bannerbutton {
+    
+        width: 13vw;
+        min-width: 10vw;
+        height: 5vh;      
+    }
+
+    #home .mainDisplay .position .bannerdescription {
+        font-size: 1em;
+        width: 55%;
+        
+    }
+
+    #home .shippingprocess .shippingline {
+        width: 20%;
+        height: 60%;
+    }
+
+    #home .shippingprocess { 
+        height: 30vh;  
+    }
+
+    #home .popularproducts {
+        height: 86vh;
+    
+    }
+
+    #home .popularcatagories {
+        height: 100vh;
+    }
+
+    #home .ecommercestatsimg {
+        width: 60%;
+        background-color: #FFFFFF;
+        margin-top: 15%;
+    }
+
+    #home .reviewsectioncontainer {
+        height: 90vh;
+    
+    }
+    
+}

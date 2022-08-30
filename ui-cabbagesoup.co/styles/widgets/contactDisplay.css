@@ -1,0 +1,32 @@
+#menu .contact {
+    opacity: 1;
+    transform: translateY(0px);
+    transition: transform 600ms cubic-bezier(1, 0, 0, 1) 200ms, opacity 400ms linear 350ms;
+  }
+  
+.contact > * {
+font-family: "Gilroy", sans-serif;
+}
+
+address {
+margin-bottom: 1rem;
+font-style: normal;
+line-height: inherit;
+}
+
+.contact .address {
+font-size: 1.1rem;
+line-height: 1.4;
+color: #1c1b20;
+margin: 0px;
+font-weight: 300;
+}
+
+.contact .phone, .contact .mail {
+    color: #1c1b20;
+    font-weight: 500;
+}
+
+@media (min-width: 1600px) {
+  .contact .phone, .contact .mail {font-size: 1.4rem; margin-top: 6px;}
+}

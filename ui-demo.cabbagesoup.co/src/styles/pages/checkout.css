@@ -1,0 +1,111 @@
+
+#checkout {
+    padding: 50px 0px;
+}
+
+#checkout h3 {
+    color: black;
+}
+
+#checkout .pageTitle {
+    font-size: 2em;
+    text-decoration: underline;
+    color: black;
+}
+
+#checkout .mainDisplay {
+    margin: 0px 5%;
+    color: black;
+    background: white;
+    overflow: scroll;
+}
+
+#checkout #userInfo {
+    display: flex;
+    flex-direction: row;
+}
+
+#checkout .review {
+    text-align: left;
+    color: black;
+    border-bottom: 1px solid black;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+}
+
+#checkout .review input {
+    width: 80%;
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+
+#checkout .productDetails {
+    background: white;
+    padding: 10px;
+    color: black;
+    border: 1px solid black;
+    margin-bottom: 5px;
+    box-shadow: 1px 2px black;
+    width: 40vw;
+    padding: 20px;
+
+    display: grid;
+    align-content: space-between;
+    align-items: center;
+    justify-items: start;
+    grid-gap: 5% 5%;
+    grid-template-columns: auto auto auto auto;
+    justify-content: space-around;
+}
+
+#checkout .product_container:hover {
+    background: lightgray;
+}
+#checkout .productImg {
+    height: 50px;
+    width: 50px;
+}
+
+#checkout .paymentImg:hover {
+    border: 1px solid green;
+}
+
+#checkout .product_container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+}
+
+#checkout .product_price {
+    font-size: 14px;
+    color: red;
+}
+
+#checkout .product_name {
+    font-size: 14px;
+    color: black;
+}
+
+#checkout #title {
+    font-size: 1.1em;
+    font-weight: 600;
+    color: black;
+
+}
+
+#checkout .totalPrice {
+    color: red;
+}
+
+#checkout .buttonBox button {
+    margin-top: 10px;
+    height: 50px;
+    border-radius: 50px;
+    background-color: red;
+    padding: 10px;
+    font-size: 20px;
+    color: white;
+    border-color: red;
+}

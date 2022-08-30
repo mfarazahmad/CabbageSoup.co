@@ -1,0 +1,123 @@
+#productDisplay {
+    color: black;
+    padding: 10px 50px;
+    overflow: scroll;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+}
+
+#productDisplay .productdisplaybanner {
+    margin-left: 22%;
+    width: 60%;
+}
+
+#productDisplay .productdisplayfilter {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #F5F5F5;
+    width: 18vw;
+    height: 54vh;
+    border-radius: 10%;
+    padding: 2% 0%;
+    margin-top: 25%;
+    position: absolute;
+}
+
+#productDisplay .productDisplayContainer {
+    margin-left: 10%;
+    margin-right: 10%;
+}
+#productDisplay .productdisplayTitle {
+    font-size: 1.3rem;
+    font-weight: 900;
+    color: #2B2B2B;
+    justify-content: center;
+}
+
+#productDisplay .productdisplayfiltertitles {
+    font-size: 1.1rem;
+    color: #2B2B2B;
+    padding: 2% 0%;
+}
+
+#productDisplay .priceDisplayCustomerRatings {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+#productDisplay .rating {
+    width: 70%;
+}
+
+#productDisplay .pricedisplayratingstext {
+    padding-left: 7%;
+}
+
+#productDisplay h2 {
+    text-align: center;
+    color: black;
+}
+
+#productDisplay .line {
+    border-bottom: 5px solid black;
+    padding: 0px 10%;
+    margin: 0px 20% 20px 20%;
+}
+
+#productDisplay .productShowcase {
+    width: 100%;
+    height: 100%;
+    padding: 0px 5%;
+    display: grid;
+    grid-gap: 250px 100px;
+    grid-template-columns: repeat(3, 150px);
+    justify-content: center;
+    padding: 100px;
+
+}
+
+#productDisplay .searchInput {
+    color: black;
+}
+
+#productDisplay .productBox {color: black;}
+
+#productDisplay .pagination {
+    margin-top: 15%;
+    display: flex;
+    justify-content: center;
+
+}
+
+@media (max-width: 599px) {
+    #productDisplay .productShowcase { grid-gap: 250px 20px; grid-template-columns: repeat(2, 150px); }
+}
+
+@media (min-width: 800px) {
+    #productDisplay .productShowcase { grid-gap: 250px 20px; grid-template-columns: repeat(3, 150px); }
+
+    #productDisplay .productdisplayfilter {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        background-color: #F5F5F5;
+        width: 17vw;
+        height: 54vh;
+        border-radius: 10%;
+        padding: 2% 0%;
+        margin-top: 25%;
+        position: absolute;
+    }
+}
+
+@media (min-width: 1200px) {
+    #productDisplay .productShowcase { grid-gap: 250px 50px; grid-template-columns: repeat(3, 200px); }
+
+    #productDisplay .pricedisplayratingstext {
+        position: relative;
+    }
+
+}

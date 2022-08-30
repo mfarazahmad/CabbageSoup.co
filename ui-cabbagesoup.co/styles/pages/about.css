@@ -1,0 +1,43 @@
+#about {
+    padding: 30px;
+}
+
+#about section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#about section.intro {
+    background: #ffc168;
+    background-image: url('/img/team.jpg');
+    background-blend-mode: overlay;
+    background-size: cover;
+    color:  #353535;
+    height: 100vh;
+}
+
+#about section.intro .dot {
+    color: #9700d6 ;
+}
+
+#about section.values {
+    background: linear-gradient(45deg, #07617d, #9700d6);
+    background-size: cover;
+}
+
+#about section.values .sectionSubTitle{
+    margin-top: 20px;
+    color: #f3f3f3;
+}
+
+#about section.ready {
+    background: #da0900;
+    background-color: rgba(255, 0, 0, 0.45);
+    background-image: url('/img/mtns.jpg');
+    background-blend-mode: soft-light;
+    background-size: cover;
+    color: #f3f3f3;
+}
+

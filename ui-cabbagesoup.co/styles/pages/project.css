@@ -1,0 +1,169 @@
+#projects section{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#projects section.projectIntro {
+    background:  linear-gradient(#07617d, #45a5af);
+    font-size: 8vw;
+    padding-top: 20%;
+}
+
+.projectTitle {
+    font-size: 8vw;
+    line-height: 50%;
+}
+
+.projectSubtitle{
+    font-size: 10vw;
+    font-weight: 900;
+    color: #f0f0f0;
+    padding: 0px 5%;
+}
+
+.projectDescription{
+    color: #f0f0f0;
+    font-size: .3em;
+    margin-top: 2%;
+    text-align: center;
+    padding: 0px 10%;
+}
+
+.linksToProjects{
+    font-family: "Lobster Two", cursive;
+    font-size: 8vw;
+    color: #f0f0f0;
+    font-weight: 900;
+}
+
+.demo {
+    background-image:  url('/img/demo.png');
+    height: 100%;
+    padding: 10% 0px;
+    background-blend-mode: soft-light;
+    background-size: 100% 100%;
+}
+
+.topicBoard {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.topicTitle  {
+    background-blend-mode: soft-light;
+    background-size: cover;
+    height: 100%;
+    padding: 10% 0px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.topicTitle:hover {
+    opacity: .7;
+}
+
+.ecommerce{
+   background-image:  url('/img/Eccomerce.png');
+}
+
+.manufacturing{
+    background-image:  url('/img/manufacturing.png');
+}
+
+.finance{
+    background-image:  url('/img/Finance.png');
+}  
+
+#projects section.moreProjects {
+    top: 28%;
+    left: 50%;
+
+    opacity: .75;
+    height: 100%;
+    color: yellow;
+    font-size: 5vw;
+    padding: 2% 0px;
+
+    position: absolute;
+    z-index: 10000;
+}
+
+.projectPageArrow {
+    padding: 0px;
+    color: red;
+    font-weight: 700;
+    vertical-align: top;
+}
+
+#projects section.projectContact {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background:  linear-gradient(#2e383f, #706f6e);
+    color: #f0f0f0;
+    font-family: "Lobster Two", cursive;
+    font-size: 8vw;
+}
+
+.contactBtn{
+    margin: 15px 0px;
+    background: #fc5185;
+    height: 10vw;
+    min-width: 60px;
+    border: none;
+    border-radius: 10px;
+    color: #eee;
+  
+    font-size: .4em;
+    font-family: "Special Elite", sans-serif;
+    transition: 1s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.contactBtn:hover {
+    opacity: .7;
+}
+
+.demoBtn{
+    margin-top: 20%;
+    background: #fc5185;
+    height: 6vw;
+    min-width: 60px;
+    border: none;
+    border-radius: 10px;
+    color: #eee;
+  
+    font-size: .3em;
+    font-family: "Special Elite", sans-serif;
+    transition: 1s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.demoBtn:hover {
+    opacity: .7;
+}
+
+
+#projectPages section.coverPic {
+    background-blend-mode: soft-light;
+    background-size: cover;
+    padding: 20%;
+}

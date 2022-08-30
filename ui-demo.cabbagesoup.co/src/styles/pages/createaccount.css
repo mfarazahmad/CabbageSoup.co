@@ -1,0 +1,93 @@
+#newAccount .mainDisplay {
+    background: black;
+    height: 100vh;
+    flex-direction: row;
+    background-color: white;
+    justify-content: center;
+    align-items: center;
+}
+
+.loginWidget {
+    background: white;
+    padding: 5%;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.loginWidget .userName a {
+    color: lightgreen;
+    font-weight: 600;
+}
+
+.newAccountLink {
+    position: inherit;
+}
+
+#newAccount .changeBtn {
+    height: 50px;
+    border-radius: 50%;
+    background-color: #E33D79;
+    padding: 10px;
+    font-size: 14px;
+    color: white;
+    border-color: #E33D79;
+}
+
+#newAccount .changeBtn:hover {
+    background-color: gray;
+}
+
+.bannerWindow {
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.msgWindow {
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.createAccount {
+    height: 100vh;
+    width: 40vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.loginAccount {
+    height: 100vh;
+    width: 40vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bannerWindow img {
+    height: 200px;
+}
+
+.bannerWindow p {
+    color: black;
+    font-size: 14px;
+    color: gray;
+}
+
+.bannerWindow h2 {
+    margin-top: 30px;
+}
+
+@media(max-width: 660px) {
+    #newAccount .mainDisplay {flex-direction: column; height: 100vh;}
+    .loginAccount, .createAccount {width: 100%;}
+}

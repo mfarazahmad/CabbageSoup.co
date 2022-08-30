@@ -1,0 +1,42 @@
+.borders div {
+    position: fixed;
+    background: white;
+    pointer-events: none;
+    z-index: 100;
+    height: 20px;
+    width: 20px;
+  }
+  
+  #top {
+    width: 100%;
+    top: 0;
+    left: 0;
+  }
+  
+  #bottom {
+    width: 100%;
+    bottom: 0;
+    left: 0;
+  }
+  
+  #left {
+    height: 100%;
+    top: 0;
+    left: 0;
+  }
+  
+  #right {
+    height: 100%;
+    top: 0;
+    right: 0;
+  }
+
+  @media (min-width: 100px) {
+    .borders > *.verticle {height: 40px;}
+    .borders > *.horizontal {width: 40px;}
+  }
+  
+  @media (min-width: 1600px) {
+    .borders > *.verticle {height: 55px;}
+    .borders > *.horizontal {width: 55px;}
+  }

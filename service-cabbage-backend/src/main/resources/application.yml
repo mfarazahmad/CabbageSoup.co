@@ -1,0 +1,21 @@
+server:
+  port : 3000
+
+spring:
+  application:
+    name: cabbagesoup_db
+  security:
+      user:
+        name: admin
+        password: admin
+  datasource:
+    url: jdbc:oracle:thin:@localhost:1521:xe
+    username: cabbage_admin
+    password: Questmaster123#
+    driver:
+      class: oracle.jdbc.driver.OracleDriver
+  jpa:
+    show-sql: false
+    database-platform: org.hibernate.dialect.Oracle12cDialect
+    hibernate:
+      ddl-auto: none

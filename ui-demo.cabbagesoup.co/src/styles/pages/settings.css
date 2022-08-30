@@ -1,0 +1,36 @@
+#settings .mainDisplay {
+    padding: 10% 20%;
+}
+
+#settings h2 {
+    margin-top: 50px;
+}
+
+#settings .settingsBox {
+    border: 1px solid black;
+    box-shadow: 2px 3px black;
+    width: 100%;
+    padding: 10px;
+}
+
+
+#settings #settingsList {
+    width: 100%;
+}
+
+#settings .anticon {
+    font-size: 28px;
+}
+
+#settings .ant-list-item:hover {
+    opacity: .8;
+    background: lightgray;
+}
+
+#settings .pageInfo {
+    color: grey;
+    padding: 10px;
+    margin-top: 50px;
+    font-size: .6em;
+    opacity: .9;
+}
