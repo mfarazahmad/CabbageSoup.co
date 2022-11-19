@@ -1,0 +1,8 @@
+# dependencies
+/.next
+/node_modules
+/.pnp
+.pnp.js
+
+*/.next
+*/node_modules
