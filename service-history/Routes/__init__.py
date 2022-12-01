@@ -1,5 +1,3 @@
-from Routes.cart import *
-from Routes.history import *
 from flask import Blueprint
 from flask_cors import CORS
 import os
@@ -19,3 +17,6 @@ def middleware_for_response(response):
 
 # Connect to DB
 db = DB(os.environ.get("DB_CONNECTION_STRING"), 'history')
+
+from Routes.cart import *
+from Routes.history import *
