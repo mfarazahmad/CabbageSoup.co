@@ -2,7 +2,7 @@ import traceback
 from flask import jsonify, session, request
 
 from Routes import Query, db
-from cspycore.utils.perforrmance import gzipResponse
+from cspycore.perforrmance import gzipResponse
 
 
 @Query.route('/product', methods=['GET'])

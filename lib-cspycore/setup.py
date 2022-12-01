@@ -1,7 +1,7 @@
 import setuptools
 
 NAME = "cspycore"
-AUTHOR="mfarazahmad"
+AUTHOR = "mfarazahmad"
 VERSION = "1.0.0"
 LICENSE = 'MIT'
 REQUIRES = [

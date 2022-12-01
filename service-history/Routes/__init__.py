@@ -2,7 +2,7 @@ from flask import Blueprint
 from flask_cors import CORS
 import os
 
-from cspycore.utils.repo import DB
+from cspycore.repo import DB
 
 Query = Blueprint("Query", __name__, url_prefix="/query")
 CORS(Query)
