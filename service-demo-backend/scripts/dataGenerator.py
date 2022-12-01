@@ -37,7 +37,6 @@ def saveDataToDB(db):
 
         print('Connecting To DB')
 
-        db = DB()
         collection = db.connect('auth')
         result = collection.insert_many(authentication)
 

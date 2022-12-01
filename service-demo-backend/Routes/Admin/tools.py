@@ -1,4 +1,4 @@
-from flask import Flask, jsonify
+from flask import jsonify
 
 from Routes.Admin import Admin, db
 
