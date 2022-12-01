@@ -1,13 +1,10 @@
-import os, traceback
+import traceback
 from pymongo import MongoClient
 
-DB_CONNECTION_STRING = os.environ.get("DB_CONNECTION_STRING")
-print(DB_CONNECTION_STRING)
-
 class DB():
-    def __init__(self):
-        client = MongoClient(DB_CONNECTION_STRING)
-        self.db = client['history']
+    def __init__(self, host:str, dbName: str):
+        client = MongoClient(host)
+        self.db = client[dbName]
         self.collection = None
 
     def connect(self, collection):

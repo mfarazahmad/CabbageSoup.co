@@ -2,7 +2,8 @@ import traceback
 from flask import jsonify, session, request
 
 from Routes import Query, db
-from utils.perf import gzipResponse
+from lib_web_python.utils.perforrmance import gzipResponse
+
 
 @Query.route('/cart', methods=['GET'])
 def getCart():
@@ -14,7 +15,7 @@ def getCart():
             msg = 'Cart data available!'
         else:
             msg = 'Failed to retrieve cart'
-            
+
         data = cart
         error = ''
     except Exception as e:
@@ -24,9 +25,10 @@ def getCart():
         msg = 'Failed to retrieve cart'
         data = None
         error = str(e)
-    
-    response = {'data': data, 'msg': msg, 'err':error}
-    return gzipResponse(response) 
+
+    response = {'data': data, 'msg': msg, 'err': error}
+    return gzipResponse(response)
+
 
 @Query.route('/cart', methods=['POST'])
 def saveCart():
@@ -43,5 +45,5 @@ def saveCart():
 
         error = str(e)
         msg = 'Failed to save cart'
-    
-    return jsonify({'msg': msg, 'err':error})  
+
+    return jsonify({'msg': msg, 'err': error})

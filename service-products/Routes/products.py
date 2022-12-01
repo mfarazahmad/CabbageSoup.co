@@ -2,7 +2,8 @@ import traceback
 from flask import jsonify, session, request
 
 from Routes import Query, db
-from utils.perf import gzipResponse
+from lib_web_python.utils.perforrmance import gzipResponse
+
 
 @Query.route('/product', methods=['GET'])
 def viewProducts():
@@ -25,7 +26,7 @@ def viewProducts():
             else:
                 # Retrieve all data
                 data = db.get()
-                #Sessions aren't working cross-origin
+                # Sessions aren't working cross-origin
                 #session['search'] = {'products': data[0:2]}
 
         msg = f'Product(s) {id} found!'
@@ -42,9 +43,10 @@ def viewProducts():
         error = str(e)
         msg = 'Failed to retrieve Products(s)'
         data = None
-    
-    response = {'data': data, 'msg': msg, 'err':error}
-    return gzipResponse(response) 
+
+    response = {'data': data, 'msg': msg, 'err': error}
+    return gzipResponse(response)
+
 
 @Query.route('/product', methods=['POST'])
 def addProducts():
@@ -59,16 +61,17 @@ def addProducts():
         print(traceback.format_exc())
         error = str(e)
         msg = 'Failed to save Products'
-    
-    return jsonify({'data': "", 'msg': msg, 'err': error})  
+
+    return jsonify({'data': "", 'msg': msg, 'err': error})
+
 
 @Query.route('/product/<id>', methods=['PUT'])
 def updateProducts(id):
     try:
         incomingData = request.json
         db.connect('products')
-        db.update({'_id':id}, incomingData)
-        
+        db.update({'_id': id}, incomingData)
+
         msg = 'Successfully saved Products!'
         error = ''
     except Exception as e:
@@ -76,13 +79,14 @@ def updateProducts(id):
         error = str(e)
         msg = 'Failed to update Products'
 
-    return jsonify({'data': '', 'msg': msg, 'err': error})  
+    return jsonify({'data': '', 'msg': msg, 'err': error})
+
 
 @Query.route('/product/<id>', methods=['DELETE'])
 def deleteProducts(id):
     try:
         db.connect('products')
-        db.delete({'_id':id})
+        db.delete({'_id': id})
 
         msg = 'Successfully deleted Products!'
         error = ''
@@ -92,4 +96,4 @@ def deleteProducts(id):
         msg = 'Failed to delete Products'
 
     response = {'data': '', 'msg': msg, 'err': error}
-    return response 
+    return response

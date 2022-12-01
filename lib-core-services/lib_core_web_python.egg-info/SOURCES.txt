@@ -1,0 +1,10 @@
+README.md
+setup.py
+lib_core_web_python.egg-info/PKG-INFO
+lib_core_web_python.egg-info/SOURCES.txt
+lib_core_web_python.egg-info/dependency_links.txt
+lib_core_web_python.egg-info/requires.txt
+lib_core_web_python.egg-info/top_level.txt
+utils/__init__.py
+utils/performance.py
+utils/repo.py

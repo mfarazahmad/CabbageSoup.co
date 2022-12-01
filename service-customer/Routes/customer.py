@@ -2,7 +2,8 @@ import traceback
 from flask import jsonify, session, request
 
 from Routes import Query, db
-from utils.perf import gzipResponse
+from lib_web_python.utils.perforrmance import gzipResponse
+
 
 @Query.route('/customer', methods=['GET'])
 def viewCustomers():
@@ -15,10 +16,10 @@ def viewCustomers():
     try:
         db.connect('customers')
         if user_name:
-            data = db.get({"user_name": user_name})  
+            data = db.get({"user_name": user_name})
         elif email:
             collection = db.connect('customers')
-            data = db.get({"email": email}) 
+            data = db.get({"email": email})
         else:
             # Check Session to see if data has already been retrieved
             userType = session.get('user_type', None)
@@ -28,8 +29,8 @@ def viewCustomers():
                 data = searchData['customers']
             else:
                 data = db.get()
-                    #Sessions aren't working cross-origin
-                    #session['search'] = {'customers': data}
+                # Sessions aren't working cross-origin
+                #session['search'] = {'customers': data}
 
         msg = f'Customer(s) {user_name} found!'
         error = ''
@@ -45,9 +46,10 @@ def viewCustomers():
         error = str(e)
         msg = 'Failed to retrieve customer(s)'
         data = None
-    
-    response = {'data': data, 'msg': msg, 'err':error}
-    return gzipResponse(response) 
+
+    response = {'data': data, 'msg': msg, 'err': error}
+    return gzipResponse(response)
+
 
 @Query.route('/customer', methods=['POST'])
 def addCustomer():
@@ -62,30 +64,32 @@ def addCustomer():
         print(traceback.format_exc())
         error = str(e)
         msg = 'Failed to save customer!'
-    
-    return jsonify({'data': "", 'msg': msg, 'err': error})  
+
+    return jsonify({'data': "", 'msg': msg, 'err': error})
+
 
 @Query.route('/customer/<user_name>', methods=['PUT'])
 def updateCustomer(user_name):
     try:
         incomingData = request.json
         db.connect('customers')
-        db.update({'user_name':user_name},  {"$set": incomingData})
-        
+        db.update({'user_name': user_name},  {"$set": incomingData})
+
         msg = 'Successfully saved customer!'
         error = ''
     except Exception as e:
         print(traceback.format_exc())
         error = str(e)
         msg = 'Failed to update customer'
-    
-    return jsonify({'data': '', 'msg': msg, 'err': error})  
+
+    return jsonify({'data': '', 'msg': msg, 'err': error})
+
 
 @Query.route('/customer/<user_name>', methods=['DELETE'])
 def deleteCustomer(user_name):
     try:
         db.connect('customers')
-        db.delete({'user_name':user_name})
+        db.delete({'user_name': user_name})
 
         msg = 'Successfully deleted customer!'
         error = ''
@@ -93,6 +97,5 @@ def deleteCustomer(user_name):
         print(traceback.format_exc())
         error = str(e)
         msg = 'Failed to delete customer'
-    
-    return jsonify({'data': '', 'msg': msg, 'err': error})  
-    
+
+    return jsonify({'data': '', 'msg': msg, 'err': error})

@@ -2,7 +2,8 @@ import traceback
 from flask import jsonify, session, request
 
 from Routes import Query, db
-from utils.perf import gzipResponse
+from lib_web_python.utils.perforrmance import gzipResponse
+
 
 @Query.route('/orders', methods=['GET'])
 def viewOrders():
@@ -25,7 +26,7 @@ def viewOrders():
             else:
                 # Retrieve all data
                 data = db.get()
-                #Sessions aren't working cross-origin
+                # Sessions aren't working cross-origin
                 #session['search'] = {'history': data}
 
         if limit:
@@ -42,8 +43,9 @@ def viewOrders():
         msg = 'Failed to retrieve Order(s)'
         data = None
 
-    response = {'data': data, 'msg': msg, 'err':error}
-    return gzipResponse(response) 
+    response = {'data': data, 'msg': msg, 'err': error}
+    return gzipResponse(response)
+
 
 @Query.route('/orders/<order_number>', methods=['GET'])
 def viewOrderByOrderNumber(order_number):
@@ -62,9 +64,10 @@ def viewOrderByOrderNumber(order_number):
         error = str(e)
         msg = 'Failed to retrieve Order(s)'
         data = None
-    
-    response = {'data': data, 'msg': msg, 'err':error}
-    return gzipResponse(response) 
+
+    response = {'data': data, 'msg': msg, 'err': error}
+    return gzipResponse(response)
+
 
 @Query.route('/orders', methods=['POST'])
 def addOrder():
@@ -84,8 +87,9 @@ def addOrder():
         error = str(e)
         msg = 'Failed to save order!'
         data = None
-    
-    return jsonify({'data': data, 'msg': msg, 'err': error})  
+
+    return jsonify({'data': data, 'msg': msg, 'err': error})
+
 
 @Query.route('/orders/<order_number>', methods=['PUT'])
 def updateOrder(order_number):
@@ -93,7 +97,7 @@ def updateOrder(order_number):
         incomingData = request.json
 
         db.connect('orders')
-        db.update({'order_number':order_number}, incomingData)
+        db.update({'order_number': order_number}, incomingData)
 
         msg = 'Successfully saved Order!'
         error = ''
@@ -101,19 +105,20 @@ def updateOrder(order_number):
         print(traceback.format_exc())
         error = str(e)
         msg = 'Failed to update Order'
-    
-    return jsonify({'data': '', 'msg': msg, 'err': error})  
+
+    return jsonify({'data': '', 'msg': msg, 'err': error})
+
 
 @Query.route('/orders/<order_number>', methods=['DELETE'])
 def deleteOrder(order_number):
     db.connect('orders')
     try:
-        db.delete({'order_number':order_number})
+        db.delete({'order_number': order_number})
         msg = 'Successfully deleted Order!'
         error = ''
     except Exception as e:
         print(traceback.format_exc())
         error = str(e)
         msg = 'Failed to delete Order'
-    
+
     return jsonify({'data': '', 'msg': msg, 'err': error})
