@@ -1,8 +1,9 @@
+from Routes.auth import *
 from flask import Blueprint
 from flask_cors import CORS
 import os
 
-from lib_web_python.utils.repo import DB
+from cspycore.utils.repo import DB
 
 Auth = Blueprint("Auth", __name__, url_prefix="/auth")
 CORS(Auth)
@@ -17,5 +18,3 @@ def middleware_for_response(response):
 
 # Connect to DB
 db = DB(os.environ.get("DB_CONNECTION_STRING"), 'auth')
-
-from Routes.auth import *

@@ -1,8 +1,9 @@
+from Routes.customer import *
 from flask import Blueprint
 from flask_cors import CORS
 import os
 
-from lib_web_python.utils.repo import DB
+from cspycore.utils.repo import DB
 
 Query = Blueprint("Query", __name__, url_prefix="/query")
 CORS(Query)
@@ -17,5 +18,3 @@ def middleware_for_response(response):
 
 # Connect to DB
 db = DB(os.environ.get("DB_CONNECTION_STRING"), 'users')
-
-from Routes.customer import *
