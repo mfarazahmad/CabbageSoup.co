@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
 import axios from 'axios';
 import { Map } from 'pigeon-maps'
@@ -30,23 +30,23 @@ function DashboardOutline(props) {
     const [username, setUsername] = useState("")
 
     useEffect(() => {
-        const endpoint = process.env.REACT_APP_ANALYTICS_ENGINE + '/query/checkAuth';
-        const headers = {"withCredentials": "true"};
+        const endpoint = `${process.env.REACT_APP_SERVICE_AUTH}/auth/check`;
+        const headers = { "withCredentials": "true" };
         axios.get(endpoint, headers)
-        .then(response => {
-            console.log(response);
-            let data = response['data']['data'];
-            if (data) {
-                setUsername(data.user_name);
-                if (data.user_type === 'admin') {
-                    //setAdmin(true);
+            .then(response => {
+                console.log(response);
+                let data = response['data']['data'];
+                if (data) {
+                    setUsername(data.user_name);
+                    if (data.user_type === 'admin') {
+                        //setAdmin(true);
+                    }
                 }
-            }
-        })
-        .catch(err => {
-            console.log(err);
-        });
-      }, []);
+            })
+            .catch(err => {
+                console.log(err);
+            });
+    }, []);
 
     const whichChart = (type) => {
         setChartType(type)
@@ -56,96 +56,96 @@ function DashboardOutline(props) {
         console.log(e);
         props.history.push({
             pathname: '/',
-          })
-	};
+        })
+    };
 
     return (
         <main className="page" id="dashboardoutline">
             <section className="mainDisplay">
-            <img className="dashboardlogo" src={logo}></img>
+                <img className="dashboardlogo" src={logo}></img>
                 <div>
                     <div className="dashboardheadingtitle"> Hi {username} </div>
                     <div className="dashboardheadingsubheading">Welcome Back</div>
-               </div>
+                </div>
                 <img className="profilepic" src={profilepic}></img>
             </section>
-                <section className="dashboardlayout">
-                    <div className="pannels">
-                        <div className="leftpannel">
-                                <div className="emptydivpannel"> </div>
-                                {chartType === 'analytics' ? (
-                                    <div>
-                                        <img src={pinkhome} className="pannelicons" />
-                                        <div className="pannelicondescription">Home </div>
-                                    </div>
-                            ): (
-                                <div>
-                                    <img src={homeicon} className="pannelicons" onClick={() => whichChart('analytics')}/>
-                                    <div className="pannelicondescription">Home </div>
-                                </div>
-                            )}
-                                {chartType === 'orders' ? (
-                                    <div>
-                                        <img src={orderpink} className="pannelicons" />
-                                        <div className="pannelicondescription">Orders </div>
-                                    </div>
-                            ): (
-                                <div>
-                                    <img src={ordersicon} className="pannelicons" onClick={() => whichChart('orders')}/>
-                                    <div className="pannelicondescription">Orders </div>
-                                </div>
-
-                            )}
-                            {chartType === 'inventory' ? (
-                                <div>
-                                    <img src={inventorypink} className="pannelicons"/>
-                                    <div className="pannelicondescription">Inventory</div>
-                                </div>
-                            ): (
-                                <div>
-                                    <img src={inventoryicon} className="pannelicons" onClick={() => whichChart('inventory')}/>
-                                    <div className="pannelicondescription">Inventory</div>
-                                </div>
-
-                            )}
-                            {chartType === 'customer' ? (
-                                <div>
-                                    <img src={customerpink} className="pannelicons"/>
-                                    <div className="pannelicondescription">Customers</div>
-                                </div>
-                            ): (
-                                <div>
-                                    <img src={customericon} className="pannelicons" onClick={() => whichChart('customer')}/>
-                                    <div className="pannelicondescription">Customers</div>
-                                </div>
-
-                            )}
-                                <img src={exiticon}  className="pannelicons exit" onClick={() => {
-                                        props.handleLogin({'type':'logout'});
-                                        props.history.push('/');
-                                    }}
-                                />
-                        </div>
-                        <div className="rightpannel">
-                            <div className="charts">
-                                {chartType === 'analytics' && (
-                                    <Dashboard />
-                                )}
-                                {chartType === 'orders' && (
-                                    <OrderChart />
-                                )}
-                                {chartType === 'inventory' && (
-                                    <div id="inventoryChart">
-                                        <InventoryChart />
-                                    </div>
-                                )}
-                                {chartType === 'customer' && (
-                                    <CustomerChart/>
-                                )}
+            <section className="dashboardlayout">
+                <div className="pannels">
+                    <div className="leftpannel">
+                        <div className="emptydivpannel"> </div>
+                        {chartType === 'analytics' ? (
+                            <div>
+                                <img src={pinkhome} className="pannelicons" />
+                                <div className="pannelicondescription">Home </div>
                             </div>
+                        ) : (
+                            <div>
+                                <img src={homeicon} className="pannelicons" onClick={() => whichChart('analytics')} />
+                                <div className="pannelicondescription">Home </div>
+                            </div>
+                        )}
+                        {chartType === 'orders' ? (
+                            <div>
+                                <img src={orderpink} className="pannelicons" />
+                                <div className="pannelicondescription">Orders </div>
+                            </div>
+                        ) : (
+                            <div>
+                                <img src={ordersicon} className="pannelicons" onClick={() => whichChart('orders')} />
+                                <div className="pannelicondescription">Orders </div>
+                            </div>
+
+                        )}
+                        {chartType === 'inventory' ? (
+                            <div>
+                                <img src={inventorypink} className="pannelicons" />
+                                <div className="pannelicondescription">Inventory</div>
+                            </div>
+                        ) : (
+                            <div>
+                                <img src={inventoryicon} className="pannelicons" onClick={() => whichChart('inventory')} />
+                                <div className="pannelicondescription">Inventory</div>
+                            </div>
+
+                        )}
+                        {chartType === 'customer' ? (
+                            <div>
+                                <img src={customerpink} className="pannelicons" />
+                                <div className="pannelicondescription">Customers</div>
+                            </div>
+                        ) : (
+                            <div>
+                                <img src={customericon} className="pannelicons" onClick={() => whichChart('customer')} />
+                                <div className="pannelicondescription">Customers</div>
+                            </div>
+
+                        )}
+                        <img src={exiticon} className="pannelicons exit" onClick={() => {
+                            props.handleLogin({ 'type': 'logout' });
+                            props.history.push('/');
+                        }}
+                        />
+                    </div>
+                    <div className="rightpannel">
+                        <div className="charts">
+                            {chartType === 'analytics' && (
+                                <Dashboard />
+                            )}
+                            {chartType === 'orders' && (
+                                <OrderChart />
+                            )}
+                            {chartType === 'inventory' && (
+                                <div id="inventoryChart">
+                                    <InventoryChart />
+                                </div>
+                            )}
+                            {chartType === 'customer' && (
+                                <CustomerChart />
+                            )}
                         </div>
                     </div>
-                </section>
+                </div>
+            </section>
         </main>
     );
 }

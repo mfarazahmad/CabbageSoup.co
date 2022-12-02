@@ -1,7 +1,7 @@
 #home .mainDisplay {
     background: black;
     height: 100vh;
-    background-image: url('/img/homepage_banner.webp');
+    background-image: url('../../../public/img/homepage_banner.webp');
     background-position: 10% 20%;
     background-size: cover;
     align-items: flex-start;
@@ -399,7 +399,7 @@
     justify-content: center;
     width: 45%;
     padding-right: 10%;
-    padding-bottom: ;
+    padding-bottom: 2%;
 
 }
 #home .menureviewers {

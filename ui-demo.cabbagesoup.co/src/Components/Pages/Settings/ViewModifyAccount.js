@@ -4,48 +4,47 @@ import axios from 'axios';
 
 import { Table, Input, InputNumber, Popconfirm, Form, Typography } from 'antd';
 import 'antd/dist/antd.css';
+import { getUserName } from '../../../service/auth';
 
-const ViewModifyAccount = (props) => { 
+const ViewModifyAccount = () => {
 
   const [form] = Form.useForm();
   const [editingKey, setEditingKey] = useState('');
   const [data, setData] = useState([]);
-  const [userName, setUsername] = useState("")
+  const [userName, setUsername] = useState<string>("")
 
   useEffect(() => {
+    getAccount();
+  }, []);
 
-    const endpoint = process.env.REACT_APP_ANALYTICS_ENGINE + '/query/checkAuth';
-    const headers = {"withCredentials": "true"};
-    axios.get(endpoint, headers)
-      .then(response => {
-            console.log(response)
-            let data = response['data']['data'];
-            console.log(data)
-            setUsername(data['user_name'])
-            
-          let url = process.env.REACT_APP_ANALYTICS_ENGINE + `/query/customer?user_name=${data['user_name']}`;
-          axios.get(url, headers)
-          .then(res => {
-            var data = res["data"]["data"];
-            console.log(data);
+  const getAccount = async () => {
+    try {
+      let userData = await getUserName();
+      console.log(userData)
+      setUsername(userData['user_name'])
 
-            let originData = [];
+      const endpoint = `${process.env.REACT_APP_SERVICE_CUSTOMER}/query/customer?user_name=${userData['user_name']}`;
+      const headers = {headers: { "withCredentials": "true" }};
+      
+      let response = await axios.get(endpoint, headers);
+      let accountInfo = response["data"]["data"];
+      console.log(accountInfo);
 
-            for (let i = 0; i < 1; i++) {
-              originData.push({
-                name: data[i]["name"],
-                street: data[i]["street"],
-                city: data[i]["city"],
-                zip: data[i]["zip"]
-              });
-            }
-            setData(res["data"]["data"])
-          })
-          .catch(err => {
-            console.log(err);
-          });
-      });
-    },[]);
+      let originData = [];
+
+      for (let i = 0; i < 1; i++) {
+        originData.push({
+          name: accountInfo[i]["name"],
+          street: accountInfo[i]["street"],
+          city: accountInfo[i]["city"],
+          zip: accountInfo[i]["zip"]
+        });
+      }
+      setData(accountInfo);
+    } catch(err) {
+        console.log(err);
+    }
+  }
 
   const isEditing = (record) => record.key === editingKey;
 
@@ -76,29 +75,29 @@ const ViewModifyAccount = (props) => {
         setData(newData);
         setEditingKey('');
         console.log(newData[0])
-        let url = process.env.REACT_APP_ANALYTICS_ENGINE + `/query/customer/${userName}`
-        let headers = {"withCredentials": "true"};
+        const endpoint = process.env.REACT_APP_ANALYTICS_ENGINE + `/ query / customer / ${userName} `
+        let headers = { "withCredentials": "true" };
         axios.put(url, newData[0], headers)
-        .then(res => {
-          console.log(res)
-        })
-        .catch(err => {
-          console.log(err);
-        });
+          .then(res => {
+            console.log(res)
+          })
+          .catch(err => {
+            console.log(err);
+          });
       } else {
         newData.push(row);
         setData(newData);
         setEditingKey('');
         console.log(newData[0])
-        let url = process.env.REACT_APP_ANALYTICS_ENGINE + `/query/customer/${userName}`
-        let headers = {"withCredentials": "true"};
+        const endpoint = process.env.REACT_APP_ANALYTICS_ENGINE + `/ query / customer / ${userName} `
+        let headers = { "withCredentials": "true" };
         axios.put(url, newData[0], headers)
-        .then(res => {
-          console.log(res)
-        })
-        .catch(err => {
-          console.log(err);
-        });
+          .then(res => {
+            console.log(res)
+          })
+          .catch(err => {
+            console.log(err);
+          });
       }
     } catch (errInfo) {
       console.log('Validate Failed:', errInfo);
@@ -185,7 +184,7 @@ const ViewModifyAccount = (props) => {
     index,
     children,
     ...restProps
-    }) => {
+  }) => {
     const inputNode = inputType === 'number' ? <InputNumber /> : <Input />;
     return (
       <td {...restProps}>
@@ -198,7 +197,7 @@ const ViewModifyAccount = (props) => {
             rules={[
               {
                 required: true,
-                message: `Please Input ${title}!`,
+                message: `Please Input ${title} !`,
               },
             ]}
           >
@@ -210,7 +209,7 @@ const ViewModifyAccount = (props) => {
       </td>
     );
   };
-  
+
   return (
     <div id="viewmodifyaccount">
       <Form form={form} component={false}>

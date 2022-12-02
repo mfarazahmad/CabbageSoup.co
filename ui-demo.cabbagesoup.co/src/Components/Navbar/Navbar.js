@@ -9,7 +9,7 @@ import { ShoppingCartOutlined, UserOutlined, SettingOutlined, DashboardOutlined 
 import { Menu } from 'antd';
 import logo from '../../images/logo.webp';
 
-const Navbar =  (props) => {
+const Navbar = (props) => {
 
 	const [isAdmin, setAdmin] = useState(false);
 	const [loggedIn, setLoggedIn] = useState(false);
@@ -19,82 +19,79 @@ const Navbar =  (props) => {
 	}, [props.loggedIn]);
 
 
-    useEffect(() => {
-        const endpoint = process.env.REACT_APP_ANALYTICS_ENGINE + '/query/checkAuth';
-        const headers = {"withCredentials": "true"};
-        axios.get(endpoint, headers)
-        .then(response => {
-            console.log(response);
-            let data = response['data']['data'];
-            if (data) {
+	useEffect(() => {
+		try {
+			let data = getUserName();
+			console.log(data);
+	
+			if (data) {
 				setLoggedIn(true);
-                if (data.user_type === 'admin') {
-                    setAdmin(true);
-                } else {
+				if (data.user_type === 'admin') {
+					setAdmin(true);
+				} else {
 					setAdmin(false);
 				}
-            }
-        })
-        .catch(err => {
-            console.log(err);
-        });
-      }, [loggedIn]);
+			}
+		} catch(err) {
+			console.log(err);
+		}
+	}, [loggedIn]);
 
 	const handleHome = e => {
-        console.log(e);
-        props.history.push({
-            pathname: '/',
-          })
+		console.log(e);
+		props.history.push({
+			pathname: '/',
+		})
 	};
-	
-    return (
-        <header className='header'>
+
+	return (
+		<header className='header'>
 			<Menu id="desktopMenu" mode="horizontal">
 				<Menu.Item id="logo" key="logo" onClick={handleHome}>
 					<img src={logo}></img>
 				</Menu.Item>
 				<Menu.Item id="links">
-					<Link to={{pathname: "/results", state: {searchInput: "shampoo"}}}>Shampoos</Link>
+					<Link to={{ pathname: "/results", state: { searchInput: "shampoo" } }}>Shampoos</Link>
 				</Menu.Item>
 				<Menu.Item id="links">
-					<Link to={{pathname: "/results", state: {searchInput: "conditioner"}}}>Conditioners</Link>
+					<Link to={{ pathname: "/results", state: { searchInput: "conditioner" } }}>Conditioners</Link>
 				</Menu.Item>
 				<Menu.Item id="links">
-					<Link to={{pathname: "/results", state: {searchInput: "cream"}}}>Face Care</Link>
+					<Link to={{ pathname: "/results", state: { searchInput: "cream" } }}>Face Care</Link>
 				</Menu.Item>
 				<Menu.Item id="searchBar" key="searchbar">
 					<SearchBar />
 				</Menu.Item>
-                <Menu.Item id="account">
+				<Menu.Item id="account">
 					{loggedIn && !isAdmin && (
-						<Link to={{pathname: "/settings"}}>
-							<SettingOutlined style={{'fontSize':'17px','color':'green'}} />
+						<Link to={{ pathname: "/settings" }}>
+							<SettingOutlined style={{ 'fontSize': '17px', 'color': 'green' }} />
 						</Link>
-						) 
+					)
 					}
-					{loggedIn && isAdmin && ( 
-						<Link to={{pathname: "/dashboard"}}>
-							<DashboardOutlined style={{'fontSize':'17px','color':'green'}} />
+					{loggedIn && isAdmin && (
+						<Link to={{ pathname: "/dashboard" }}>
+							<DashboardOutlined style={{ 'fontSize': '17px', 'color': 'green' }} />
 						</Link>
-						)
+					)
 					}
-					{!loggedIn && ( 
-						<Link to={{pathname: "/settings/create-account"}}>
+					{!loggedIn && (
+						<Link to={{ pathname: "/settings/create-account" }}>
 							<UserOutlined />
 						</Link>
-						)
+					)
 					}
 				</Menu.Item>
 				<Menu.Item id="cart">
-                    <Link to={{pathname: "/cart"}}>
+					<Link to={{ pathname: "/cart" }}>
 						<div className="cartBox" >
-							<ShoppingCartOutlined id="cartIcon"/>
+							<ShoppingCartOutlined id="cartIcon" />
 							<div className="itemsInCart">{props.totalQty}</div>
 						</div>
 					</Link>
 				</Menu.Item>
 			</Menu>
-			
+
 			<div id="mobileMenu">
 				<Menu id="topMobileNav" mode="horizontal">
 					<Menu.Item id="logo" key="logo" onClick={handleHome}>
@@ -104,30 +101,30 @@ const Navbar =  (props) => {
 						<SearchBar />
 					</Menu.Item>
 					<Menu.Item id="mobileIcons">
-						<div id="account"> 
+						<div id="account">
 							{loggedIn && !isAdmin && (
-								<Link to={{pathname: "/settings"}}>
-									<SettingOutlined style={{'fontSize':'17px','color':'green'}} />
+								<Link to={{ pathname: "/settings" }}>
+									<SettingOutlined style={{ 'fontSize': '17px', 'color': 'green' }} />
 								</Link>
-								) 
+							)
 							}
-							{loggedIn && isAdmin && ( 
-								<Link to={{pathname: "/dashboard"}}>
-									<DashboardOutlined style={{'fontSize':'17px','color':'green'}} />
+							{loggedIn && isAdmin && (
+								<Link to={{ pathname: "/dashboard" }}>
+									<DashboardOutlined style={{ 'fontSize': '17px', 'color': 'green' }} />
 								</Link>
-								)
+							)
 							}
-							{!loggedIn && ( 
-								<Link to={{pathname: "/settings/create-account"}}>
+							{!loggedIn && (
+								<Link to={{ pathname: "/settings/create-account" }}>
 									<UserOutlined />
 								</Link>
-								)
+							)
 							}
 						</div>
 						<div id="cart">
-							<Link id="cartLink" to={{pathname: "/cart"}}>
+							<Link id="cartLink" to={{ pathname: "/cart" }}>
 								<div className="cartBox" >
-									<ShoppingCartOutlined id="cartIcon"/>
+									<ShoppingCartOutlined id="cartIcon" />
 									<div className="itemsInCart">{props.totalQty}</div>
 								</div>
 							</Link>
@@ -136,7 +133,7 @@ const Navbar =  (props) => {
 				</Menu>
 			</div>
 		</header>
-    );
+	);
 }
 
 
