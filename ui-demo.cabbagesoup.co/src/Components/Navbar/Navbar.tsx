@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Link, withRouter } from 'react-router-dom';
-import axios from 'axios';
 
 import SearchBar from './SearchBar';
 
 import { ShoppingCartOutlined, UserOutlined, SettingOutlined, DashboardOutlined } from '@ant-design/icons';
 
 import { Menu } from 'antd';
-import logo from '../../images/logo.webp';
+import logo from '../../images/logo.svg';
 import { getUserName } from '../../service/auth';
 
 const Navbar = (props: any) => {
