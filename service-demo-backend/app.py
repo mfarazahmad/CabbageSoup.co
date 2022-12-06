@@ -42,4 +42,4 @@ except Exception as e:
 if __name__ == "__main__":
     #from werkzeug.middleware.profiler import ProfilerMiddleware
     #app.wsgi_app = ProfilerMiddleware(app.wsgi_app, restrictions=[10], profile_dir='./')
-    app.run(host="0.0.0.0", debug=True, port=6888)
+    app.run(host="0.0.0.0", debug=True, port=6855)
