@@ -20,3 +20,9 @@ export type Product = {
     order_status: string,
     shipping_status: string
 }
+
+export type OtherProductDetails = {
+    rating: number
+    description: string
+}
+export type DetailedProducts = Product & OtherProductDetails; 

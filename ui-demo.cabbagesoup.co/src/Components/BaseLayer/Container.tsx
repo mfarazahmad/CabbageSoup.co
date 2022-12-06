@@ -7,8 +7,11 @@ import Loader from './Loader';
 import Footer from './Footer';
 import App from './App';
 
-import { modifyExistingProductToCart, addNewProductToCart } from "../../service/cart";
+import { modifyExistingProductToCart, addNewProductToCart, getUserCart, saveUserCart } from "../../service/cart";
 import { Product, Tracker } from "../../models/cart";
+import CustomAlert from '../Widgets/Alert';
+import { PopupAlert } from '../../models/alert';
+import { logUserIn, logUserOut } from '../../service/auth';
 
 // @ts-ignore
 const MessengerCustomerChat = lazy(() => import('react-messenger-customer-chat'));
@@ -23,14 +26,19 @@ state:  Context: Loading
 
 const Container = () => {
 
+    const [loggedIn, setLoggedIn] = useState<boolean>(false);
+    const [shouldLoadFB, setFB] = useState<boolean>(false);
     const [isLoading, setIsLoading] = useState<boolean>(false);
+    const [alertMsg, setDisplayDetails] = useState<PopupAlert>({
+        show: false,
+        type: undefined,
+        message: "",
+        description: "",
+    });
 
     const [cartData, setCart] = useState<Product[]>([]);
     const [totalQty, setTotalQty] = useState<number>(0);
     const [cartTotal, setCartTotal] = useState<number>(0);
-
-    const [loggedIn, setLoggedIn] = useState<boolean>(false);
-    const [shouldLoadFB, setFB] = useState<boolean>(false);
 
     useEffect(() => {
         getCart();
@@ -39,12 +47,7 @@ const Container = () => {
     const getCart = async () => {
         console.log('Getting Cart');
         try {
-            const endpoint = `${process.env.REACT_APP_SERVICE_HISTORY}/query/cart`;
-            const headers = { headers: { "withCredentials": "true" } };
-            let response = await axios.get(endpoint, headers);
-            console.log(response);
-
-            let data = response['data']['data'];
+            let data = await getUserCart();
             if (data) {
                 setCart(data['cartData']);
                 if (data['cartTotal'] < 0) {
@@ -53,22 +56,22 @@ const Container = () => {
                     setCartTotal(data['cartTotal']);
                 }
                 setTotalQty(data['totalQty']);
+            } else {
+                showAlert(true, 'error', "Error", "Failed to load cart!");
             }
         } catch (err) {
             console.log(err);
+            showAlert(true, 'error', "Error", "Failed to load cart!");
         }
     }
 
     let saveCart = async (newCart: Product[], tracker: Tracker) => {
         console.log('Saving Cart');
         try {
-            // Save cart to User Session
-            const endpoint = `${process.env.REACT_APP_SERVICE_HISTORY}/query/cart`;
-            const headers = { headers: { "withCredentials": "true" } };
-            let payload = { 'cartData': newCart, 'cartTotal': tracker['total'], 'totalQty': tracker['totalQty'] };
-
-            let response = await axios.post(endpoint, payload, headers)
-            console.log(response);
+            let response = saveUserCart(newCart, tracker);
+            if (!response) {
+                console.log("Failed to save cart!")
+            }
 
             setCart(newCart);
             setCartTotal(tracker['total']);
@@ -86,12 +89,12 @@ const Container = () => {
     const resetCart = async () => {
         console.log('Resetting Cart');
         try {
-            // Save cart to User Session
-            const endpoint = `${process.env.REACT_APP_SERVICE_HISTORY}/query/cart`;
-            const headers = { headers: { "withCredentials": "true" } };
-            let response = await axios.post(endpoint, { 'cartData': [], 'cartTotal': 0, 'totalQty': 0 }, headers);
-            console.log(response);
 
+            let response = await saveUserCart([], {'exists':false, 'currentItemQty': 0, 'total': 0, 'totalQty': 0 })
+            if (!response) {
+                console.log('Failed to reset cart!')
+            }
+            
             setCart([]);
             setCartTotal(0);
             setTotalQty(0);
@@ -140,36 +143,46 @@ const Container = () => {
         try {
             setIsLoading(true);
             if (e.type === 'login') {
-                const endpoint = `${process.env.REACT_APP_SERVICE_AUTH}/auth/login`;
-                const headers = { headers: { "withCredentials": "true" } };
-                let payload = { 'user_name': e.user_name, 'password': e.password };
-
-                let response = await axios.post(endpoint, payload, headers);
-                console.log(response);
-
+                let response = await logUserIn({ 'user_name': e.user_name, 'password': e.password });
                 if (response.data.err === '') setLoggedIn(true);
                 setIsLoading(false);
 
             } else if (e.type === 'logout') {
-                const endpoint = `${process.env.REACT_APP_SERVICE_AUTH}/auth/logout`;
-                const headers = { headers: { "withCredentials": "true" } };
-
-                let response = await axios.get(endpoint, headers);
-                console.log(response);
-
-                setLoggedIn(false);
-                setIsLoading(false);
+                let respData = await logUserOut();
+                if (!respData) {
+                    console.log("Failed to log user out!");
+                } else {
+                    setLoggedIn(false);
+                    setIsLoading(false);
+                }
             }
         } catch (err) {
             console.log(err);
             setIsLoading(false);
+            showAlert(true, 'error', "Error", "Failed to handle login/logout");
         }
     };
+
+    const showLoading = () => {
+        setIsLoading(!isLoading);
+    }
+
+    const showAlert = (show: boolean, type:"success" | "error" | "info" | "warning" | undefined, message:string, description:string) => {
+        setDisplayDetails({show, type, message, description});
+    }
+
+    const closeAlert = () => {
+        setDisplayDetails({show: false, type:undefined, message:"", description:""})
+    }
 
     return (
         <div className={`outer`}>
             <Router>
-                <Navbar totalQty={totalQty} loggedIn={loggedIn} />
+                <Navbar 
+                    totalQty={totalQty} 
+                    loggedIn={loggedIn} 
+                    showAlert={showAlert}
+                />
 
                 {isLoading && <Loader />}
 
@@ -181,16 +194,21 @@ const Container = () => {
                         />)
                     }
                 </Suspense>
-
-                <App
-                    setLoading={setIsLoading}
-                    cartData={cartData}
-                    cartTotal={cartTotal}
-                    totalQty={totalQty}
-                    handleCart={handleCart}
-                    handleLogin={handleLogin}
-                    resetCart={resetCart}
+                
+                <CustomAlert 
+                    show={alertMsg.show} 
+                    type={alertMsg.type} 
+                    message={alertMsg.message} 
+                    description={alertMsg.description} 
+                    closeAlert={closeAlert} 
                 />
+
+                <App {...{ 
+                        showLoading, showAlert, handleCart, handleLogin, resetCart, 
+                        cartData, cartTotal, totalQty}
+                    }
+                />
+
                 <Footer />
             </Router>
         </div>

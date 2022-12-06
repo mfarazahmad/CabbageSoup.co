@@ -6,7 +6,9 @@ VERSION = "1.0.0"
 LICENSE = 'MIT'
 REQUIRES = [
             "pymongo==4.1.1", 
-            "Flask==2.1.2"
+            "Flask==2.1.2",
+            "dnspython==2.2.1",
+            "certifi==2021.10.8",
             ]
 
 if __name__ == "__main__":

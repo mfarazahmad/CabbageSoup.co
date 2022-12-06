@@ -97,6 +97,10 @@ section {
 @import url('./pages/dashboardoutline.css');
 @import url('./pages/settingsoutline.css');
 
+.ant-alert.ant-alert-closable {
+  position: absolute;
+  z-index: 10000;
+}
 
 @media(max-width: 599px) {
   .page {margin-top: 0px;}

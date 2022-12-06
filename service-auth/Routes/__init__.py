@@ -16,6 +16,6 @@ def middleware_for_response(response):
 
 
 # Connect to DB
-db = DB(os.environ.get("DB_CONNECTION_STRING"), 'auth')
+db = DB(os.environ.get("DB_CONNECTION_STRING"), 'analytics') #'auth'
 
 from Routes.auth import *

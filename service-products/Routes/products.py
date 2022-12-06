@@ -2,7 +2,7 @@ import traceback
 from flask import jsonify, session, request
 
 from Routes import Query, db
-from cspycore.perforrmance import gzipResponse
+from cspycore.performance import gzipResponse
 
 
 @Query.route('/product', methods=['GET'])
@@ -28,7 +28,7 @@ def viewProducts():
                 data = db.get()
                 # Sessions aren't working cross-origin
                 #session['search'] = {'products': data[0:2]}
-
+        
         msg = f'Product(s) {id} found!'
         error = ''
 

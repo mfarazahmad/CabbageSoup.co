@@ -1,9 +1,10 @@
 import traceback
 from pymongo import MongoClient
+import certifi
 
 class DB():
     def __init__(self, host:str, dbName: str):
-        client = MongoClient(host)
+        client = MongoClient(host, tlsCAFile=certifi.where())
         self.db = client[dbName]
         self.collection = None
 
@@ -18,7 +19,7 @@ class DB():
     def get(self, query=None) -> list:
         data = []
         if query:
-             for document in self.collection.find():
+            for document in self.collection.find(query):
                 del document['_id']
                 data.append(document)
         else:
