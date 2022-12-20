@@ -3,7 +3,7 @@ import AOS from 'aos';
 
 import Container from '../core/Layout/Container';
 
-import 'antd/dist/antd.css';
+import 'antd/dist/reset.css';
 import 'aos/dist/aos.css';
 import '../styles/App.css'
 

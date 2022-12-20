@@ -5,4 +5,5 @@ module.exports = withImages({
   webpack(config, options) {
     return config
   },
+  output: 'standalone',
 })
