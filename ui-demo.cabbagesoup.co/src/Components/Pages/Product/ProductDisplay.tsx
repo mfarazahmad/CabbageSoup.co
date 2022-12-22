@@ -1,23 +1,27 @@
-import React, {useState, useEffect} from 'react';
-import { withRouter } from 'react-router-dom';
+import React, { useState, useEffect, lazy, Suspense } from 'react';
+import { useLocation } from 'react-router';
 import axios from 'axios';
+
 import banner from '../../../images/productdisplayimage.webp'
-import Product from './Product';
 import { Pagination, Slider, Rate } from 'antd';
+import { Product as product } from '../../../models/cart';
 
+const Product = lazy(() => import('./Product'));
 
-const ProductDisplay = (props) => {
+const ProductDisplay = (props: any) => {
 
-    //const [inventoryData, setInventoryData] = useState([]);
+    let location = useLocation();
+    const searchInput = location.state.searchInput || '';
+
     const [searchTerm, setSearchTerm] = useState('');
     const [filters, setFilters] = useState({price:100, rating: 1});
-    const [currentProducts, setCurrentProducts] = useState([]);
-    const [totalProducts, setTotalProducts] = useState([]);
+    const [currentProducts, setCurrentProducts] = useState<product[]>([]);
+    const [totalProducts, setTotalProducts] = useState<any>([]);
 
 
     useEffect(() => {
-        setSearchTerm(props.location.state.searchInput);
-    }, [props.location.state.searchInput])
+        setSearchTerm(searchInput);
+    }, [searchInput])
 
     useEffect(() => {
         const endpoint = `${process.env.REACT_APP_ANALYTICS_ENGINE}/search/?term=${searchTerm}&searchType=products&filter=price:${filters.price},rating:${filters.rating}`;
@@ -25,13 +29,11 @@ const ProductDisplay = (props) => {
         .then(response => {
             var data = response['data']['data'];
             console.log(data);
-            //setInventoryData(data);
             setCurrentProducts(data.slice(0,9));
 
             const n = 9 //tweak this to add more items per page
 
             const result = new Array(Math.ceil(data.length / n))
-            .fill()
             .map(_ => data.splice(0, n));
             console.log(result);
             setTotalProducts(result);
@@ -41,7 +43,7 @@ const ProductDisplay = (props) => {
         });
     }, [searchTerm, filters])
 
-    const handleOnChange = (type, value) => {
+    const handleOnChange = (type: string, value: number) => {
         console.log(value);
         console.log(type);
         if (type === 'price') {
@@ -51,7 +53,7 @@ const ProductDisplay = (props) => {
         }
     }
 
-    const changePage = (page) => {
+    const changePage = (page: number) => {
         console.log(page);
         let currentPageProducts = totalProducts[page];
         setCurrentProducts(currentPageProducts);
@@ -76,9 +78,9 @@ const ProductDisplay = (props) => {
             </div>
             <h2>Results for <span className="searchInput">{searchTerm}</span></h2>
             <div className="line"></div>
-            <div class="productShowcase">
+            <div className="productShowcase">
                 {currentProducts && currentProducts.map(
-                    product => { return <Product product={product} handleCart={props.handleCart} handleDetailPage={props.handleDetailPage} /> }
+                    product => { return <Suspense fallback={<div>Loading...</div>}><Product product={product} handleCart={props.handleCart} handleDetailPage={props.handleDetailPage} /> </Suspense> }
                 )}
             </div>
             <div className="pagination">
@@ -89,5 +91,5 @@ const ProductDisplay = (props) => {
 }
 
 
-export default withRouter(ProductDisplay);
+export default ProductDisplay;
 

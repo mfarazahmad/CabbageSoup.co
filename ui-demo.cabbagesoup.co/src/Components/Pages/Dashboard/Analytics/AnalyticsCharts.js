@@ -1,10 +1,10 @@
 import React, { useEffect, useState, Suspense, lazy } from 'react';
-import { withRouter } from 'react-router-dom';
+
 import moment from 'moment';
 import axios from 'axios';
 
 import { DatePicker, Space, Button } from 'antd';
-import 'antd/dist/antd.css';
+import 'antd/dist/reset.css';
 
 const TotalSales = React.lazy(() => import("./Charts/TotalSales"));
 const AverageOrderChart = React.lazy(() => import("./Charts/AverageOrderChart"));
@@ -140,4 +140,4 @@ function AnalyticsCharts() {
     );
   }
   
-  export default withRouter(AnalyticsCharts);
+  export default AnalyticsCharts;

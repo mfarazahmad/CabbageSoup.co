@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import logo from '../../images/logo.webp';
 import twitter from '../../images/twitter.webp'
@@ -12,6 +12,7 @@ import visa from '../../images/visa.webp'
 function Footer() {
 
     return (
+        
    
         <div className='footer'>
 
@@ -19,9 +20,9 @@ function Footer() {
             <div className="searchcontainer">
                 <div className="footersubheading">Search</div>
 
-                <Link className="footerlinks" to={{pathname: "/results", state: {searchInput: "shampoo"}}}>Shampoos</Link>
-                <Link className="footerlinks" to={{pathname: "/results", state: {searchInput: "conditioner"}}}>Conditioner</Link>
-                <Link className="footerlinks" to={{pathname: "/results", state: {searchInput: "cream"}}}>Face Care</Link>
+                <Link className="footerlinks" to={{ pathname: "/results" }} state={{ searchInput: "shampoo"}} >Shampoos</Link>
+                <Link className="footerlinks" to={{ pathname: "/results" }} state={{ searchInput: "conditioner"}}>Conditioners</Link>
+                <Link className="footerlinks" to={{ pathname: "/results" }} state={{ searchInput: "cream"}}>Face Care</Link>
             </div>
             <div className="searchcontainer">
                 <div className="footersubheading">Account</div>
@@ -50,4 +51,4 @@ function Footer() {
 
     );
 }
-export default withRouter(Footer);
+export default Footer;

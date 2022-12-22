@@ -1,10 +1,10 @@
 
 import React, { useState, useEffect } from 'react';
-import { withRouter } from 'react-router-dom';
+
 import axios from 'axios';
 
 import { Table, Input } from 'antd';
-import 'antd/dist/antd.css';
+import 'antd/dist/reset.css';
 
 function ViewOrders(props) { 
     const { Column } = Table;
@@ -79,4 +79,4 @@ function ViewOrders(props) {
     }
 
 
-export default withRouter(ViewOrders);
+export default ViewOrders;

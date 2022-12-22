@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { withRouter } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import { Button, Input } from 'antd';
 import { UserOutlined, EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
@@ -8,6 +8,8 @@ const LoginBox =  (props: any) => {
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    
+    const navigate = useNavigate();
 
     const handleUserName = (e:any) => {console.log(e.target.value); setUsername(e.target.value);};
     const handlePassword = (e:any) => {console.log(e.target.value); setPassword(e.target.value);};
@@ -24,7 +26,7 @@ const LoginBox =  (props: any) => {
             <br />
             <Button className="changeBtn" onClick={() => {
                 props.handleLogin({'type':'login', 'user_name': username, 'password':password});
-                props.history.push('/');
+                navigate('/');
                 }}>Login</Button>
             <br />
         </div>
@@ -32,4 +34,4 @@ const LoginBox =  (props: any) => {
 }
 
 
-export default withRouter(LoginBox);
+export default LoginBox;

@@ -1,10 +1,12 @@
 
 import React from 'react';
-import { withRouter } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import { Alert } from 'antd';
 
 function Status(props: any) {
+
+    const navigate = useNavigate();
 
     return (
         <div>
@@ -23,7 +25,7 @@ function Status(props: any) {
                         showIcon
                     />
                 )}
-                <button className="btn" onClick={() => props.history.push('/')}>
+                <button className="btn" onClick={() => navigate('/')}>
                     <span>Back to Home</span>
                     <div id="circle"></div>
                 </button>
@@ -32,4 +34,4 @@ function Status(props: any) {
     );
 }
 
-export default withRouter(Status);
+export default Status;

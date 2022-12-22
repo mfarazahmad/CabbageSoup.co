@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { withRouter } from 'react-router-dom';
+
 
 import { Table, Input, InputNumber, Popconfirm, Form, Typography } from 'antd';
-import 'antd/dist/antd.css';
+import 'antd/dist/reset.css';
 import { getUserName } from '../../../service/auth';
 import { getUserAccount, updateUserAccount } from '../../../service/user';
 import { Account } from '../../../models/account';
@@ -205,4 +205,4 @@ const ViewModifyAccount = () => {
   );
 }
 
-export default withRouter(ViewModifyAccount);
+export default ViewModifyAccount;

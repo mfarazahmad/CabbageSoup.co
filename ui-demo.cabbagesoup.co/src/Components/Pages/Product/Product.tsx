@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { withRouter, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 import { Button, Rate } from 'antd';
@@ -21,4 +21,4 @@ function Product(props: any) {
 }
 
 
-export default withRouter(Product);
+export default Product;

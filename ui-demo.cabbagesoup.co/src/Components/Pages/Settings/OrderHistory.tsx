@@ -1,7 +1,5 @@
 
 import React, { useState, useEffect } from 'react';
-import { withRouter } from 'react-router-dom';
-import axios from 'axios';
 import { Table, List, Space, Badge, Input } from 'antd';
 import { getUserName } from '../../../service/auth';
 import { Order } from '../../../models/order';
@@ -24,11 +22,11 @@ const columns = [
     title: 'Products',
     dataIndex: 'products',
     key: 'products',
-    render: (item: Product[] ) => <List
+    render: (item: any[] ) => <List
       id="productList"
       itemLayout="horizontal"
       dataSource={item}
-      renderItem={item => (
+      renderItem={(item):JSX.Element =>  (
         <List.Item>
           {item}
         </List.Item>
@@ -190,4 +188,4 @@ function OrderHistory() {
 }
 
 
-export default withRouter(OrderHistory);
+export default OrderHistory;

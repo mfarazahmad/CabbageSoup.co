@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { withRouter, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import { List } from 'antd';
 import { AimOutlined, AccountBookOutlined, SelectOutlined } from '@ant-design/icons';
@@ -69,4 +69,4 @@ function Settings(props) {
 }
 
 
-export default withRouter(Settings);
+export default Settings;

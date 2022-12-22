@@ -1,28 +1,18 @@
 import React, { Suspense, lazy, useState, useEffect } from 'react';
 import { BrowserRouter as Router } from "react-router-dom";
-import axios from 'axios';
 
 import Navbar from '../Navbar/Navbar';
 import Loader from './Loader';
 import Footer from './Footer';
 import App from './App';
 
-import { modifyExistingProductToCart, addNewProductToCart, getUserCart, saveUserCart } from "../../service/cart";
 import { Product, Tracker } from "../../models/cart";
-import CustomAlert from '../Widgets/Alert';
 import { PopupAlert } from '../../models/alert';
+
+import { modifyExistingProductToCart, addNewProductToCart, getUserCart, saveUserCart } from "../../service/cart";
 import { logUserIn, logUserOut } from '../../service/auth';
 
-// @ts-ignore
-const MessengerCustomerChat = lazy(() => import('react-messenger-customer-chat'));
-
-/*
-state:  Context: Loading        
-        Menu:  menuOpen -> transform: translateX(0%);
-
-        Menu: style-> values menuOpen | ''
-        Loading: style -> values loading | ''
-*/
+const CustomAlert = lazy(() => import('../Widgets/Alert'))
 
 const Container = () => {
 
@@ -185,23 +175,16 @@ const Container = () => {
                 />
 
                 {isLoading && <Loader />}
-
-                <Suspense fallback={<Loader />}>
-                    {shouldLoadFB && (
-                        <MessengerCustomerChat
-                            pageId="104211655131227"
-                            appId={process.env.REACT_APP_FB_APP_ID}
-                        />)
-                    }
-                </Suspense>
                 
-                <CustomAlert 
-                    show={alertMsg.show} 
-                    type={alertMsg.type} 
-                    message={alertMsg.message} 
-                    description={alertMsg.description} 
-                    closeAlert={closeAlert} 
-                />
+                <Suspense fallback={<div>Loading...</div>}>
+                    <CustomAlert 
+                        show={alertMsg.show} 
+                        type={alertMsg.type} 
+                        message={alertMsg.message} 
+                        description={alertMsg.description} 
+                        closeAlert={closeAlert} 
+                    />
+                </Suspense>
 
                 <App {...{ 
                         showLoading, showAlert, handleCart, handleLogin, resetCart, 

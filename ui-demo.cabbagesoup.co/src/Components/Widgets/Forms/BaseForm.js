@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import { withRouter } from 'react-router-dom';
+
 import axios from 'axios';
 
 import Status from '../Status';
@@ -42,4 +42,4 @@ function BaseForm(props) {
     );
 }
 
-export default withRouter(BaseForm);
+export default BaseForm;

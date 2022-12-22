@@ -1,9 +1,8 @@
 
 import React, { createRef, Suspense, useState, useEffect } from 'react';
-import { withRouter } from 'react-router-dom';
 
 import { Table, Space, Input, Button } from 'antd';
-import 'antd/dist/antd.css';
+import 'antd/dist/reset.css';
 
 import { useCSVReader } from 'react-papaparse';
 import { Product } from '../../../models/cart';
@@ -210,4 +209,4 @@ function ViewModifyInventory() {
 }
 
 
-export default withRouter(ViewModifyInventory);
+export default ViewModifyInventory;

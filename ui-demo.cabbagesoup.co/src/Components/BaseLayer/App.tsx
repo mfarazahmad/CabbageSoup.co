@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch, Route, withRouter } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 
 import routes from '../../utils/navi';
 
@@ -12,34 +12,32 @@ function App(props:any) {
     const cartData = props.cartData;
     const cartTotal = props.cartTotal;
     const totalQty = props.totalQty;
+
+    const navigate = useNavigate();
     
     const handleDetailPage = (e:any) => {
         console.log(e);
-        props.history.push({
-            pathname: '/product',
-            state: { product: e }
-        })
+        navigate('/product', { state: { product: e } });
     };
 
     return (
         <div className='app'>
             <div className="pageContainer">
-                <Switch>
+                <Routes>
                     {routes.map(
                         ({ exact, path, Component, startProps }, key) => {
                             return <Route
-                                exact={exact}
                                 path={path}
                                 key={key}
-                                render={props => <Component {...props} totalQty={totalQty} cartTotal={cartTotal} cartData={cartData} resetCart={resetCart} handleLogin={handleLogin} handleCart={handleCart} handleDetailPage={handleDetailPage} start={startProps} />}
+                                element={<Component {...props} totalQty={totalQty} cartTotal={cartTotal} cartData={cartData} resetCart={resetCart} handleLogin={handleLogin} handleCart={handleCart} handleDetailPage={handleDetailPage} start={startProps} />}
                             />
                         }
                     )}
-                </Switch>
+                </Routes>
             </div>
         </div>
     );
 }
 
 
-export default withRouter(App);
+export default App;

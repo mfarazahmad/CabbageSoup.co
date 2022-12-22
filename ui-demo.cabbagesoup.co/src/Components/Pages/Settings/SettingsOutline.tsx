@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { withRouter } from 'react-router-dom';
-import 'antd/dist/antd.css';
+import { useNavigate } from 'react-router-dom';
+import 'antd/dist/reset.css';
 
 import homeicon from '../../../images/home.webp'
 import pinkhome from '../../../images/homepink.webp'
@@ -19,6 +19,8 @@ function SettingsOutline(props: any) {
 
     const [chartType, setChartType] = useState("orderHistory")
     const [username, setUsername] = useState("")
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         verifyLogin();
@@ -40,9 +42,7 @@ function SettingsOutline(props: any) {
 
     const handleHome = (e: any) => {
         console.log(e);
-        props.history.push({
-            pathname: '/',
-        })
+        navigate('/')
     };
 
 
@@ -85,7 +85,7 @@ function SettingsOutline(props: any) {
                         )}
                         <img src={exiticon} className="pannelicons exit" onClick={() => {
                             props.handleLogin({ 'type': 'logout' });
-                            props.history.push('/');
+                            navigate('/');
                         }}
                         />
                     </div>
@@ -106,4 +106,4 @@ function SettingsOutline(props: any) {
 }
 
 
-export default withRouter(SettingsOutline);
+export default SettingsOutline;

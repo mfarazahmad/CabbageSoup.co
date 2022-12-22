@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import { withRouter, Link } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import axios from 'axios';
 import emailjs from 'emailjs-com';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
@@ -44,8 +44,9 @@ const generateOrder = () => {
 
 const Checkout = (props) => {
 
-    const cartTotal = props.location.state.cartTotal;
-    const cartData = props.location.state.cartData;
+    let location = useLocation();
+    const cartTotal = location.state.cartTotal || '';
+    const cartData = location.state.cartData || '';
 
     const [orderNum, setOrder] = useState('');
     const [userInfo, setUserInfo] = useState({});
@@ -254,4 +255,4 @@ const Checkout = (props) => {
 }
 
 
-export default withRouter(Checkout);
+export default Checkout;

@@ -1,6 +1,6 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
-import Map from 'pigeon-maps';
+
+import { Map } from 'pigeon-maps';
 
 import {Col, Row}  from 'antd';
 
@@ -49,4 +49,4 @@ const Dashboard = () => {
 }
 
 
-export default withRouter(Dashboard);
+export default Dashboard;

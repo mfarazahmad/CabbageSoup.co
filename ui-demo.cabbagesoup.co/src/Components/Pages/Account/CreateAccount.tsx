@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { withRouter } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import { Form, Input, Button } from 'antd';
-import 'antd/dist/antd.css';
+import 'antd/dist/reset.css';
 
 import Login from './Login';
 import logo from '../../../images/logo.webp';
@@ -11,6 +11,7 @@ import { getUserAccount, saveUserAccount } from '../../../service/user';
 
 const CreateAccount = (props: any) => {
   const [showCreate, setShowCreate] = useState(true);
+  const navigate = useNavigate();
 
   const layout = {
     labelCol: {
@@ -56,7 +57,7 @@ const CreateAccount = (props: any) => {
           let respData = await saveUserAccount(values.user);
           if (respData) {
             props.showAlert(true, 'success', "Success!", "Successfully created user!");
-            setTimeout(() => props.history.push('/'), 5000);
+            setTimeout(() => navigate('/'), 5000);
           }
           else {
             props.showAlert(true, 'error', "Error!", "Failed to create user!");
@@ -160,4 +161,4 @@ const CreateAccount = (props: any) => {
   );
 }
 
-export default withRouter(CreateAccount);
+export default CreateAccount;

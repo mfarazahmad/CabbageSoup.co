@@ -1,5 +1,5 @@
 import React from 'react';
-import { withRouter, Link } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { Table, Space, Button, Empty } from 'antd';
@@ -54,44 +54,42 @@ const Cart =  (props:any) => {
     },
   ];
 
+  const navigate = useNavigate();
 
-    const handleCheckout = (e: any) => {
-      console.log(e);
-      props.history.push({
-          pathname: '/checkout',
-          state: { cartData: props.cartData, cartTotal: props.cartTotal }
-        })
-    };
-    
-    return (
-      <main className="page" id="shoppingcart">
-      <section className="mainDisplay">
+  const handleCheckout = (e: any) => {
+    console.log(e);
+    navigate('/checkout', {state: { cartData: props.cartData, cartTotal: props.cartTotal }});
+  };
+  
+  return (
+    <main className="page" id="shoppingcart">
+    <section className="mainDisplay">
 
-        <div className="cartDetails">
-          <Link to={{pathname: "/"}}>
-            <h6 className='backLink'><span>&#8592;</span> back to home page</h6>
-          </Link>
-          <div className="shopping">
-              <div className="cartTitle">
-                <h3>Cart</h3>
-                <h3>{props.totalQty} items</h3>
-              </div>
-              {props.cartData ? 
-                  <Table 
-                      columns={columns} 
-                      dataSource={props.cartData} 
-                  /> :
-                  <Empty />
-              }
-              <h2>Total: <span id="cartTotal">${props.cartTotal}</span></h2>
-              <Button type="primary" className='checkoutBtn' onClick={handleCheckout}>Checkout</Button>
-          </div>
+      <div className="cartDetails">
+        <Link to={{pathname: "/"}}>
+          <h6 className='backLink'><span>&#8592;</span> back to home page</h6>
+        </Link>
+        <div className="shopping">
+            <div className="cartTitle">
+              <h3>Cart</h3>
+              <h3>{props.totalQty} items</h3>
+            </div>
+            {props.cartData ? 
+                <Table 
+                    columns={columns} 
+                    dataSource={props.cartData} 
+                /> :
+                <Empty />
+            }
+            <h2>Total: <span id="cartTotal">${props.cartTotal}</span></h2>
+            <Button type="primary" className='checkoutBtn' onClick={handleCheckout}>Checkout</Button>
         </div>
+      </div>
 
-      </section>
-    </main>
-    );
+    </section>
+  </main>
+  );
 }
 
 
-export default withRouter(Cart);
+export default Cart;

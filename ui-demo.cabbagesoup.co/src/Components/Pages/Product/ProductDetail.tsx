@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
-import { withRouter } from 'react-router-dom';
+
 
 import { Rate, Button } from 'antd';
 
@@ -92,4 +92,4 @@ function ProductDetail(props: any) {
 }
 
 
-export default withRouter(ProductDetail);
+export default ProductDetail;

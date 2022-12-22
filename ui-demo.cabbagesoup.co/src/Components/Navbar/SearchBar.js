@@ -1,5 +1,5 @@
 import React, {useState } from 'react';
-import {withRouter } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition'
 
@@ -16,6 +16,8 @@ const SearchBar = (props) => {
     const [recording, setRecording] = useState('')
     const { transcript, resetTranscript } = useSpeechRecognition()
 
+    const navigate = useNavigate();
+
     const updateSearch = e => {
         if (e.target) {
             console.log(e.target.value);
@@ -26,18 +28,12 @@ const SearchBar = (props) => {
     }
 
     const handleSearch = e => {
-            props.history.push({
-                pathname: '/results',
-                state: { searchInput: searchInput }
-        });
+        navigate('/results', { state: { searchInput: searchInput } });
     }
 
     const handleVoiceSearch = transcript => {
         console.log(`${transcript} is searched result`);
-        props.history.push({
-            pathname: '/results',
-            state: { searchInput: transcript }
-        });
+        navigate('/results', { state: { searchInput: transcript } });
     }
 
     const recordAudio = () => {
@@ -88,4 +84,4 @@ const SearchBar = (props) => {
 }
 
 
-export default withRouter(SearchBar);
+export default SearchBar;

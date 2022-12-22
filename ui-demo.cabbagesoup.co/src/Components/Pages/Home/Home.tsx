@@ -1,8 +1,7 @@
-import React, {useState, useEffect} from 'react';
-import { withRouter } from 'react-router-dom';
+import React, {lazy, Suspense, useState, useEffect} from 'react';
+
 import { Button, Rate, Menu } from 'antd';
 
-import Product from '../Product/Product';
 import ecommercestats from '../../../images/ecommercestats.webp'
 import line from '../../../images/line.webp'
 import truck from '../../../images/truck.webp'
@@ -14,6 +13,8 @@ import bannerproduct2 from '../../../images/bannerproduct2.webp'
 
 import { UserOutlined } from '@ant-design/icons';
 import { getTopProducts } from '../../../service/product';
+
+const Product = lazy(() => import('../Product/Product'));
 
 
 function Home(props: any ) {
@@ -178,7 +179,7 @@ function Home(props: any ) {
                 </div>
                 <div className="productShowcase">
                     {inventoryData && inventoryData.map(
-                        (product, count) => { return <Product key={count} product={product} handleCart={props.handleCart} handleDetailPage={props.handleDetailPage} /> }
+                        (product, count) => { return <Suspense fallback={<div>Loading...</div>}> <Product key={count} product={product} handleCart={props.handleCart} handleDetailPage={props.handleDetailPage} /> </Suspense> }
                     )}
                 </div>
             </section>
@@ -226,7 +227,7 @@ function Home(props: any ) {
                 </div>
                 <div className="productShowcase">
                     {inventoryData && inventoryData.map(
-                        (product, count) => { return <Product key={count} product={product} handleCart={props.handleCart} handleDetailPage={props.handleDetailPage}/> }
+                        (product, count) => { return <Suspense fallback={<div>Loading...</div>}> <Product key={count} product={product} handleCart={props.handleCart} handleDetailPage={props.handleDetailPage}/> </Suspense> }
                     )}
                 </div>
             </section>
@@ -330,4 +331,4 @@ function Home(props: any ) {
 }
 
 
-export default withRouter(Home);
+export default Home;

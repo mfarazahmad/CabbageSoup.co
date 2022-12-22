@@ -1,5 +1,5 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
+
 
 import emailjs from 'emailjs-com';
 
@@ -33,4 +33,4 @@ function SendEmail() {
   );
 }
 
-export default withRouter(SendEmail);
+export default SendEmail;

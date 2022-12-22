@@ -1,8 +1,6 @@
 
 import React from 'react';
-import { withRouter } from 'react-router-dom';
-
-import Map  from 'pigeon-maps'
+import { Map } from 'pigeon-maps'
   
 function OrderTracking() {
 
@@ -15,12 +13,12 @@ function OrderTracking() {
                 <h3>Order <strong>CS5280157ZZ021</strong></h3>
                 <div className="trackingBox">
 
-                <Map 
-                    defaultCenter={[50.879, 4.6997]} 
-                    defaultZoom={12} 
-                    width={600} 
-                    height={400}>
-                </Map>
+                    <Map 
+                        defaultCenter={[50.879, 4.6997]} 
+                        defaultZoom={12} 
+                        width={600} 
+                        height={400}>
+                    </Map>
 
                 </div>
             </section>
@@ -29,4 +27,4 @@ function OrderTracking() {
 }
 
 
-export default withRouter(OrderTracking);
+export default OrderTracking;

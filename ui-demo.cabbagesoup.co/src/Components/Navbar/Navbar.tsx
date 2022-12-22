@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import SearchBar from './SearchBar';
 
@@ -13,6 +13,8 @@ const Navbar = (props: any) => {
 
 	const [isAdmin, setAdmin] = useState(false);
 	const [loggedIn, setLoggedIn] = useState(false);
+
+	const navigate = useNavigate();
 
 	useEffect(() => {
 		setLoggedIn(props.loggedIn);
@@ -44,9 +46,7 @@ const Navbar = (props: any) => {
 
 	const handleHome = (e: any) => {
 		console.log(e);
-		props.history.push({
-			pathname: '/',
-		})
+		navigate('/');
 	};
 
 	return (
@@ -56,13 +56,13 @@ const Navbar = (props: any) => {
 					<img src={logo}></img>
 				</Menu.Item>
 				<Menu.Item id="links">
-					<Link to={{ pathname: "/results", state: { searchInput: "shampoo" } }}>Shampoos</Link>
+					<Link to={{ pathname: "/results" }} state={{ searchInput: "shampoo"}} >Shampoos</Link>
 				</Menu.Item>
 				<Menu.Item id="links">
-					<Link to={{ pathname: "/results", state: { searchInput: "conditioner" } }}>Conditioners</Link>
+					<Link to={{ pathname: "/results" }} state={{ searchInput: "conditioner"}}>Conditioners</Link>
 				</Menu.Item>
 				<Menu.Item id="links">
-					<Link to={{ pathname: "/results", state: { searchInput: "cream" } }}>Face Care</Link>
+					<Link to={{ pathname: "/results" }} state={{ searchInput: "cream"}}>Face Care</Link>
 				</Menu.Item>
 				<Menu.Item id="searchBar" key="searchbar">
 					<SearchBar />
@@ -142,4 +142,4 @@ const Navbar = (props: any) => {
 }
 
 
-export default withRouter(Navbar);
+export default Navbar;
