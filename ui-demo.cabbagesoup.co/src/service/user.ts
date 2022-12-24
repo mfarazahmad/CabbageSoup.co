@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { Account } from '../models/account';
+import { Account, User } from '../models/account';
 
 
 export const getUserAccount = async (username: string, email?: string) => {
@@ -15,7 +15,7 @@ export const getUserAccount = async (username: string, email?: string) => {
     return accountInfo;
 }
 
-export const saveUserAccount = async (user: { username: string, email: string, password: string }) => {
+export const saveUserAccount = async (user:User) => {
     const endpoint = `${process.env.REACT_APP_SERVICE_CUSTOMER}/query/customer`;
     let headers = { headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*', } };
     

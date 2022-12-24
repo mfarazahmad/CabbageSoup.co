@@ -1,5 +1,5 @@
 import axios from "axios";
-import { AuthCheck } from "../models/auth";
+import { AuthCheck, NewAuth } from "../models/auth";
 
 export async function getUserName():Promise<AuthCheck> {
     let endpoint = `${process.env.REACT_APP_SERVICE_AUTH}/auth/check`;
@@ -12,6 +12,17 @@ export async function getUserName():Promise<AuthCheck> {
     console.log(userData);
 
     return userData;
+}
+
+export const saveUserCredentials = async (user: NewAuth) => {
+    const endpoint = `${process.env.REACT_APP_SERVICE_AUTH}/auth/create/credentials`;
+    let headers = { headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*', } };
+    
+    let response = await axios.post(endpoint, user, headers)
+    let respData = response['data']['data'];
+    console.log(respData);
+
+    return response
 }
 
 export const logUserIn = async (payload: any) => {

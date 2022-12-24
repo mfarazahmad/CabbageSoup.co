@@ -5,7 +5,6 @@ from flask import Flask
 from flask_cors import CORS
 from flask_session import Session
 
-from datetime import timedelta
 from pymongo import MongoClient
 
 # Take environment variables from .env.

@@ -4,7 +4,6 @@ from dotenv import load_dotenv
 from flask import Flask
 from flask_cors import CORS
 
-from datetime import timedelta
 
 # Take environment variables from .env.
 dotenv_path = os.path.join(os.path.dirname(__file__), '.env')

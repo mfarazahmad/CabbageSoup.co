@@ -4,21 +4,22 @@
 
 ![](CabbageSoup.png)
 
+## Coming Soon v2.1
+- Oauth2 Integration w/ Google
+- Moving Product Images from Linode Server to Amazon S3
+- Better Error Handling via Status Codes (401, 403 etc.)
+- Replacing Binary Search with Elastic for Text & Voice Search
+- Creating Machine Learning Recommendations
+    - Top Categories
+    - Recommended Products
+    - What you will buy next
+- Adding Redis Cacheing for Large Product Payloads
+
 ## Services
-- Responsive, Interactive UI to Showcase Professional Experience (ui-demo.cabbagesoup.co)
-    - React
-    - HTML5 Canvas
-    - Media Queries
-    - Grid/Flexbox
-    - Antd Design
-    - Webp Image Formats
 - Services Broken into a Domain Driven Microservices Architecture 
-    - **java**
-        - service-cabbage-backend 
-    - **golang**
-        - service-auth
     - **python**
         - service-demo-backend
+        - service-auth
         - service-history
         - service-products
         - service-customer
@@ -28,6 +29,14 @@
 
 Service-History has a CQRS (Command-Query Responsbility Segregation) Architecture to Seperate Read & Writes operations for better scalability. An event bus via RabbitMQ is used for sync across the write to read database.
 
+- Responsive, Interactive UI to Showcase Professional Experience (ui-demo.cabbagesoup.co)
+    - React
+    - HTML5 Canvas
+    - Media Queries
+    - Grid/Flexbox
+    - Antd Design
+    - Webp Image Formats
+    
 ## Technologies
 - Containerization via Docker & Managed by Kubernetes & Helm Charts
 - Isitio leveraged as API Gateway for Load Balancing
@@ -44,9 +53,14 @@ Service-History has a CQRS (Command-Query Responsbility Segregation) Architectur
 
 ## Local Setup
 
+Install Local Library
+```
+cd lib-cspycore
+python setup.py install
+```
+
 ### Languages
 ```
-choco install golang
 choco install nodejs
 choco install python
 
@@ -77,11 +91,5 @@ docker run -p 3000:3000 ui-demo.cabbagesoup.co
 ### Linter
 Linting is utilized to maintain a safe, readable, and consistent coding standard throughout the services.
 
-- golangci-lint is used as the primary linter for the go services as it has many different types of linters avaiable.
+- flake8 is used as the primary linter for the python services
 - eslinter is used as the linter for the node/next.js project
-
-```
-make testcoverage && make lint
-```
-## Coming Soon!
-- Oauth2 Integration w/ Google

@@ -7,7 +7,11 @@ dnspython==2.2.1
 Faker==13.7.0
 Flask==2.1.2
 Flask-Cors==3.0.10        
-Flask-Session==0.4.0      
+Flask-Session==0.4.0  
+argon2-cffi==21.3.0
+argon2-cffi-bindings==21.2.0
+cffi==1.15.1
+pycparser==2.21    
 greenlet==1.1.2
 gunicorn==20.1.0
 idna==3.3

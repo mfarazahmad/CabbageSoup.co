@@ -7,7 +7,10 @@ import 'antd/dist/reset.css';
 import Login from './Login';
 import logo from '../../../images/logo.webp';
 import loginBanner from '../../../images/loginBanner.svg';
+import { saveUserCredentials } from '../../../service/auth';
 import { getUserAccount, saveUserAccount } from '../../../service/user';
+import { User } from '../../../models/account';
+import { NewAuth } from '../../../models/auth';
 
 const CreateAccount = (props: any) => {
   const [showCreate, setShowCreate] = useState(true);
@@ -54,10 +57,41 @@ const CreateAccount = (props: any) => {
         if (!accountInfo) {
          props.showAlert(true, 'error', "Error!", "Email already exists!");
         } else {
-          let respData = await saveUserAccount(values.user);
-          if (respData) {
-            props.showAlert(true, 'success', "Success!", "Successfully created user!");
-            setTimeout(() => navigate('/'), 5000);
+          let user: NewAuth = {
+            "user_name": user_name,
+            "password": values.user.password,
+            "user_type": 'client'
+          }
+
+          let credsResp = await saveUserCredentials(user);
+          if (credsResp) {
+            
+            let customerData: User = {
+                "user_name": user_name,
+                "email": email,
+                "name": "",
+                "age": "",
+                "gender": "",
+                "hair_type": "",
+                "street": "",
+                "city": "",
+                "state": "",
+                "zip": "",
+                "credit_type": "",
+                "name_on_card": "",
+                "credit_card_number": "",
+                "credit_exp_date": "",
+                "credit_security_code": "",
+                "customer_tier": "",
+            };
+
+            let acctResp = await saveUserAccount(customerData);
+            if (acctResp) {
+              props.showAlert(true, 'success', "Success!", "Successfully created user account!");
+              setTimeout(() => navigate('/'), 5000);
+            } else {
+              props.showAlert(true, 'error', "Error!", "Failed to create user!");
+            }
           }
           else {
             props.showAlert(true, 'error', "Error!", "Failed to create user!");
@@ -105,7 +139,7 @@ const CreateAccount = (props: any) => {
                 </Form.Item>
 
                 <Form.Item
-                  name={['user', 'username']}
+                  name={['user', 'user_name']}
                   label="Username"
                   rules={[{required: true, min: 5, message: 'Username must be minimum 5 characters.'}]}
                 >
