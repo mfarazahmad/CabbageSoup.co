@@ -36,7 +36,7 @@ Service-History has a CQRS (Command-Query Responsbility Segregation) Architectur
     - Grid/Flexbox
     - Antd Design
     - Webp Image Formats
-    
+
 ## Technologies
 - Containerization via Docker & Managed by Kubernetes & Helm Charts
 - Isitio leveraged as API Gateway for Load Balancing
@@ -59,6 +59,8 @@ cd lib-cspycore
 python setup.py install
 ```
 
+Install mongo and reference it in a .env file in every project
+
 ### Languages
 ```
 choco install nodejs
@@ -68,6 +70,7 @@ choco install python
 
 ### Infrastructure
 ```
+choco install mongod
 choco install aws-cli
 choco install docker
 choco install terraform
