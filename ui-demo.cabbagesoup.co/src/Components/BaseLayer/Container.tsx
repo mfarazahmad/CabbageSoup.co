@@ -40,7 +40,7 @@ const Container = () => {
         console.log('Getting Cart');
         try {
             let data = await getUserCart();
-            if (!data.error) {
+            if (data.error === '') {
                 data = data.data
                 setCart(data['cartData']);
                 if (data['cartTotal'] < 0) {
