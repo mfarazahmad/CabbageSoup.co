@@ -43,7 +43,6 @@
 
 #home .mainDisplay .position #bannerbutton {
     
-    width: 9vw;
     min-width: 10vw;
     height: 7.5vh;
     top: 3vh;
@@ -417,7 +416,6 @@
     }
 
     #home .mainDisplay .position #bannerbutton {
-        width: 9vw;
         min-width: 12vw;
         height: 7.5vh;
     }
@@ -426,7 +424,6 @@
 @media(max-width: 599px) {
 
     #home .mainDisplay .position #bannerbutton {
-        width: 13vw;
         min-width: 17vw;
         height: 7.5vh;
     }
@@ -523,7 +520,7 @@
     }
     #home .mainDisplay .position #bannerbutton {
     
-        width: 13vw;
+
         min-width: 10vw;
         height: 5vh;      
     }

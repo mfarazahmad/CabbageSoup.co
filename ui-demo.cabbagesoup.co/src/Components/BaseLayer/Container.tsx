@@ -11,6 +11,7 @@ import { PopupAlert } from '../../models/alert';
 
 import { modifyExistingProductToCart, addNewProductToCart, getUserCart, saveUserCart } from "../../service/cart";
 import { logUserIn, logUserOut } from '../../service/auth';
+import axios from 'axios';
 
 const CustomAlert = lazy(() => import('../Widgets/Alert'))
 
@@ -31,6 +32,7 @@ const Container = () => {
     const [cartTotal, setCartTotal] = useState<number>(0);
 
     useEffect(() => {
+        axios.defaults.withCredentials = true
         getCart();
     }, []);
 
@@ -38,7 +40,8 @@ const Container = () => {
         console.log('Getting Cart');
         try {
             let data = await getUserCart();
-            if (data) {
+            if (!data.error) {
+                data = data.data
                 setCart(data['cartData']);
                 if (data['cartTotal'] < 0) {
                     setCartTotal(0);
@@ -47,7 +50,7 @@ const Container = () => {
                 }
                 setTotalQty(data['totalQty']);
             } else {
-                showAlert(true, 'error', "Error", "Failed to load cart!");
+                console.log("Cart is emtpy!");
             }
         } catch (err) {
             console.log(err);

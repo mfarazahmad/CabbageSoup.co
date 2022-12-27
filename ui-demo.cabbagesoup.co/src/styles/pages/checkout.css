@@ -1,6 +1,6 @@
 
 #checkout {
-    padding: 50px 0px;
+  
 }
 
 #checkout h3 {
@@ -23,14 +23,26 @@
 #checkout #userInfo {
     display: flex;
     flex-direction: row;
+    justify-content: center;
 }
 
 #checkout .review {
     text-align: left;
     color: black;
-    border-bottom: 1px solid black;
     margin-bottom: 10px;
     padding-bottom: 10px;
+    max-height: 300px;
+    overflow: scroll;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+
+#checkout .paymentTypes {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
 }
 
 #checkout .review input {
@@ -45,7 +57,6 @@
     color: black;
     border: 1px solid black;
     margin-bottom: 5px;
-    box-shadow: 1px 2px black;
     width: 40vw;
     padding: 20px;
 

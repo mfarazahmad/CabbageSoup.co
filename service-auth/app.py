@@ -9,9 +9,11 @@ dotenv_path = os.path.join(os.path.dirname(__file__), '.env')
 load_dotenv(dotenv_path)
 
 app = Flask(__name__)
-app.config.update(  SECRET_KEY=os.urandom(12).hex(), 
-                    SESSION_COOKIE_SAMESITE="None", 
-                    SESSION_COOKIE_SECURE=True,
+app.config.update(  SECRET_KEY=os.urandom(12).hex(),
+                    SESSION_COOKIE_SAMESITE="Lax", 
+                    #SESSION_COOKIE_HTTPONLY=True,
+                    #SESSION_COOKIE_SAMESITE="None", 
+                    #SESSION_COOKIE_SECURE=True,
                 )
 CORS(app)
 

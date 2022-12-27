@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 
 import { Button, Input } from 'antd';
 import { UserOutlined, EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
+import googleIcon from '../../../images/google-auth.svg';
+import { oauthUserLogin } from '../../../service/auth';
 
 const LoginBox =  (props: any) => {
 
@@ -29,6 +31,12 @@ const LoginBox =  (props: any) => {
                 navigate('/');
                 }}>Login</Button>
             <br />
+            <Button 
+                icon={ <img style={{"height": "20px", "marginRight": "10px"}} src={googleIcon} alt="Google Logo" />} 
+                onClick={() => oauthUserLogin() }
+            >
+               Login with Google
+            </Button>
         </div>
     );
 }

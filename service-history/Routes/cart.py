@@ -14,7 +14,7 @@ def getCart():
         if cart:
             msg = 'Cart data available!'
         else:
-            msg = 'Failed to retrieve cart'
+            msg = 'Empty cart!'
 
         data = cart
         error = ''

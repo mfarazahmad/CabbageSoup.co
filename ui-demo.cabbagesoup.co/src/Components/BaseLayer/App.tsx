@@ -1,5 +1,5 @@
-import React from 'react';
-import { Routes, Route, useNavigate } from "react-router-dom";
+import React, {useEffect} from 'react';
+import { Routes, Route, useLocation, useNavigate } from "react-router-dom";
 
 import routes from '../../utils/navi';
 
@@ -29,7 +29,7 @@ function App(props:any) {
                             return <Route
                                 path={path}
                                 key={key}
-                                element={<Component {...props} totalQty={totalQty} cartTotal={cartTotal} cartData={cartData} resetCart={resetCart} handleLogin={handleLogin} handleCart={handleCart} handleDetailPage={handleDetailPage} start={startProps} />}
+                                element={<ScrollToTop> <Component {...props} totalQty={totalQty} cartTotal={cartTotal} cartData={cartData} resetCart={resetCart} handleLogin={handleLogin} handleCart={handleCart} handleDetailPage={handleDetailPage} start={startProps} /> </ScrollToTop>}
                             />
                         }
                     )}
@@ -38,6 +38,16 @@ function App(props:any) {
         </div>
     );
 }
+
+function ScrollToTop({children}: any) {
+    const { pathname } = useLocation();
+  
+    useEffect(() => {
+      window.scrollTo(0, 0);
+    }, [pathname]);
+  
+    return <>{children}</>;
+  }
 
 
 export default App;

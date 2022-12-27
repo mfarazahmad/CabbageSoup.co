@@ -1,10 +1,10 @@
 import traceback
 from pymongo import MongoClient
-import certifi
+#import certifi
 
 class DB():
     def __init__(self, host:str, dbName: str):
-        client = MongoClient(host, tlsCAFile=certifi.where())
+        client = MongoClient(host) #, tlsCAFile=certifi.where())
         self.db = client[dbName]
         self.collection = None
 

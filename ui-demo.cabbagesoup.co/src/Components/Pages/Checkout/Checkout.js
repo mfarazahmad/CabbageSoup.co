@@ -9,8 +9,6 @@ import { Input, Result } from 'antd';
 import { CreditCardOutlined, CalendarOutlined, MailOutlined } from '@ant-design/icons';
 
 import paypal from '../../../images/paypal.svg';
-import visa from '../../../images/visa.svg';
-import mastercard from '../../../images/mastercard.webp';
 
 const orderPart = (amt) => {
     let randomPart = '';
@@ -173,21 +171,19 @@ const Checkout = (props) => {
                                 </div>
 
                                 <div className="review">
-                                    <LazyLoadImage className="paymentImg" src={mastercard} />
-                                    <LazyLoadImage className="paymentImg" src={visa} />
-                                    <LazyLoadImage className="paymentImg" onClick={handlePaypal} src={paypal} />
+            
                                     <div className="popoutCardInfo">
                                         <h2 id="title">Card Info</h2>
                                         <div>
-                                            <MailOutlined /> |
+                                            <MailOutlined />
                                             <Input disabled value={userInfo.email} placeholder="Email" />
                                         </div>
                                         <div>
-                                            <CreditCardOutlined /> |
+                                            <CreditCardOutlined />
                                             <Input disabled value={userInfo.credit_card_number} placeholder="Card #" />
                                         </div>
                                         <div>
-                                            <CalendarOutlined /> |
+                                            <CalendarOutlined />
                                             <Input placeholder="Exp Date" />
                                         </div>
                                     </div>
@@ -206,22 +202,18 @@ const Checkout = (props) => {
 
                                 <div className="review payment">
 
-                                    <LazyLoadImage className="paymentImg" src={mastercard} />
-                                    <LazyLoadImage className="paymentImg" src={visa} />
-                                    <LazyLoadImage className="paymentImg" onClick={handlePaypal} src={paypal} />
-
                                     <div className="popoutCardInfo">
                                         <h2 id="title">Card Info</h2>
                                         <div>
-                                            <MailOutlined /> |
+                                            <MailOutlined /> 
                                             <Input placeholder="Email" />
                                         </div>
                                         <div>
-                                            <CreditCardOutlined /> |
+                                            <CreditCardOutlined /> 
                                             <Input placeholder="Card #" />
                                         </div>
                                         <div>
-                                            <CalendarOutlined /> |
+                                            <CalendarOutlined /> 
                                             <Input placeholder="Exp Date" />
                                         </div>
                                     </div>
@@ -237,14 +229,15 @@ const Checkout = (props) => {
                         <input type="hidden" name="contact_number" />
                         <input type="hidden" name="subject" value="New Order" />
                         <input type="hidden" name="to_name" value="Cabbage Soup Employees" />
-                        <input type="hidden" name="Customer_Name" value="Haris Warsi" />
+                        <input type="hidden" name="Customer_Name" value="Faraz Ahmad" />
                         <input type="hidden" name="order_total" value={cartTotal} />
                         {cartData.map((item, count) =>
                             <input key={count} type="hidden" name="order" value={item.product_name} />
                         )}
                         <div className="buttonBox">
-                            <button type="submit" > Process Purchase</button>
+                            <button type="submit" > Complete Purchase</button>
                         </div>
+                        <LazyLoadImage className="paymentImg" onClick={handlePaypal} src={paypal} />
                     </form>
 
                 </section>

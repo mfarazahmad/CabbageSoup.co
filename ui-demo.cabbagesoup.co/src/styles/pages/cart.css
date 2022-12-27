@@ -2,9 +2,9 @@
 #shoppingcart .mainDisplay {
     height: 100vh;
     background-color: white;
-    justify-content: center;
-    align-items: flex-start;
-    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
     overflow: scroll;
 }
 

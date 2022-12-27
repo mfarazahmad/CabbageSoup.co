@@ -7,6 +7,8 @@ import 'antd/dist/reset.css';
 import Login from './Login';
 import logo from '../../../images/logo.webp';
 import loginBanner from '../../../images/loginBanner.svg';
+import googleIcon from '../../../images/google-auth.svg';
+
 import { saveUserCredentials } from '../../../service/auth';
 import { getUserAccount, saveUserAccount } from '../../../service/user';
 import { User } from '../../../models/account';
@@ -157,6 +159,10 @@ const CreateAccount = (props: any) => {
                 <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 4 }}>
                   <Button className="changeBtn" type="primary" htmlType="submit">
                     Submit
+                  </Button>
+
+                  <Button disabled={true} style={{"marginTop":"40px"}} icon={ <img style={{"height": "20px", "marginRight": "10px"}} src={googleIcon} alt="Google Logo" />} >
+                    Signup with Google
                   </Button>
                 </Form.Item>
               

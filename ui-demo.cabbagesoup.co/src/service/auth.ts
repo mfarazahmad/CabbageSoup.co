@@ -35,6 +35,11 @@ export const logUserIn = async (payload: any) => {
     return response
 }
 
+export const oauthUserLogin = () => {
+    const endpoint: string | Location = `${process.env.REACT_APP_SERVICE_AUTH}/auth/oauth`;
+    (<any> window).location = endpoint;
+}
+
 export const logUserOut = async () => {
     const endpoint = `${process.env.REACT_APP_SERVICE_AUTH}/auth/logout`;
     const headers = { headers: { "withCredentials": "true" } };

@@ -7,7 +7,7 @@ import line from '../../../images/line.webp'
 import truck from '../../../images/truck.webp'
 import twentyfourhr from '../../../images/24hr.webp'
 import box from '../../../images/box.webp'
-import splash from '../../../images/splash.webp'
+//import splash from '../../../images/splash.webp'
 import bannerproduct1 from '../../../images/bannerproduct1.webp'
 import bannerproduct2 from '../../../images/bannerproduct2.webp'
 
@@ -148,7 +148,6 @@ function Home(props: any ) {
                 <div className="catagories">
                     {backgrounds === 'top_selling' ? (
                         <div className="textbackground"  onClick={() => popularProductsIndicator('top_selling')}>
-                            <img  className="splashImg" src={splash} />
                             <div className="catagorytitle" >Top Selling Products</div>
                         </div>  
                     ): (
@@ -158,7 +157,6 @@ function Home(props: any ) {
                     )}
                     {backgrounds === 'top_rated' ? (
                         <div className="textbackground"  onClick={() => popularProductsIndicator('top_rated')}>
-                            <img  className="splashImg" src={splash} />
                             <div >Top Rated Products</div>
                         </div>  
                     ): (
@@ -168,7 +166,6 @@ function Home(props: any ) {
                     )}
                     {backgrounds === 'recommendation' ? (
                         <div className="textbackground"  onClick={() => popularProductsIndicator('recommendation')}>
-                            <img  className="splashImg" src={splash} />
                             <div >Recommended Products</div>
                         </div>  
                     ): (
@@ -196,7 +193,6 @@ function Home(props: any ) {
                 <div className="catagories">
                     {backgrounds === 'top_selling' ? (
                         <div className="textbackground"  onClick={() => popularProductsIndicator('top_selling')}>
-                            <img  className="splashImg" src={splash} />
                             <div className="catagorytitle" >Top Selling Products</div>
                         </div>  
                     ): (
@@ -206,7 +202,6 @@ function Home(props: any ) {
                     )}
                     {backgrounds === 'top_rated' ? (
                         <div className="textbackground"  onClick={() => popularProductsIndicator('top_rated')}>
-                            <img  className="splashImg" src={splash} />
                             <div >Top Rated Products</div>
                         </div>  
                     ): (
@@ -216,7 +211,6 @@ function Home(props: any ) {
                     )}
                     {backgrounds === 'recommendation' ? (
                         <div className="textbackground"  onClick={() => popularProductsIndicator('recommendation')}>
-                            <img  className="splashImg" src={splash} />
                             <div >Recommended Products</div>
                         </div>  
                     ): (

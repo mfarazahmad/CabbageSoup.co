@@ -8,7 +8,7 @@ export const getUserCart = async() => {
     let response = await axios.get(endpoint, headers);
     console.log(response);
 
-    let data = response['data']['data'];
+    let data = response['data'];
     return data;
 }
 

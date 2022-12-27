@@ -59,7 +59,16 @@ cd lib-cspycore
 python setup.py install
 ```
 
-Install mongo and reference it in a .env file in every project
+Install mongo and reference it in a .env file in every api project
+
+Create a local .env in ui-demo.cabbagesoup.co referencing local api urls like so
+```
+REACT_APP_SERVICE_AUTH=http://localhost:6889
+REACT_APP_SERVICE_CUSTOMER=http://localhost:6890
+REACT_APP_SERVICE_HISTORY=http://localhost:6891
+REACT_APP_SERVICE_PRODUCTS=http://localhost:6892
+REACT_APP_ANALYTICS_ENGINE=http://localhost:6855
+```
 
 ### Languages
 ```

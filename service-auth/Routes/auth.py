@@ -1,9 +1,14 @@
-import traceback
+import traceback, os
 
-from flask import jsonify, session, request
+from flask import jsonify, session, request, redirect, url_for
+import google_auth_oauthlib.flow as flow
 
 from Routes import Auth, db
 from service.hasher import hashPassword, verifyUser
+
+# Prevents OAuthlib from raising an error requiring HTTPS
+if os.environ.get('ENV') == 'dev':
+    os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
 
 @Auth.route('/check', methods=['GET'])
 def checkAuth():
@@ -58,20 +63,18 @@ def createAuthCreds():
 def login():
     try:
         loginData = request.json
-        username = loginData['user_name']
-        password = loginData['password']
-
+        
         hashedPassword = hashPassword(loginData['password'])
 
         db.connect('auth')
-        data = db.get({"user_name": username, "password": hashedPassword})
+        data = db.get({"user_name": loginData['user_name'], "password": hashedPassword})
         user_type = data[0]['user_type']
 
-        verifyCorrectPass = verifyUser(hashedPassword, password)
+        verifyCorrectPass = verifyUser(hashedPassword, loginData['password'])
 
         if data and verifyCorrectPass:
             session['loggedIn'] = True
-            session['user_name'] = username
+            session['user_name'] = loginData['user_name']
             session['user_type'] = user_type
             msg = 'User is logged in'
             error = ''
@@ -86,6 +89,61 @@ def login():
         msg = 'Failed to login user'
     
     return jsonify({'user_type': user_type, 'msg': msg, 'err':error})  
+
+@Auth.route('/oauth', methods=['GET'])
+def oauthLogin():
+    try:
+        # Setup a flow instance to authorize to Google
+        authFlow = flow.Flow.from_client_secrets_file('oauthSecret.json', scopes=["https://www.googleapis.com/auth/cloud-platform.read-only"])
+        authFlow.redirect_uri = url_for('Auth.oauthLoginCallback', _external=True)
+
+        authorization_url, state = authFlow.authorization_url(
+            access_type='offline',
+            prompt='select_account',
+            include_granted_scopes='true'
+        )
+
+        session['state'] = state
+
+        # Redirect the user to Google for authorization
+        return redirect(authorization_url)
+
+    except Exception as e:
+        print(str(e))
+        return redirect("http://localhost:3000/")
+
+@Auth.route('/oauth/callback', methods=['GET'])
+def oauthLoginCallback():
+    try:
+        state = session['state']
+
+         # Resetup the same flow state to verify the auth to Google
+        cbFlow = flow.Flow.from_client_secrets_file('oauthSecret.json', scopes=["https://www.googleapis.com/auth/cloud-platform.read-only"], state=state)
+        cbFlow.redirect_uri = url_for('Auth.oauthLoginCallback', _external=True)
+
+        # Verify the authorization flow worked out
+        authorization_response = request.url
+        cbFlow.fetch_token(authorization_response=authorization_response)
+
+        # Store the auth creds in session
+        session['credentials'] = credentials_to_dict(cbFlow.credentials)
+        session['loggedIn'] = True
+        session['user_name'] = "Faraz"
+        session['user_type'] = "admin"
+
+        # Redirect to the frontend
+        return redirect(os.environ.get('AUTH_REDIRECT_URL', "http://localhost:3000/"))
+    except Exception as e:
+        print(str(e))
+        return redirect("http://localhost:3000/")
+
+def credentials_to_dict(credentials):
+  return {'token': credentials.token,
+          'refresh_token': credentials.refresh_token,
+          'token_uri': credentials.token_uri,
+          'client_id': credentials.client_id,
+          'client_secret': credentials.client_secret,
+          'scopes': credentials.scopes}
 
 @Auth.route('/logout', methods=['GET'])
 def logout():

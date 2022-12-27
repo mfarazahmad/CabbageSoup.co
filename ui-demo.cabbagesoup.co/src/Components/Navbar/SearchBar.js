@@ -68,7 +68,7 @@ const SearchBar = (props) => {
     );
 
     return (
-        <div>
+        <div className='searchBar'>
             <Search
                 className="productSearch"
                 placeholder="What are you looking for..."

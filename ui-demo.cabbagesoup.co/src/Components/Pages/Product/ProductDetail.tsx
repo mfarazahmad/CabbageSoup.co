@@ -1,5 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 
@@ -11,6 +12,9 @@ import { DetailedProducts } from '../../../models/cart';
 
 function ProductDetail(props: any) {
 
+    let location = useLocation();
+    const productID = location.state.product.product_id || '1';
+
     const [product, setProduct] = useState<DetailedProducts>();
     const [inventoryData, setInventoryData] = useState([]);
 
@@ -20,7 +24,7 @@ function ProductDetail(props: any) {
 
     const getProductDetails = async () => {
         try {
-            let productInfo = await getAllProducts(props.location.state.product.product_id);
+            let productInfo = await getAllProducts(productID);
             if (productInfo) setProduct(productInfo[0]);
             else {
                 console.log('Failed to load product details!')

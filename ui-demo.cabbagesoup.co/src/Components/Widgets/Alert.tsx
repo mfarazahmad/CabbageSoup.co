@@ -6,7 +6,7 @@ import { PopupAlertHandler } from '../../models/alert';
 function CustomAlert(props: PopupAlertHandler) {
 
     return (
-        <>
+        <div className="customAlert">
         { props.show &&
             <Alert
                 message={props.message}
@@ -17,7 +17,7 @@ function CustomAlert(props: PopupAlertHandler) {
                 afterClose={props.closeAlert}
             />
         }
-        </>
+        </div>
     );
 }
 
