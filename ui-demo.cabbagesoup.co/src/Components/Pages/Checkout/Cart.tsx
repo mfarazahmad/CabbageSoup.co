@@ -71,7 +71,7 @@ const Cart =  (props:any) => {
         </Link>
         <div className="shopping">
             <div className="cartTitle">
-              <h3>Cart</h3>
+              <h3 style={{'color': 'black'}}>Cart</h3>
               <h3>{props.totalQty} items</h3>
             </div>
             {props.cartData ? 
@@ -81,7 +81,7 @@ const Cart =  (props:any) => {
                 /> :
                 <Empty />
             }
-            <h2>Total: <span id="cartTotal">${props.cartTotal}</span></h2>
+            <h2 style={{'color': 'black'}}>Total: <span id="cartTotal">${props.cartTotal}</span></h2>
             <Button type="primary" className='checkoutBtn' onClick={handleCheckout}>Checkout</Button>
         </div>
       </div>

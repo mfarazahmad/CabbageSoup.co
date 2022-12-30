@@ -8,8 +8,6 @@ function App(props:any) {
     const handleCart = props.handleCart;
     const handleLogin = props.handleLogin;
 
-    const getCart = props.getCart;
-
     const resetCart = props.resetCart;
     const cartData = props.cartData;
     const cartTotal = props.cartTotal;
@@ -31,7 +29,7 @@ function App(props:any) {
                             return <Route
                                 path={path}
                                 key={key}
-                                element={<ScrollToTop> <Component {...props} getCart={getCart} totalQty={totalQty} cartTotal={cartTotal} cartData={cartData} resetCart={resetCart} handleLogin={handleLogin} handleCart={handleCart} handleDetailPage={handleDetailPage} start={startProps} /> </ScrollToTop>}
+                                element={<ScrollToTop> <Component {...props} totalQty={totalQty} cartTotal={cartTotal} cartData={cartData} resetCart={resetCart} handleLogin={handleLogin} handleCart={handleCart} handleDetailPage={handleDetailPage} start={startProps} /> </ScrollToTop>}
                             />
                         }
                     )}

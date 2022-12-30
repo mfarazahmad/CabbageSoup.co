@@ -15,8 +15,7 @@ function ViewOrders(props) {
     const [originalData, setOrginalData] = useState("")
 
     useEffect(() => {
-        console.log("HARIS")
-        axios.get( process.env.REACT_APP_ANALYTICS_ENGINE + "/query/orders")
+        axios.get( process.env.REACT_APP_SERVICE_HISTORY + "/query/orders")
         .then((response) => {
             console.log(response['data']);
             let output = [];

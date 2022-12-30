@@ -31,14 +31,12 @@ const Container = () => {
     const [cartTotal, setCartTotal] = useState<number>(0);
 
     useEffect(() => {
-        axios.defaults.withCredentials = true;
         getCart();
     }, []);
 
     const getCart = async () => {
         try {
             let data = await getUserCart();
-            console.log(data);
             if (data.err === '' && data.data) {
                 data = data.data
                 setCart(data['cartData']);
@@ -146,6 +144,7 @@ const Container = () => {
                 } else {
                     setLoggedIn(false);
                     setIsLoading(false);
+                    window.location.reload();
                 }
             }
         } catch (err) {
@@ -194,7 +193,7 @@ const Container = () => {
                 </Suspense>
 
                 <App {...{ 
-                        showLoading, showAlert, getCart, handleCart, handleLogin, resetCart, 
+                        showLoading, showAlert, handleCart, handleLogin, resetCart, 
                         cartData, cartTotal, totalQty}
                     }
                 />

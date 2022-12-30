@@ -17,13 +17,13 @@ if CFG['env'] == 'dev':
 def checkAuth():
     try:
         isLoggedIn = session.get('loggedIn')
-        print(isLoggedIn)
 
         if isLoggedIn:
             resp = {
                 'data':  {
                     'user_name': session.get('user_name'), 
-                    'user_type': session.get('user_type')
+                    'user_type': session.get('user_type'),
+                    'user_img': session.get('user_img')
                 }, 
                 'msg': 'User is logged in!', 
                 'err':''
@@ -78,6 +78,7 @@ def login():
             session['loggedIn'] = True
             session['user_name'] = loginData['user_name']
             session['user_type'] = user_type
+            session["user_img"] = ""
 
             resp = {'user_type': user_type, 'msg': 'Verified User!', 'err':''}
         else: 
@@ -127,12 +128,14 @@ def oauthCallback():
 
         token = getAccessToken(payload)
         userInfo = getUserInfo(token)
+        print(userInfo)
 
         # Store the auth creds in session
         session["credentials"] = token
         session["loggedIn"] = True
         session["user_name"] = userInfo["given_name"]
         session["user_type"] = "admin"
+        session["user_img"] = userInfo["picture"]
 
         resp = {'data': session['user_name'], 'msg': 'Verified User!', 'err':""}
     except Exception as e:

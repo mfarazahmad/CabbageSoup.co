@@ -4,11 +4,13 @@ import moment from 'moment';
 import axios from 'axios';
 
 import { DatePicker } from 'antd';
+import {Tooltip} from "react-tooltip";
 import 'antd/dist/reset.css';
 
 const TotalSales = lazy(() => import("./Charts/TotalSales"));
 const AverageOrderChart = lazy(() => import("./Charts/AverageOrderChart"));
 const OrderCountChart = lazy(() => import("./Charts/OrderCountChart"));
+const MapChart = lazy(() => import("./Charts/MapChart"));
 
 
 function AnalyticsCharts() {
@@ -17,6 +19,7 @@ function AnalyticsCharts() {
     const { RangePicker } = DatePicker;
     const [dateFound, setdateFound] = useState({begdate: moment('2019-12-01', dateFormat), enddate: moment('2019-12-07', dateFormat)});
     const [clicker, setClicker] = useState(0);
+    const [content, setContent] = useState("");
 
     const [totalSaleData, setTotalSaleData] = useState({chartData:{
       labels: ["January", "February", "March", "April", "May", "June", "July"],
@@ -119,7 +122,7 @@ function AnalyticsCharts() {
     return (
       <section className="analyticsDisplay">
         <RangePicker 
-          defaultValue={[moment('2019-12-01', dateFormat), moment('2019-12-07', dateFormat)]}
+          //defaultValue={[moment('2019-12-01', dateFormat), moment('2019-12-07', dateFormat)]}
           disabled={[true, true]}
           className='changeAnalyticsRange' 
           onChange={(dates, dateStrings) => 
@@ -128,13 +131,21 @@ function AnalyticsCharts() {
           />
 
         <Suspense fallback={<div>Loading...</div>}>
-          <h4>Total Orders</h4>
+          <h4 style={{'color': 'black'}}>Total Orders</h4>
+          <AverageOrderChart data={averageOrder}/>
+          
+          {/** 
+           <h4>Total Orders</h4>
           <AverageOrderChart data={averageOrder}/>
           <h4>Total Sales</h4>
           <OrderCountChart data={totalOrders}/>
           <h4>Total Average Orders</h4>
-          <TotalSales data={totalSaleData}/>
-        </Suspense>
+          <TotalSales data={totalSaleData}/> 
+          */}
+
+          <MapChart setTooltipContent={setContent}  />
+            <Tooltip style={{'color': 'black'}}>{content}</Tooltip>
+          </Suspense>
 
       </section>
     );

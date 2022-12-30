@@ -43,11 +43,11 @@ const MapChart = ({ setTooltipContent }) => {
                   const { name } = geo.properties;
                   settingState(`${name}`)
                   const endpoint = process.env.REACT_APP_ANALYTICS_ENGINE + `/analytics/map?state=${findState}`
-                  endpoint)
-              .then(res => {
-                settingnumberofcustomers(res.data)
-                console.log(res.data)
-              })
+                  axios.get(endpoint)
+                  .then(res => {
+                    settingnumberofcustomers(res.data)
+                    console.log(res.data)
+                  })
                   setTooltipContent(`${name} has ${numerberofcustomers} customers`);
                 }}
             onMouseLeave={() => {

@@ -13,21 +13,24 @@ def viewOrders():
 
     data = []
     try:
-        db.connect('orders')
+        db.connect('history')
         if user_name:
             data = db.get({"user_name": user_name})
         else:
             # Check to see if data is already retreived
+            user_name = 'for Admin'
             userType = session.get('user_type', None)
             searchData = session.get('search', None)
 
-            if searchData and 'history' in searchData and userType != 'admin':
+            if searchData and 'history' in searchData and userType != 'admin' and userType:
+                print(searchData and 'history' in searchData )
                 data = searchData['history']
             else:
                 # Retrieve all data
                 data = db.get()
-                # Sessions aren't working cross-origin
-                #session['search'] = {'history': data}
+                print(data)
+                if userType and userType != 'admin':
+                    session['search'] = {'history': data}
 
         if limit:
             if len(data) > int(limit):
@@ -52,7 +55,7 @@ def viewOrderByOrderNumber(order_number):
 
     data = []
     try:
-        db.connect('orders')
+        db.connect('history')
         db.get({"order_number": order_number})
 
         msg = f'Order {order_number} found!'
@@ -74,7 +77,7 @@ def addOrder():
     try:
         incomingData = request.json
 
-        db.connect('orders')
+        db.connect('history')
         db.save(incomingData)
 
         data = incomingData[0]['order_number']
@@ -96,7 +99,7 @@ def updateOrder(order_number):
     try:
         incomingData = request.json
 
-        db.connect('orders')
+        db.connect('history')
         db.update({'order_number': order_number}, incomingData)
 
         msg = 'Successfully saved Order!'
@@ -111,7 +114,7 @@ def updateOrder(order_number):
 
 @Query.route('/orders/<order_number>', methods=['DELETE'])
 def deleteOrder(order_number):
-    db.connect('orders')
+    db.connect('history')
     try:
         db.delete({'order_number': order_number})
         msg = 'Successfully deleted Order!'

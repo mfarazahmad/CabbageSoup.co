@@ -33,7 +33,7 @@ const Dashboard = () => {
                 </Col>
                 <Col span={10}>
                     <div className="trackingBox">
-                        <h5>Order <strong>CS5280157ZZ021</strong></h5>
+                        <h5 style={{'color': 'black'}}>Order <strong>CS5280157ZZ021</strong></h5>
 
                         <Map 
                             defaultCenter={[50.879, 4.6997]} 

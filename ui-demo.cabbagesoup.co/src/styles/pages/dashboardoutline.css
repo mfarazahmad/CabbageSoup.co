@@ -179,6 +179,7 @@
         height: 60%;
         width: 10%;
         margin-left: 6%;
+        border-radius: 50%;
     }
 
 }
@@ -201,6 +202,7 @@
         height: 60%;
         width: 15%;
         margin-left: 6%;
+        border-radius: 50%;
     }
 
     #dashboardoutline .profilepic {

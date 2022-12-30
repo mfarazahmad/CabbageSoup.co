@@ -1,19 +1,18 @@
 import axios from "axios";
 import { AuthCheck, NewAuth } from "../models/auth";
 
-export async function getUserName():Promise<AuthCheck> {
+export const getUserName = async():Promise<AuthCheck> => {
+    axios.defaults.withCredentials = true;
     const endpoint = `${process.env.REACT_APP_SERVICE_AUTH}/auth/check`;
-    const headers = {headers: { "withCredentials": "true"}};
 
-    let response = await axios.get(endpoint, headers);
+    let response = await axios.get(endpoint);
     console.log(response);
 
-    let userData = response['data']['data'];
-
-    return userData;
+    let data = response['data']['data'];
+    return data;
 }
 
-export const saveUserCredentials = async (user: NewAuth) => {
+export const saveUserCredentials = async(user: NewAuth) => {
     const endpoint = `${process.env.REACT_APP_SERVICE_AUTH}/auth/create`;
     const headers = { headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*', } };
     
@@ -34,27 +33,29 @@ export const logUserIn = async (payload: any) => {
     return response
 }
 
-export const oauthUserLogin = () => {
+export const oauthUserLogin = async () => {
+    axios.defaults.withCredentials = true;
     const endpoint: string | Location = `${process.env.REACT_APP_SERVICE_AUTH}/auth/oauth`;
     (<any> window).location = endpoint;
 }
 
 export const oauthCallBack = async (payload: any) => {
+    axios.defaults.withCredentials = true;
+    // Save auth login to User Session
     const endpoint = `${process.env.REACT_APP_SERVICE_AUTH}/auth/oauth/callback`;
-    const headers = { headers: { "withCredentials": "true" } };
 
-    let response = await axios.post(endpoint, payload, headers);
+    let response = await axios.post(endpoint, payload)
     console.log(response);
 
     return response
 }
 
 export const logUserOut = async () => {
+    axios.defaults.withCredentials = true;
     const endpoint = `${process.env.REACT_APP_SERVICE_AUTH}/auth/logout`;
-    const headers = { headers: { "withCredentials": "true"}};
 
-    let response = await axios.get(endpoint, headers);
-    let respData = response['data']['data'];
+    let response = await axios.get(endpoint);
+    let respData = response['data']['msg'];
 
     return respData
 }

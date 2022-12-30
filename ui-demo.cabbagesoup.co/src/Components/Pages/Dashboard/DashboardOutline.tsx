@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, lazy, Suspense } from 'react';
 import { useNavigate } from 'react-router-dom';
 import 'antd/dist/reset.css';
 
+import { getUserName } from '../../../service/auth';
+
 import homeicon from '../../../images/home.webp'
 import pinkhome from '../../../images/homepink.webp'
-
 import inventoryicon from '../../../images/inventory.webp'
 import customericon from '../../../images/customer.webp'
 import ordersicon from '../../../images/orders.webp'
@@ -15,16 +16,16 @@ import inventorypink from '../../../images/inventory_pink.webp'
 import logo from '../../../images/logo.webp'
 import profilepic from '../../../images/contact_img.webp'
 
-import InventoryChart from './ViewModifyInventory'
-import CustomerChart from './ViewCustomers'
-import OrderChart from './ViewOrders'
-import Dashboard from './Dashboard';
-import { getUserName } from '../../../service/auth';
+const Dashboard = lazy(() => import('./Dashboard'));
+const OrderChart = lazy(() => import('./ViewOrders'));
+const CustomerChart = lazy(() => import('./ViewCustomers'));
+const InventoryChart = lazy(() => import('./ViewModifyInventory'));
 
 function DashboardOutline(props:any) {
 
     const [chartType, setChartType] = useState("analytics")
     const [username, setUsername] = useState("")
+    const [profileImg, setProfileImg] = useState("")
 
     const navigate = useNavigate();
 
@@ -36,6 +37,7 @@ function DashboardOutline(props:any) {
         let user = await getUserName();
         if (user) {
             setUsername(user.user_name);
+            setProfileImg(user.user_img);
             if (user.user_type === 'admin') {
                 //setAdmin(true);
             }
@@ -54,7 +56,7 @@ function DashboardOutline(props:any) {
     return (
         <main className="page" id="dashboardoutline">
             <section className="mainDisplay">
-                <img className="dashboardlogo" src={logo}></img>
+                <img className="dashboardlogo" referrerPolicy="no-referrer" src={profileImg}></img>
                 <div>
                     <div className="dashboardheadingtitle"> Hi {username} </div>
                     <div className="dashboardheadingsubheading">Welcome Back</div>
@@ -121,18 +123,26 @@ function DashboardOutline(props:any) {
                     <div className="rightpannel">
                         <div className="charts">
                             {chartType === 'analytics' && (
-                                <Dashboard />
+                                <Suspense fallback='<div>Loading...</div>'>
+                                    <Dashboard />
+                                </Suspense>
                             )}
                             {chartType === 'orders' && (
-                                <OrderChart />
+                                <Suspense fallback='<div>Loading...</div>'>
+                                    <OrderChart />
+                                </Suspense>
                             )}
                             {chartType === 'inventory' && (
                                 <div id="inventoryChart">
-                                    <InventoryChart />
+                                    <Suspense fallback='<div>Loading...</div>'>
+                                        <InventoryChart />
+                                    </Suspense> 
                                 </div>
                             )}
                             {chartType === 'customer' && (
-                                <CustomerChart />
+                                <Suspense fallback='<div>Loading...</div>'>
+                                    <CustomerChart />
+                                </Suspense>
                             )}
                         </div>
                     </div>

@@ -6,9 +6,9 @@ export const getUserAccount = async (username: string, email?: string) => {
     let args = `?user_name=${username}`;
     if (email) args = `?email=${email}`;
     const endpoint = `${process.env.REACT_APP_SERVICE_CUSTOMER}/query/customer${args}`;
-    const headers = {headers: { "withCredentials": "true" }};
+    axios.defaults.withCredentials = true;
 
-    let response = await axios.get(endpoint, headers);
+    let response = await axios.get(endpoint);
     let accountInfo = response["data"]["data"];
     console.log(accountInfo);
 
@@ -28,9 +28,9 @@ export const saveUserAccount = async (user:User) => {
 
 export const updateUserAccount = async (username: string, data: Account) => {
     const endpoint = `${process.env.REACT_APP_SERVICE_CUSTOMER}/query/customer/${username}`
-    const headers = {headers: { "withCredentials": "true" }};
+    axios.defaults.withCredentials = true;
 
-    let response = await axios.put(endpoint, data, headers);
+    let response = await axios.put(endpoint, data);
     let respData = response['data']['data'];
     console.log(respData);
 

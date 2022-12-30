@@ -7,7 +7,7 @@ import { ShoppingCartOutlined, UserOutlined, SettingOutlined, DashboardOutlined 
 
 import { Menu } from 'antd';
 import logo from '../../images/logo.svg';
-import { getUserName } from '../../service/auth';
+import { getUserName, oauthCallBack } from '../../service/auth';
 
 const Navbar = (props: any) => {
 
@@ -18,7 +18,11 @@ const Navbar = (props: any) => {
 
 	useEffect(() => {
 		refreshUser();
-	}, []);
+	}, [loggedIn]);
+
+	useEffect(() => {
+        authFlow();
+    }, []);
 
 	const refreshUser = async () => {
 		try {
@@ -38,7 +42,28 @@ const Navbar = (props: any) => {
 			console.log(err);
 			props.showAlert(true, 'error', "Error", "Failed to check user!");
 		}
-	} 
+	}
+
+	const authFlow = async() => {
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('code')) {
+            let authPayload = {
+                'code': urlParams.get('code'),
+                'state': urlParams.get('state'),
+                'scope': urlParams.get('scope')
+            }
+
+            let data:any = await oauthCallBack(authPayload);
+
+            if (data.err) {
+                props.showAlert(true, 'error', "Error!", "Unable to login user!");
+            } else {
+                console.log("User is logged in!");
+				refreshUser();
+                navigate('/');
+            }
+        }
+    }
 
 	const handleHome = (e: any) => {
 		console.log(e);

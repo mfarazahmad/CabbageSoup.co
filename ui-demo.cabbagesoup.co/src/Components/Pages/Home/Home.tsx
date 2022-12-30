@@ -1,11 +1,9 @@
 import React, {lazy, Suspense, useState, useEffect} from 'react';
-import { useNavigate } from "react-router-dom";
 
 import { Button, Rate, Menu } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
 
 import { getTopProducts } from '../../../service/product';
-import { oauthCallBack } from '../../../service/auth';
 
 import ecommercestats from '../../../images/ecommercestats.webp'
 import line from '../../../images/line.webp'
@@ -23,35 +21,9 @@ function Home(props: any ) {
     const [backgrounds, setbackground] = useState('top_selling');
     const [showreview, setreview] = useState('Sally Ride');
 
-    const navigate = useNavigate();
-
-    useEffect(() => {
-        authFlow();
-    }, []);
-
     useEffect(() => {
         getHomeProducts();
     }, []);
-
-    const authFlow = async() => {
-        const urlParams = new URLSearchParams(window.location.search);
-        if (urlParams.get('code')) {
-            let authPayload = {
-                'code': urlParams.get('code'),
-                'state': urlParams.get('state'),
-                'scope': urlParams.get('scope')
-            }
-
-            let data:any = await oauthCallBack(authPayload);
-
-            if (data.err) {
-                props.showAlert(true, 'error', "Error!", "Unable to login user!");
-            } else {
-                console.log("User is logged in!");
-                navigate('/');
-            }
-        }
-    }
 
     const getHomeProducts = async () => {
         try {

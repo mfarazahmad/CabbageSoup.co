@@ -4,9 +4,9 @@ import { Tracker, Product } from "../models/cart";
 
 export const getUserCart = async() => {
     const endpoint = `${process.env.REACT_APP_SERVICE_HISTORY}/query/cart`;
-    const headers = { headers: { "withCredentials": "true" } };
+    axios.defaults.withCredentials = true;
 
-    let response = await axios.get(endpoint, headers);
+    let response = await axios.get(endpoint);
     console.log(response);
 
     let data = response['data'];
@@ -16,10 +16,10 @@ export const getUserCart = async() => {
 export const saveUserCart = async(newCart: Product[], tracker: Tracker) => {
     // Save cart to User Session
     const endpoint = `${process.env.REACT_APP_SERVICE_HISTORY}/query/cart`;
-    const headers = { headers: { "withCredentials": "true" } };
+    axios.defaults.withCredentials = true;
     let payload = { 'cartData': newCart, 'cartTotal': tracker['total'], 'totalQty': tracker['totalQty'] };
 
-    let response = await axios.post(endpoint, payload, headers)
+    let response = await axios.post(endpoint, payload)
     console.log(response);
 
     return response

@@ -5,7 +5,6 @@
 ![](CabbageSoup.png)
 
 ## Coming Soon v2.1
-- Oauth2 Integration w/ Google
 - Moving Product Images from Linode Server to Amazon S3
 - Better Error Handling via Status Codes (401, 403 etc.)
 - Replacing Binary Search with Elastic for Text & Voice Search
@@ -13,7 +12,7 @@
     - Top Categories
     - Recommended Products
     - What you will buy next
-- Adding Redis Cacheing for Large Product Payloads
+- Unit Tests & 100% Code Coverage
 
 ## Services
 - Services Broken into a Domain Driven Microservices Architecture 
@@ -47,8 +46,7 @@ Service-History has a CQRS (Command-Query Responsbility Segregation) Architectur
 - Sensitive Configuration stored/ retrieved in Hasicorp Vault
 - MongoDB Cluster Sharding w/ 3 nodes
 - Logging using Datadog
-- 100% Code Coverage
-- Linters used: 
+- Oauth2 Integration w/ Google
 - Passwords are hashed using a Argon2id hash function using Blake2.
 
 ## Local Setup

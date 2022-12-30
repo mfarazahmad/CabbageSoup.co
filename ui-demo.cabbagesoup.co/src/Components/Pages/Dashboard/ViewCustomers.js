@@ -16,7 +16,7 @@ const { Search } = Input;
 const [originalData, setOrginalData] = useState("")
 
   useEffect(() => {
-      axios.get( process.env.REACT_APP_ANALYTICS_ENGINE + "/query/customer")
+      axios.get( process.env.REACT_APP_SERVICE_CUSTOMER + "/query/customer")
       .then((response) => {
           console.log(response['data']);
           let output = [];

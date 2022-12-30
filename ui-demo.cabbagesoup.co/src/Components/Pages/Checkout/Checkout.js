@@ -106,7 +106,7 @@ const Checkout = (props) => {
                     orderDetails[i]['user_name'] = data['user_name'];
                 }
 
-                const endpoint2 = process.env.REACT_APP_ANALYTICS_ENGINE + '/query/orders';
+                const endpoint2 = process.env.REACT_APP_SERVICE_HISTORY + '/query/orders';
                 axios.post(endpoint2, orderDetails, headers)
                     .then((response) => {
                         console.log(response);

@@ -5,8 +5,8 @@ export const getAllProducts = async (product_id?:string) => {
     if (product_id) args = `?id=${product_id}`;
 
     let endpoint = `${process.env.REACT_APP_SERVICE_PRODUCTS}/query/product${args}`;
-    const headers = {headers: { "withCredentials": "true" }};
-    let response = await axios.get(endpoint, headers);
+    axios.defaults.withCredentials = true;
+    let response = await axios.get(endpoint);
     
     console.log(response)
     let data = response['data']['data'];
@@ -17,8 +17,8 @@ export const getAllProducts = async (product_id?:string) => {
 
 export const getTopProducts = async (limit: number) => {
     let endpoint = `${process.env.REACT_APP_SERVICE_PRODUCTS}/query/product?limit=${limit}`;
-    const headers = {headers: { "withCredentials": "true" }};
-    let response = await axios.get(endpoint, headers);
+    axios.defaults.withCredentials = true;
+    let response = await axios.get(endpoint);
     
     console.log(response)
     let data = response['data']['data'];
@@ -29,8 +29,8 @@ export const getTopProducts = async (limit: number) => {
 
 export const saveProduct = async (product: any) => {
     let endpoint = `${process.env.REACT_APP_SERVICE_PRODUCTS}/query/product`;
-    const headers = {headers: { "withCredentials": "true" }};
-    let response = await axios.post(endpoint, product, headers);
+    axios.defaults.withCredentials = true;
+    let response = await axios.post(endpoint, product);
     console.log(response)
     let data = response['data']['data'];
 
@@ -40,8 +40,8 @@ export const saveProduct = async (product: any) => {
 
 export const deleteProduct = async (product_id: any) => {
     let endpoint = `${process.env.REACT_APP_SERVICE_PRODUCTS}/query/product/${product_id}`;
-    const headers = {headers: { "withCredentials": "true" }};
-    let response = await axios.delete(endpoint, headers);
+    axios.defaults.withCredentials = true;
+    let response = await axios.delete(endpoint);
     console.log(response)
     let data = response['data']['data'];
 
