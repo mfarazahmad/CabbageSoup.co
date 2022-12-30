@@ -1,7 +1,7 @@
 import traceback, json, gzip
 from flask import jsonify, request, session
 
-from Routes.Search import Search, db
+from routes.Search import Search, db
 from utils.algorithms.searching import linearSearch, binarySearch
 
 # TODO: Add in Binary Search Logic

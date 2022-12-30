@@ -1,36 +1,43 @@
 import traceback, os
 
-from flask import jsonify, session, request, redirect, url_for
+from flask import jsonify, session, request, redirect
 import google_auth_oauthlib.flow as flow
 
-from Routes import Auth, db
+from routes import Auth, db
 from service.hasher import hashPassword, verifyUser
+from service.oauth.google import getUserInfo, getAccessToken
+from utils.helpers import openSecretsFile
+from config.config import CFG
 
 # Prevents OAuthlib from raising an error requiring HTTPS
-if os.environ.get('ENV') == 'dev':
+if CFG['env'] == 'dev':
     os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
 
 @Auth.route('/check', methods=['GET'])
 def checkAuth():
     try:
-         if session.get('loggedIn'):
-            msg = 'User is logged in!'
-            data = {'user_name': session.get('user_name'), 'user_type': session.get('user_type')}
-            error = ''
-         else:
-            msg = 'User is not logged in!'
-            error = ''
-            data = None
+        isLoggedIn = session.get('loggedIn')
+        print(isLoggedIn)
+
+        if isLoggedIn:
+            resp = {
+                'data':  {
+                    'user_name': session.get('user_name'), 
+                    'user_type': session.get('user_type')
+                }, 
+                'msg': 'User is logged in!', 
+                'err':''
+            }
+        else:
+            resp = {'data': None, 'msg': 'User is not logged in!', 'err':''}
     except Exception as e:
         print(traceback.format_exc())
-        error = str(e)
-        msg = 'Failed to verify user'
-        data = None
+        resp = {'data': None, 'msg': 'Failed to verify user', 'err':str(e)}
     
-    return jsonify({'data': data, 'msg': msg, 'err':error})  
+    return jsonify(resp)
 
-@Auth.route('/create/credentials', methods=['POST'])
-def createAuthCreds():
+@Auth.route('/create', methods=['POST'])
+def createCreds():
     try:
         loginData = request.json
 
@@ -44,20 +51,15 @@ def createAuthCreds():
             session['loggedIn'] = True
             session['user_name'] = loginData["user_name"]
             session['user_type'] = loginData["user_type"]
-            msg = 'User is logged in'
-            error = ''
-            user_type = loginData["user_type"]
+
+            resp = {'user_type': loginData["user_type"], 'msg': 'Created User!', 'err':''}
         else: 
-            msg = 'Cant Login User'
-            error = 'Failed to create credentials!'
-            user_type = ''
+            resp = {'data': '', 'msg': 'Cant Login User', 'err':'Failed to create credentials!'}
     except Exception as e:
         print(traceback.format_exc())
-        user_type = ''
-        error = str(e)
-        msg = 'Failed to login user'
+        resp = {'data': '', 'msg': 'Failed to login user', 'err':str(e)}
     
-    return jsonify({'data': user_type, 'msg': msg, 'err':error})
+    return jsonify(resp)
 
 @Auth.route('/login', methods=['POST'])
 def login():
@@ -76,85 +78,76 @@ def login():
             session['loggedIn'] = True
             session['user_name'] = loginData['user_name']
             session['user_type'] = user_type
-            msg = 'User is logged in'
-            error = ''
+
+            resp = {'user_type': user_type, 'msg': 'Verified User!', 'err':''}
         else: 
-            msg = 'Cant Login User'
-            error = 'Credentials not found!'
-            user_type = ''
+            resp = {'user_type': '', 'msg': 'Cant Login User', 'err':'Credentials not found!'}
     except Exception as e:
         print(traceback.format_exc())
-        user_type = ''
-        error = str(e)
-        msg = 'Failed to login user'
+        resp = {'data': None, 'msg': 'Failed to login user', 'err':str(e)}
     
-    return jsonify({'user_type': user_type, 'msg': msg, 'err':error})  
+    return jsonify(resp)
 
 @Auth.route('/oauth', methods=['GET'])
-def oauthLogin():
+def oauth():
     try:
         # Setup a flow instance to authorize to Google
-        authFlow = flow.Flow.from_client_secrets_file('oauthSecret.json', scopes=["https://www.googleapis.com/auth/cloud-platform.read-only"])
-        authFlow.redirect_uri = url_for('Auth.oauthLoginCallback', _external=True)
+        scopes = CFG["auth_scopes"].split(',')
+        authFlow = flow.Flow.from_client_secrets_file('oauthSecret.json', scopes=scopes)
+        authFlow.redirect_uri = f'{CFG["auth_url"]}'
 
-        authorization_url, state = authFlow.authorization_url(
+        auth_url, state = authFlow.authorization_url(
             access_type='offline',
             prompt='select_account',
             include_granted_scopes='true'
         )
 
-        session['state'] = state
+        print(auth_url)
 
         # Redirect the user to Google for authorization
-        return redirect(authorization_url)
-
+        return redirect(auth_url)
     except Exception as e:
-        print(str(e))
-        return redirect("http://localhost:3000/")
+        print(traceback.format_exc())
+        return redirect(f'{CFG["auth_url"]}/?login=failed')
 
-@Auth.route('/oauth/callback', methods=['GET'])
-def oauthLoginCallback():
+@Auth.route('/oauth/callback', methods=['POST'])
+def oauthCallback():
     try:
-        state = session['state']
+        auth = request.json
+        print(auth)
 
-         # Resetup the same flow state to verify the auth to Google
-        cbFlow = flow.Flow.from_client_secrets_file('oauthSecret.json', scopes=["https://www.googleapis.com/auth/cloud-platform.read-only"], state=state)
-        cbFlow.redirect_uri = url_for('Auth.oauthLoginCallback', _external=True)
+        oauthSecret = openSecretsFile()
+        payload = {
+            "code": auth['code'],	
+            "grant_type":"authorization_code",
+            "redirect_uri": CFG["auth_url"],
+            "client_secret": oauthSecret['client_secret'],	
+            "client_id": oauthSecret['client_id']
+        }
 
-        # Verify the authorization flow worked out
-        authorization_response = request.url
-        cbFlow.fetch_token(authorization_response=authorization_response)
+        token = getAccessToken(payload)
+        userInfo = getUserInfo(token)
 
         # Store the auth creds in session
-        session['credentials'] = credentials_to_dict(cbFlow.credentials)
-        session['loggedIn'] = True
-        session['user_name'] = "Faraz"
-        session['user_type'] = "admin"
+        session["credentials"] = token
+        session["loggedIn"] = True
+        session["user_name"] = userInfo["given_name"]
+        session["user_type"] = "admin"
 
-        # Redirect to the frontend
-        return redirect(os.environ.get('AUTH_REDIRECT_URL', "http://localhost:3000/"))
+        resp = {'data': session['user_name'], 'msg': 'Verified User!', 'err':""}
     except Exception as e:
-        print(str(e))
-        return redirect("http://localhost:3000/")
-
-def credentials_to_dict(credentials):
-  return {'token': credentials.token,
-          'refresh_token': credentials.refresh_token,
-          'token_uri': credentials.token_uri,
-          'client_id': credentials.client_id,
-          'client_secret': credentials.client_secret,
-          'scopes': credentials.scopes}
+        print(traceback.format_exc())
+        resp = {'data': None, 'msg': 'Failed to verify user', 'err':str(e)}
+    
+    return jsonify(resp) 
 
 @Auth.route('/logout', methods=['GET'])
 def logout():
     try:
         session.clear()
-        msg = 'User is logged out'
-        error = ''
+        resp = {'msg': 'User is logged out', 'err':''}
     except Exception as e:
         print(traceback.format_exc())
-        error = str(e)
-        msg = 'Failed to logout user'
+        resp = {'msg': 'Failed to logout user', 'err':str(e)}
     
-    return jsonify({'msg': msg, 'err':error})  
-
+    return jsonify(resp)

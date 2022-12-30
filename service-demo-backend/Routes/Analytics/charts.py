@@ -3,7 +3,7 @@ from flask import Flask, Blueprint, jsonify, session, request
 from flask_cors import CORS
 import statistics
 
-from Routes.Analytics import Analytics, db
+from routes.Analytics import Analytics, db
 
 @Analytics.route('/map', methods=['GET'])
 def mapChart():

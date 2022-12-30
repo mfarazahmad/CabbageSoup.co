@@ -1,23 +1,33 @@
-import os, traceback
-from dotenv import load_dotenv
+import os, traceback, datetime
 
 from flask import Flask
 from flask_cors import CORS
+from flask_session import Session
+from redis import Redis
 
-# Take environment variables from .env.
-dotenv_path = os.path.join(os.path.dirname(__file__), '.env')
-load_dotenv(dotenv_path)
+from config.config import CFG
 
 app = Flask(__name__)
-app.config.update(  SECRET_KEY=os.urandom(12).hex(),
-                    SESSION_COOKIE_SAMESITE="Lax", 
-                    #SESSION_COOKIE_HTTPONLY=True,
-                    #SESSION_COOKIE_SAMESITE="None", 
-                    #SESSION_COOKIE_SECURE=True,
+app.config.update(  SECRET_KEY=CFG["secret"],
+                    SESSION_COOKIE_NAME="session_auth",
+                    SESSION_TYPE='redis',
+                    SESSION_REDIS=Redis(host=CFG["redis"], port=6379),
+
+                    SESSION_PERMANENT=False,
+                    PERMANENT_SESSION_LIFETIME=datetime.timedelta(minutes=180),
+                    SESSION_USE_SIGNER=True,
+                    
+                    SESSION_PORT=6889,
+                    SESSION_COOKIE_HTTPONLY=False,
+                    SESSION_COOKIE_SAMESITE="lax", 
+                    SESSION_COOKIE_SECURE=False,
+                    #SESSION_COOKIE_DOMAIN="127.0.0.1",
                 )
 CORS(app)
+sess = Session()
+sess.init_app(app)
 
-from Routes import Auth
+from routes import Auth
 try:
     app.register_blueprint(Auth)
 except Exception as e:

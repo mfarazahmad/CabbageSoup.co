@@ -16,7 +16,7 @@ def middleware_for_response(response):
 
 
 # Connect to DB
-db = DB(os.environ.get("DB_CONNECTION_STRING"), 'analytics') #'history'
+db = DB(os.environ.get("DB_CONNECTION_STRING"), os.environ.get("DB_CONNECTION_DB", "history"))
 
-from Routes.cart import *
-from Routes.history import *
+from routes.cart import *
+from routes.history import *

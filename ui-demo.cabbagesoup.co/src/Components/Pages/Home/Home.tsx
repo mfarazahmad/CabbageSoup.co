@@ -1,21 +1,21 @@
 import React, {lazy, Suspense, useState, useEffect} from 'react';
+import { useNavigate } from "react-router-dom";
 
 import { Button, Rate, Menu } from 'antd';
+import { UserOutlined } from '@ant-design/icons';
+
+import { getTopProducts } from '../../../service/product';
+import { oauthCallBack } from '../../../service/auth';
 
 import ecommercestats from '../../../images/ecommercestats.webp'
 import line from '../../../images/line.webp'
 import truck from '../../../images/truck.webp'
 import twentyfourhr from '../../../images/24hr.webp'
 import box from '../../../images/box.webp'
-//import splash from '../../../images/splash.webp'
 import bannerproduct1 from '../../../images/bannerproduct1.webp'
 import bannerproduct2 from '../../../images/bannerproduct2.webp'
 
-import { UserOutlined } from '@ant-design/icons';
-import { getTopProducts } from '../../../service/product';
-
 const Product = lazy(() => import('../Product/Product'));
-
 
 function Home(props: any ) {
 
@@ -23,9 +23,35 @@ function Home(props: any ) {
     const [backgrounds, setbackground] = useState('top_selling');
     const [showreview, setreview] = useState('Sally Ride');
 
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        authFlow();
+    }, []);
+
     useEffect(() => {
         getHomeProducts();
     }, []);
+
+    const authFlow = async() => {
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('code')) {
+            let authPayload = {
+                'code': urlParams.get('code'),
+                'state': urlParams.get('state'),
+                'scope': urlParams.get('scope')
+            }
+
+            let data:any = await oauthCallBack(authPayload);
+
+            if (data.err) {
+                props.showAlert(true, 'error', "Error!", "Unable to login user!");
+            } else {
+                console.log("User is logged in!");
+                navigate('/');
+            }
+        }
+    }
 
     const getHomeProducts = async () => {
         try {
@@ -176,7 +202,7 @@ function Home(props: any ) {
                 </div>
                 <div className="productShowcase">
                     {inventoryData && inventoryData.map(
-                        (product, count) => { return <Suspense fallback={<div>Loading...</div>}> <Product key={count} product={product} handleCart={props.handleCart} handleDetailPage={props.handleDetailPage} /> </Suspense> }
+                        (product, key) => { return <Suspense fallback={<div>Loading...</div>}> <Product key={key} product={product} handleCart={props.handleCart} handleDetailPage={props.handleDetailPage} /> </Suspense> }
                     )}
                 </div>
             </section>
@@ -221,7 +247,7 @@ function Home(props: any ) {
                 </div>
                 <div className="productShowcase">
                     {inventoryData && inventoryData.map(
-                        (product, count) => { return <Suspense fallback={<div>Loading...</div>}> <Product key={count} product={product} handleCart={props.handleCart} handleDetailPage={props.handleDetailPage}/> </Suspense> }
+                        (product, key) => { return <Suspense fallback={<div>Loading...</div>}> <Product key={key} product={product} handleCart={props.handleCart} handleDetailPage={props.handleDetailPage}/> </Suspense> }
                     )}
                 </div>
             </section>

@@ -1,7 +1,7 @@
 import traceback
 from flask import jsonify, session, request
 
-from Routes import Query, db
+from routes import Query, db
 from cspycore.performance import gzipResponse
 
 

@@ -1,12 +1,13 @@
 from flask import Blueprint
-from flask_cors import CORS
 import os
+from flask_cors import CORS
+
+from config.config import CFG
 
 from cspycore.repo import DB
 
 Auth = Blueprint("Auth", __name__, url_prefix="/auth")
-CORS(Auth)
-
+CORS(Auth, CORS_ORIGINS=CFG["whitelist"].split(','))
 
 @Auth.after_request
 def middleware_for_response(response):
@@ -16,6 +17,6 @@ def middleware_for_response(response):
 
 
 # Connect to DB
-db = DB(os.environ.get("DB_CONNECTION_STRING"), 'analytics') #'auth'
+db = DB(CFG["mongo_host"], CFG["mongo_db"])
 
-from Routes.auth import *
+from routes.auth import *

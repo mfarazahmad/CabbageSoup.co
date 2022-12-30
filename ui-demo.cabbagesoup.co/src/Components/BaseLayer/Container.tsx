@@ -18,7 +18,6 @@ const CustomAlert = lazy(() => import('../Widgets/Alert'))
 const Container = () => {
 
     const [loggedIn, setLoggedIn] = useState<boolean>(false);
-    const [shouldLoadFB, setFB] = useState<boolean>(false);
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [alertMsg, setDisplayDetails] = useState<PopupAlert>({
         show: false,
@@ -32,15 +31,15 @@ const Container = () => {
     const [cartTotal, setCartTotal] = useState<number>(0);
 
     useEffect(() => {
-        axios.defaults.withCredentials = true
+        axios.defaults.withCredentials = true;
         getCart();
     }, []);
 
     const getCart = async () => {
-        console.log('Getting Cart');
         try {
             let data = await getUserCart();
-            if (data.error === '') {
+            console.log(data);
+            if (data.err === '' && data.data) {
                 data = data.data
                 setCart(data['cartData']);
                 if (data['cartTotal'] < 0) {
@@ -54,7 +53,7 @@ const Container = () => {
             }
         } catch (err) {
             console.log(err);
-            showAlert(true, 'error', "Error", "Failed to load cart!");
+            //showAlert(true, 'error', "Error", "Failed to load cart!");
         }
     }
 
@@ -156,6 +155,10 @@ const Container = () => {
         }
     };
 
+    const refreshLogin = (isLoggedIn: any) => {
+        setLoggedIn(isLoggedIn);
+    }
+
     const showLoading = () => {
         setIsLoading(!isLoading);
     }
@@ -175,6 +178,7 @@ const Container = () => {
                     totalQty={totalQty} 
                     loggedIn={loggedIn} 
                     showAlert={showAlert}
+                    refreshLogin={refreshLogin}
                 />
 
                 {isLoading && <Loader />}
@@ -190,7 +194,7 @@ const Container = () => {
                 </Suspense>
 
                 <App {...{ 
-                        showLoading, showAlert, handleCart, handleLogin, resetCart, 
+                        showLoading, showAlert, getCart, handleCart, handleLogin, resetCart, 
                         cartData, cartTotal, totalQty}
                     }
                 />

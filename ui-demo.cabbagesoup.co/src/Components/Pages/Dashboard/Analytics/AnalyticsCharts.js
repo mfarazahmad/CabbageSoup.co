@@ -3,12 +3,12 @@ import React, { useEffect, useState, Suspense, lazy } from 'react';
 import moment from 'moment';
 import axios from 'axios';
 
-import { DatePicker, Space, Button } from 'antd';
+import { DatePicker } from 'antd';
 import 'antd/dist/reset.css';
 
-const TotalSales = React.lazy(() => import("./Charts/TotalSales"));
-const AverageOrderChart = React.lazy(() => import("./Charts/AverageOrderChart"));
-const OrderCountChart = React.lazy(() => import("./Charts/OrderCountChart"));
+const TotalSales = lazy(() => import("./Charts/TotalSales"));
+const AverageOrderChart = lazy(() => import("./Charts/AverageOrderChart"));
+const OrderCountChart = lazy(() => import("./Charts/OrderCountChart"));
 
 
 function AnalyticsCharts() {
@@ -114,7 +114,7 @@ function AnalyticsCharts() {
     useEffect(() => {
       console.log(dateFound);
       handleDateChange();
-    }, [dateFound]);
+    }, []);
 
     return (
       <section className="analyticsDisplay">

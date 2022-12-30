@@ -12,31 +12,27 @@ import { getUserName } from '../../service/auth';
 const Navbar = (props: any) => {
 
 	const [isAdmin, setAdmin] = useState(false);
-	const [loggedIn, setLoggedIn] = useState(false);
+	const loggedIn = props.loggedIn;
 
 	const navigate = useNavigate();
 
 	useEffect(() => {
-		setLoggedIn(props.loggedIn);
-	}, [props.loggedIn]);
-
-
-	useEffect(() => {
 		refreshUser();
-	}, [loggedIn]);
+	}, []);
 
 	const refreshUser = async () => {
 		try {
 			let data = await getUserName();
-			console.log(data);
 	
 			if (data) {
-				setLoggedIn(true);
+				props.refreshLogin(true);
 				if (data.user_type === 'admin') {
 					setAdmin(true);
 				} else {
 					setAdmin(false);
 				}
+			} else {
+				console.log("User not logged in!");
 			}
 		} catch(err) {
 			console.log(err);

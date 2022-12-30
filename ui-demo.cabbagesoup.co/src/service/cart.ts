@@ -5,6 +5,7 @@ import { Tracker, Product } from "../models/cart";
 export const getUserCart = async() => {
     const endpoint = `${process.env.REACT_APP_SERVICE_HISTORY}/query/cart`;
     const headers = { headers: { "withCredentials": "true" } };
+
     let response = await axios.get(endpoint, headers);
     console.log(response);
 

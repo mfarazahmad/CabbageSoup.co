@@ -1,6 +1,6 @@
 from flask import jsonify
 
-from Routes.Admin import Admin, db
+from routes.Admin import Admin, db
 
 from scripts.dataGenerator import *
 

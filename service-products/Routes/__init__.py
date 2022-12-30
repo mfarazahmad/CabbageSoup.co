@@ -16,6 +16,6 @@ def middleware_for_response(response):
 
 
 # Connect to DB
-db = DB(os.environ.get("DB_CONNECTION_STRING"), 'analytics') #'products'
+db = DB(os.environ.get("DB_CONNECTION_STRING"), os.environ.get("DB_CONNECTION_DB", "products")) 
 
-from Routes.products import *
+from routes.products import *

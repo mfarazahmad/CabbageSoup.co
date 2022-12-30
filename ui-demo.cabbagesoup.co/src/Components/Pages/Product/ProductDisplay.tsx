@@ -25,7 +25,8 @@ const ProductDisplay = (props: any) => {
 
     useEffect(() => {
         const endpoint = `${process.env.REACT_APP_ANALYTICS_ENGINE}/search/?term=${searchTerm}&searchType=products&filter=price:${filters.price},rating:${filters.rating}`;
-        axios.get(endpoint)
+        const headers = {headers: { "withCredentials": "true" }};
+        axios.get(endpoint, headers)
         .then(response => {
             var data = response['data']['data'];
             console.log(data);
@@ -80,7 +81,7 @@ const ProductDisplay = (props: any) => {
             <div className="line"></div>
             <div className="productShowcase">
                 {currentProducts && currentProducts.map(
-                    product => { return <Suspense fallback={<div>Loading...</div>}><Product product={product} handleCart={props.handleCart} handleDetailPage={props.handleDetailPage} /> </Suspense> }
+                    (product, key) => { return <Suspense fallback={<div>Loading...</div>}><Product key={key} product={product} handleCart={props.handleCart} handleDetailPage={props.handleDetailPage} /> </Suspense> }
                 )}
             </div>
             <div className="pagination">
